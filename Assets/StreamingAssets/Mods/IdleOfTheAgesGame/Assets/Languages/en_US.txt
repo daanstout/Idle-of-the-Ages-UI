@@ -1,0 +1,5 @@
+Woodcutting=Woodcutting
+Mining=Mining
+Generating=Generating
+Stone_Age=Stone Age
+Tree=Tree

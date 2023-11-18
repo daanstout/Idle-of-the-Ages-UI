@@ -1,0 +1,1207 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>IdleOfTheAgesLib</name>
+    </assembly>
+    <members>
+        <member name="T:IdleOfTheAgesLib.DependencyIdentifierAttribute">
+            <summary>
+            An attribute that can be applied to parameters to provide a key to the required dependency.
+            </summary>
+        </member>
+        <member name="P:IdleOfTheAgesLib.DependencyIdentifierAttribute.Key">
+            <summary>
+            The key of the dependency instance to obtain.
+            </summary>
+        </member>
+        <member name="M:IdleOfTheAgesLib.DependencyIdentifierAttribute.#ctor(System.String)">
+            <summary>
+            Instantiates a new instance of the <see cref="T:IdleOfTheAgesLib.DependencyIdentifierAttribute"/>.
+            </summary>
+            <param name="key">The key of the dependency instance to obtain.</param>
+        </member>
+        <member name="T:IdleOfTheAgesLib.ServiceAttribute">
+            <summary>
+            An attribute that can be put on services to indicate they are a service.
+            <para>Using this attribute makes it so you don't have to register services in a <see cref="T:IdleOfTheAgesLib.DependencyInjection.IServiceRegistry"/>.</para>
+            </summary>
+        </member>
+        <member name="T:IdleOfTheAgesLib.ServiceAttribute.ServiceLevelEnum">
+            <summary>
+            Can be used to indicate whether the service is only for private use, or also for public use.
+            </summary>
+        </member>
+        <member name="F:IdleOfTheAgesLib.ServiceAttribute.ServiceLevelEnum.Private">
+            <summary>
+            The service is only for the mod itself.
+            </summary>
+        </member>
+        <member name="F:IdleOfTheAgesLib.ServiceAttribute.ServiceLevelEnum.Public">
+            <summary>
+            The service can also be requested by other mods.
+            </summary>
+        </member>
+        <member name="P:IdleOfTheAgesLib.ServiceAttribute.InterfaceType">
+            <summary>
+            The type of the interface this service is implementing.
+            </summary>
+        </member>
+        <member name="P:IdleOfTheAgesLib.ServiceAttribute.Key">
+            <summary>
+            The key for identifying this service.
+            </summary>
+        </member>
+        <member name="P:IdleOfTheAgesLib.ServiceAttribute.ServiceLevel">
+            <summary>
+            Indicates whether this service should be public or private.
+            </summary>
+        </member>
+        <member name="M:IdleOfTheAgesLib.ServiceAttribute.#ctor(System.Type,System.String,IdleOfTheAgesLib.ServiceAttribute.ServiceLevelEnum)">
+            <summary>
+            Instantiates a new Service Attribute.
+            </summary>
+            <param name="interfaceType">The Type of the interface the service is implemting.</param>
+            <param name="key">The key for identifying the service.</param>
+            <param name="serviceLevel">Whether the service is public or private.</param>
+        </member>
+        <member name="T:IdleOfTheAgesLib.SkillAttribute">
+            <summary>
+            Indicates that a class is a <see cref="T:IdleOfTheAgesLib.Data.SkillImplementation"/>.
+            </summary>
+        </member>
+        <member name="P:IdleOfTheAgesLib.SkillAttribute.SkillID">
+            <summary>
+            The ID of the skill this class is implementing.
+            </summary>
+        </member>
+        <member name="M:IdleOfTheAgesLib.SkillAttribute.#ctor(System.String)">
+            <summary>
+            Instantiates a new Skill Attribute.
+            </summary>
+            <param name="skillID">The ID of the skill.</param>
+        </member>
+        <member name="T:IdleOfTheAgesLib.UIElementAttribute">
+            <summary>
+            Indicates that a class is an UI <see cref="T:IdleOfTheAgesLib.UI.Element"/>.
+            </summary>
+        </member>
+        <member name="P:IdleOfTheAgesLib.UIElementAttribute.Identifier">
+            <summary>
+            The identifier of the UI attribute.
+            </summary>
+        </member>
+        <member name="M:IdleOfTheAgesLib.UIElementAttribute.#ctor(System.String)">
+            <summary>
+            Instantiates a new UI ELement Attribute.
+            </summary>
+            <param name="identifier">The identifier of the attribute.</param>
+        </member>
+        <member name="T:IdleOfTheAgesLib.Data.IItemStack">
+            <summary>
+            Represents a stack of items in the inventory.
+            </summary>
+        </member>
+        <member name="P:IdleOfTheAgesLib.Data.IItemStack.ItemID">
+            <summary>
+            The ID of the item this stack represents.
+            </summary>
+        </member>
+        <member name="P:IdleOfTheAgesLib.Data.IItemStack.ItemData">
+            <summary>
+            The data for this item.
+            </summary>
+        </member>
+        <member name="P:IdleOfTheAgesLib.Data.IItemStack.Metadata">
+            <summary>
+            The metadata for this item.
+            </summary>
+        </member>
+        <member name="P:IdleOfTheAgesLib.Data.IItemStack.StackSize">
+            <summary>
+            The amount of items that are in this stack.
+            </summary>
+        </member>
+        <member name="T:IdleOfTheAgesLib.Data.IModObject">
+            <summary>
+            Contains all relevant mod data.
+            </summary>
+        </member>
+        <member name="P:IdleOfTheAgesLib.Data.IModObject.Logger">
+            <summary>
+            A logger to log data to.
+            </summary>
+        </member>
+        <member name="P:IdleOfTheAgesLib.Data.IModObject.Mod">
+            <summary>
+            The instance of the mod's initializer class.
+            </summary>
+        </member>
+        <member name="P:IdleOfTheAgesLib.Data.IModObject.Namespace">
+            <summary>
+            The namespace of the mod.
+            </summary>
+        </member>
+        <member name="P:IdleOfTheAgesLib.Data.IModObject.ServiceLibrary">
+            <summary>
+            The service library containing this mod's services.
+            </summary>
+        </member>
+        <member name="T:IdleOfTheAgesLib.Data.Language">
+            <summary>
+            A list of languages the game supports
+            </summary>
+        </member>
+        <member name="F:IdleOfTheAgesLib.Data.Language.None">
+            <summary>
+            Default case
+            </summary>
+        </member>
+        <member name="F:IdleOfTheAgesLib.Data.Language.en_US">
+            <summary>
+            American English
+            </summary>
+        </member>
+        <member name="F:IdleOfTheAgesLib.Data.Language.nl_NL">
+            <summary>
+            Dutch
+            </summary>
+        </member>
+        <member name="T:IdleOfTheAgesLib.Data.SkillImplementation">
+            <summary>
+            A skill that can be practiced by the player.
+            </summary>
+        </member>
+        <member name="P:IdleOfTheAgesLib.Data.SkillImplementation.Namespace">
+            <summary>
+            The namespace the skill exists in.
+            </summary>
+        </member>
+        <member name="P:IdleOfTheAgesLib.Data.SkillImplementation.SkillData">
+            <summary>
+            The data for the skill.
+            </summary>
+        </member>
+        <member name="P:IdleOfTheAgesLib.Data.SkillImplementation.CurrentSkillLevel">
+            <summary>
+            The current level of the skill.
+            </summary>
+        </member>
+        <member name="P:IdleOfTheAgesLib.Data.SkillImplementation.MaxSkillLevel">
+            <summary>
+            The maximum level of this skill.
+            </summary>
+        </member>
+        <member name="P:IdleOfTheAgesLib.Data.SkillImplementation.NamespacedID">
+            <summary>
+            The skill's namespaced ID.
+            </summary>
+        </member>
+        <member name="P:IdleOfTheAgesLib.Data.SkillImplementation.SkillUI">
+            <summary>
+            The type of this class's skill UI <see cref="T:IdleOfTheAgesLib.UI.Element"/>.
+            </summary>
+        </member>
+        <member name="M:IdleOfTheAgesLib.Data.SkillImplementation.#ctor(IdleOfTheAgesLib.Models.ModJsonData.SkillData)">
+            <summary>
+            Instantiates a new Skill instance.
+            </summary>
+            <param name="skillData">The json data for the skill.</param>
+        </member>
+        <member name="M:IdleOfTheAgesLib.Data.SkillImplementation.Initialize(IdleOfTheAgesLib.DependencyInjection.IServiceLibrary)">
+            <summary>
+            Initializes the skill.
+            </summary>
+            <param name="serviceLibrary">The service library to obtain services from.</param>
+        </member>
+        <member name="T:IdleOfTheAgesLib.Data.ModManifest">
+            <summary>
+            The data object of a mod's manifest.json.
+            </summary>
+        </member>
+        <member name="P:IdleOfTheAgesLib.Data.ModManifest.Namespace">
+            <summary>
+            The namespace of a mod.
+            </summary>
+        </member>
+        <member name="P:IdleOfTheAgesLib.Data.ModManifest.Thumbnail">
+            <summary>
+            The path to the mod's thumbnail.
+            </summary>
+        </member>
+        <member name="P:IdleOfTheAgesLib.Data.ModManifest.ModClass">
+            <summary>
+            The name of the mod class.
+            </summary>
+        </member>
+        <member name="T:IdleOfTheAgesLib.DependencyInjection.CyclicalDependencyException">
+            <summary>
+            An exception that is thrown when 2 dependencies have a cyclical dependency on each other.
+            </summary>
+        </member>
+        <member name="M:IdleOfTheAgesLib.DependencyInjection.CyclicalDependencyException.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:IdleOfTheAgesLib.DependencyInjection.CyclicalDependencyException"/> class.
+            </summary>
+        </member>
+        <member name="M:IdleOfTheAgesLib.DependencyInjection.CyclicalDependencyException.#ctor(System.String)">
+            <summary>
+            Initializes a new instance of the <see cref="T:IdleOfTheAgesLib.DependencyInjection.CyclicalDependencyException"/> class 
+            with a specified error message.
+            </summary>
+            <param name="message">The message that describes the error.</param>
+        </member>
+        <member name="M:IdleOfTheAgesLib.DependencyInjection.CyclicalDependencyException.#ctor(System.String,System.Exception)">
+            <summary>
+            Initializes a new instance of the <see cref="T:IdleOfTheAgesLib.DependencyInjection.CyclicalDependencyException"/> class with a specified error 
+            message and a reference to the inner exception that is the cause of this exception.
+            </summary>
+            <param name="message">The error message that explains the reason for the exception.</param>
+            <param name="innerException">The exception that is the cause of the current exception, or a null reference
+            (Nothing in Visual Basic) if no inner exception is specified.</param>
+        </member>
+        <member name="M:IdleOfTheAgesLib.DependencyInjection.CyclicalDependencyException.#ctor(System.Runtime.Serialization.SerializationInfo,System.Runtime.Serialization.StreamingContext)">
+            <summary>
+            Initializes a new instance of the <see cref="T:IdleOfTheAgesLib.DependencyInjection.CyclicalDependencyException"/> class with serialized data.
+            </summary>
+            <param name="info">The System.Runtime.Serialization.SerializationInfo that holds the serialized
+            object data about the exception being thrown.</param>
+            <param name="context">The System.Runtime.Serialization.StreamingContext that contains contextual information
+            about the source or destination.</param>
+            <exception cref="T:System.ArgumentNullException">info is null.</exception>
+            <exception cref="T:System.Runtime.Serialization.SerializationException">The class name is null or <see cref="P:System.Exception.HResult"/> is zero (0).</exception>
+        </member>
+        <member name="T:IdleOfTheAgesLib.DependencyInjection.IResolver">
+            <summary>
+            A resolver to resolve a dependency to an instance.
+            </summary>
+        </member>
+        <member name="P:IdleOfTheAgesLib.DependencyInjection.IResolver.Factory">
+            <summary>
+            A factory that can be used to resolve the instance.
+            </summary>
+        </member>
+        <member name="P:IdleOfTheAgesLib.DependencyInjection.IResolver.IsSingleton">
+            <summary>
+            A boolean that indicates whether or not the target is a singleton.
+            </summary>
+        </member>
+        <member name="M:IdleOfTheAgesLib.DependencyInjection.IResolver.Resolve(IdleOfTheAgesLib.DependencyInjection.IServiceLibrary)">
+            <summary>
+            Resolves the dependency to the instance, creating a new one if one doesn't exist yet.
+            </summary>
+            <param name="serviceLibrary">The <see cref="T:IdleOfTheAgesLib.DependencyInjection.IServiceLibrary"/> to obtain the dependencies from.</param>
+            <returns>An instance of the dependency.</returns>
+        </member>
+        <member name="M:IdleOfTheAgesLib.DependencyInjection.IResolver.ToInstance(System.Object)">
+            <summary>
+            Sets the instance this resolver should use.
+            </summary>
+            <param name="instance">The instance to use.</param>
+        </member>
+        <member name="T:IdleOfTheAgesLib.DependencyInjection.IResolver`1">
+            <summary>
+            A resolver to resolve a dependency to an instance.
+            </summary>
+        </member>
+        <member name="M:IdleOfTheAgesLib.DependencyInjection.IResolver`1.Resolve(IdleOfTheAgesLib.DependencyInjection.IServiceLibrary)">
+            <summary>
+            Resolves the dependency to the instance, creating a new one if one doesn't exist yet.
+            </summary>
+            <param name="serviceLibrary">The <see cref="T:IdleOfTheAgesLib.DependencyInjection.IServiceLibrary"/> to obtain the dependencies from.</param>
+            <returns>An instance of the dependency.</returns>
+        </member>
+        <member name="T:IdleOfTheAgesLib.DependencyInjection.IServiceLibrary">
+            <summary>
+            A library where services that are registered through a <see cref="T:IdleOfTheAgesLib.DependencyInjection.IServiceRegistry"/> can be obtained from.
+            </summary>
+        </member>
+        <member name="M:IdleOfTheAgesLib.DependencyInjection.IServiceLibrary.Get``1(System.String)">
+            <summary>
+            Gets the instance for the requested <typeparamref name="TType"/>.
+            </summary>
+            <typeparam name="TType">The type to get the instance for.</typeparam>
+            <param name="key">The key to the specific instance.</param>
+            <returns>The requested instance.</returns>
+        </member>
+        <member name="M:IdleOfTheAgesLib.DependencyInjection.IServiceLibrary.Get(System.Type,System.String)">
+            <summary>
+            Gets the instance for the requested <paramref name="type"/>.
+            </summary>
+            <param name="type">The type to get the instance for.</param>
+            <param name="key">The key to the specific instance.</param>
+            <returns>The requested instance.</returns>
+        </member>
+        <member name="M:IdleOfTheAgesLib.DependencyInjection.IServiceLibrary.GetInstances(System.Collections.Generic.IEnumerable{System.Reflection.ParameterInfo})">
+            <summary>
+            Obtains instances for the provided <paramref name="types"/>,
+            </summary>
+            <param name="types">The parameters to obtain instances for.</param>
+            <returns>An <see cref="T:System.Array"/> containing the instances in order.</returns>
+        </member>
+        <member name="M:IdleOfTheAgesLib.DependencyInjection.IServiceLibrary.GetAllServiceNames">
+            <summary>
+            Obtains a list of the names of all registered services that can be obtained.
+            </summary>
+            <returns>A list of names of all registered services.</returns>
+        </member>
+        <member name="M:IdleOfTheAgesLib.DependencyInjection.IServiceLibrary.ContainsService``1(System.String)">
+            <summary>
+            Checks whether or not a service is registered with the given key.
+            </summary>
+            <typeparam name="TType">The service to check for.</typeparam>
+            <param name="key">The key to check with.</param>
+            <returns><see langword="true"/> if the service exists, <see langword="false"/> if not.</returns>
+        </member>
+        <member name="M:IdleOfTheAgesLib.DependencyInjection.IServiceLibrary.ContainsService(System.Type,System.String)">
+            <summary>
+            Checks whether or not a service is registered with the given key.
+            </summary>
+            <param name="type">The service to check for.</param>
+            <param name="key">The key to check with.</param>
+            <returns><see langword="true"/> if the service exists, <see langword="false"/> if not.</returns>
+        </member>
+        <member name="T:IdleOfTheAgesLib.DependencyInjection.IServiceRegistry">
+            <summary>
+            A registry where services can be registered to, which can then be obtained through the <see cref="T:IdleOfTheAgesLib.DependencyInjection.IServiceLibrary"/>.
+            </summary>
+        </member>
+        <member name="M:IdleOfTheAgesLib.DependencyInjection.IServiceRegistry.Bind(System.Type,System.String)">
+            <summary>
+            Obtains the <see cref="T:IdleOfTheAgesLib.DependencyInjection.IResolver"/> for the provided <paramref name="type"/> and <paramref name="key"/> combination.
+            <para>If no resolver exists, a new one will be created.</para>
+            <para>Note that if no resolver exists and <paramref name="type"/> is either an interface or an abstract class, a factory should be provided as otherwise the resolver will throw an error when resolving!</para>
+            </summary>
+            <param name="type">The type to get the resolver for.</param>
+            <param name="key">The key to the specific dependency required.</param>
+            <returns>The <see cref="T:IdleOfTheAgesLib.DependencyInjection.IResolver"/> for the <paramref name="type"/> and <paramref name="key"/> combination.</returns>
+            <exception cref="T:System.ArgumentNullException">Thrown if <paramref name="type"/> is null.</exception>
+        </member>
+        <member name="M:IdleOfTheAgesLib.DependencyInjection.IServiceRegistry.Bind``1(System.String)">
+            <summary>
+            Obtains the <see cref="T:IdleOfTheAgesLib.DependencyInjection.IResolver`1"/> for the provided <typeparamref name="TType"/> and <paramref name="key"/> combination.
+            <para>If no resolver exists, a new one will be created.</para>
+            <para>Note that if no resolver exists and <typeparamref name="TType"/> is either an interface or an abstract class, a factory should be provided as otherwise the resolver will throw an error when resolving!</para>
+            </summary>
+            <typeparam name="TType">The type to get the resolver for.</typeparam>
+            <param name="key">The key to the specific dependency required.</param>
+            <returns>The <see cref="T:IdleOfTheAgesLib.DependencyInjection.IResolver`1"/> for the <typeparamref name="TType"/> and <paramref name="key"/> combination.</returns>
+            <exception cref="T:System.ArgumentNullException">Thrown if <typeparamref name="TType"/> is null.</exception>
+        </member>
+        <member name="M:IdleOfTheAgesLib.DependencyInjection.IServiceRegistry.RegisterService``2(System.String)">
+            <summary>
+            Registers a service to the library.
+            </summary>
+            <typeparam name="TInterface">The type of the interface.</typeparam>
+            <typeparam name="TImplementation">The type of the implementation.</typeparam>
+            <param name="key">The key to store the service under.</param>
+            <returns><see langword="true"/> if the service was successfully registered, <see langword="false"/> if not.</returns>
+        </member>
+        <member name="M:IdleOfTheAgesLib.DependencyInjection.IServiceRegistry.RegisterService(System.Type,System.Type,System.String)">
+            <summary>
+            Registers a service to the library.
+            </summary>
+            <param name="interfaceType">The type of the interface.</param>
+            <param name="implementationType">The type of the implementation.</param>
+            <param name="key">The key to store the service under.</param>
+            <returns><see langword="true"/> if the service was successfully registered, <see langword="false"/> if not.</returns>
+        </member>
+        <member name="M:IdleOfTheAgesLib.DependencyInjection.IServiceRegistry.RegisterService``1(System.Func{IdleOfTheAgesLib.DependencyInjection.IServiceLibrary,``0},System.String)">
+            <summary>
+            Registers a service to the library.
+            </summary>
+            <typeparam name="TInterface">The type of the interface.</typeparam>
+            <param name="factory">A factory that is used to create the instance.</param>
+            <param name="key">The key to store the service under.</param>
+            <returns><see langword="true"/> if the service was successfully registered, <see langword="false"/> if not.</returns>
+        </member>
+        <member name="M:IdleOfTheAgesLib.DependencyInjection.IServiceRegistry.RegisterService(System.Type,System.Func{IdleOfTheAgesLib.DependencyInjection.IServiceLibrary,System.Object},System.String)">
+            <summary>
+            Registers a service to the library.
+            </summary>
+            <param name="interfaceType">The type of the interface.</param>
+            <param name="factory">A factory that is used to create the instance.</param>
+            <param name="key">The key to store the service under.</param>
+            <returns><see langword="true"/> if the service was successfully registered, <see langword="false"/> if not.</returns>
+        </member>
+        <member name="M:IdleOfTheAgesLib.DependencyInjection.IServiceRegistry.RegisterService``2(System.Func{IdleOfTheAgesLib.DependencyInjection.IServiceLibrary,``0},System.String)">
+            <summary>
+            Registers a service to the library.
+            </summary>
+            <typeparam name="TInterface">The type of the interface.</typeparam>
+            <typeparam name="TImplementation">The type of the implementation.</typeparam>
+            <param name="factory">A factory that is used to create the instance.</param>
+            <param name="key">The key to store the service under.</param>
+            <returns><see langword="true"/> if the service was successfully registered, <see langword="false"/> if not.</returns>
+        </member>
+        <member name="M:IdleOfTheAgesLib.DependencyInjection.IServiceRegistry.RegisterService(System.Type,System.Type,System.Func{IdleOfTheAgesLib.DependencyInjection.IServiceLibrary,System.Object},System.String)">
+            <summary>
+            Registers a service to the library.
+            </summary>
+            <param name="interfaceType">The type of the interface.</param>
+            <param name="implementationType">The type of the implementation.</param>
+            <param name="factory">A factory that is used to create the instance.</param>
+            <param name="key">The key to store the service under.</param>
+            <returns><see langword="true"/> if the service was successfully registered, <see langword="false"/> if not.</returns>
+        </member>
+        <member name="T:IdleOfTheAgesLib.ILogger">
+            <summary>
+            A logger to log information to.
+            </summary>
+        </member>
+        <member name="P:IdleOfTheAgesLib.ILogger.Namespace">
+            <summary>
+            The namespace the logger logs to.
+            </summary>
+        </member>
+        <member name="M:IdleOfTheAgesLib.ILogger.Info(System.String,System.Object[])">
+            <summary>
+            Logs a message to the logger.
+            </summary>
+            <param name="message">The message to log.</param>
+            <param name="objects">Parameters to add to the message.</param>
+        </member>
+        <member name="M:IdleOfTheAgesLib.ILogger.Warn(System.String,System.Object[])">
+            <summary>
+            Logs a warning to the logger.
+            </summary>
+            <param name="message">The message to log.</param>
+            <param name="objects">Parameters to add to the message.</param>
+        </member>
+        <member name="M:IdleOfTheAgesLib.ILogger.Error(System.String,System.Object[])">
+            <summary>
+            Logs an error to the logger.
+            </summary>
+            <param name="message">The message to log.</param>
+            <param name="objects">Parameters to add to the message.</param>
+        </member>
+        <member name="T:IdleOfTheAgesLib.IMod">
+            <summary>
+            The entry class for a Mod.
+            <para>Mod initialization happens in steps:
+            <list type="number">
+            <item>The <see cref="T:IdleOfTheAgesLib.Data.IModObject"/> is created with the relevant objects for the mod.</item>
+            <item>Services with a <see cref="T:IdleOfTheAgesLib.ServiceAttribute"/> are registered with the <see cref="T:IdleOfTheAgesLib.DependencyInjection.IServiceRegistry"/>.</item>
+            <item><see cref="M:IdleOfTheAgesLib.IMod.RegisterPublicServices(IdleOfTheAgesLib.DependencyInjection.IServiceRegistry)"/> is called, allowing for public services to be registered.</item>
+            <item><see cref="M:IdleOfTheAgesLib.IMod.RegisterServices(IdleOfTheAgesLib.DependencyInjection.IServiceRegistry)"/> is called, allowing for private services to be registered.</item>
+            <item><see cref="M:IdleOfTheAgesLib.IMod.ModLoaded(IdleOfTheAgesLib.DependencyInjection.IServiceLibrary)"/> is called. Other mods are still to be loaded, so only do things that need to happen early.</item>
+            <item><see cref="M:IdleOfTheAgesLib.IMod.AppLoaded(IdleOfTheAgesLib.DependencyInjection.IServiceLibrary)"/> is called once the game and all mods have been loaded, but before the main menu is shown. This is where menu modifications and game modes should be loaded.</item>
+            <item><see cref="M:IdleOfTheAgesLib.IMod.GameLoaded(IdleOfTheAgesLib.DependencyInjection.IServiceLibrary)"/> is called once the player has selected a game. This is where most game modifications should go.</item>
+            </list>
+            </para>
+            </summary>
+        </member>
+        <member name="M:IdleOfTheAgesLib.IMod.RegisterServices(IdleOfTheAgesLib.DependencyInjection.IServiceRegistry)">
+            <summary>
+            This function can be used to register the services used by the mod.
+            <para>The services registered are registered within the mod's namespace.</para>
+            </summary>
+            <param name="serviceRegistry">The service registry to register services to.</param>
+        </member>
+        <member name="M:IdleOfTheAgesLib.IMod.RegisterPublicServices(IdleOfTheAgesLib.DependencyInjection.IServiceRegistry)">
+            <summary>
+            This function can be used to register services from this mod that should be accessible to other mods.
+            <para>Keep in mind that services registered here can only use other public services, or services provided by the base game.
+            services registered with <see cref="M:IdleOfTheAgesLib.IMod.RegisterServices(IdleOfTheAgesLib.DependencyInjection.IServiceRegistry)"/> can not be used within public services.</para>
+            </summary>
+            <param name="serviceRegistry">The service registry to register services to.</param>
+        </member>
+        <member name="M:IdleOfTheAgesLib.IMod.AppLoaded(IdleOfTheAgesLib.DependencyInjection.IServiceLibrary)">
+            <summary>
+            This function is called when the app has loaded, before the main menu is shown.
+            </summary>
+            <param name="serviceLibrary">The service library for this mod.</param>
+        </member>
+        <member name="M:IdleOfTheAgesLib.IMod.GameLoaded(IdleOfTheAgesLib.DependencyInjection.IServiceLibrary)">
+            <summary>
+            This function is called when the game has loaded, when the player has selected a save.
+            </summary>
+            <param name="serviceLibrary">The service library for this mod.</param>
+        </member>
+        <member name="M:IdleOfTheAgesLib.IMod.ModLoaded(IdleOfTheAgesLib.DependencyInjection.IServiceLibrary)">
+            <summary>
+            This function is called directly after the mod has been loaded.
+            <para>Keep in mind that mod loading in general is still in progress.</para>
+            </summary>
+            <param name="serviceLibrary">The service library for this mod.</param>
+        </member>
+        <member name="T:IdleOfTheAgesLib.Result">
+            <summary>
+            A result object that can be returned with information.
+            </summary>
+        </member>
+        <member name="M:IdleOfTheAgesLib.Result.#ctor(System.Boolean,System.String,System.Exception)">
+            <summary>
+            Instantiates a new Result object.
+            </summary>
+            <param name="value">Whether or not the call was a success.</param>
+            <param name="errorReason">The reason the call failed.</param>
+            <param name="exception">The exception that was thrown.</param>
+        </member>
+        <member name="M:IdleOfTheAgesLib.Result.op_Implicit(IdleOfTheAgesLib.Result)~System.Boolean">
+            <summary>
+            Implicitly casts a <see cref="T:IdleOfTheAgesLib.Result"/> object to a <see cref="T:System.Boolean"/>.
+            </summary>
+            <param name="result">The result object to cast.</param>
+        </member>
+        <member name="M:IdleOfTheAgesLib.Result.op_Implicit(System.Boolean)~IdleOfTheAgesLib.Result">
+            <summary>
+            Implicitly casts a <see cref="T:System.Boolean"/> value to a <see cref="T:IdleOfTheAgesLib.Result"/>.
+            </summary>
+            <param name="value">The bool value to cast.</param>
+        </member>
+        <member name="M:IdleOfTheAgesLib.Result.op_Implicit(System.ValueTuple{System.Boolean,System.String})~IdleOfTheAgesLib.Result">
+            <summary>
+            Implicitly casts a <see cref="T:System.Tuple`2"/> of a <see cref="T:System.Boolean"/> value and a <see cref="T:System.String"/> value to a <see cref="T:IdleOfTheAgesLib.Result"/> value.
+            </summary>
+            <param name="value">The tuple object to cast.</param>
+        </member>
+        <member name="M:IdleOfTheAgesLib.Result.op_Implicit(System.ValueTuple{System.Boolean,System.String,System.Exception})~IdleOfTheAgesLib.Result">
+            <summary>
+            Implicitly casts a <see cref="T:System.Tuple`3"/> of a <see cref="T:System.Boolean"/> value, a <see cref="T:System.String"/> value, and an <see cref="T:System.Exception"/> object to a <see cref="T:IdleOfTheAgesLib.Result`1"/>.
+            </summary>
+            <param name="value">The tuple object to cast.</param>
+        </member>
+        <member name="T:IdleOfTheAgesLib.Result`1">
+            <summary>
+            A result object that can be returned with information.
+            </summary>
+        </member>
+        <member name="P:IdleOfTheAgesLib.Result`1.Value">
+            <summary>
+            The target object.
+            </summary>
+        </member>
+        <member name="P:IdleOfTheAgesLib.Result`1.ErrorReason">
+            <summary>
+            The reason a function call failed.
+            </summary>
+        </member>
+        <member name="P:IdleOfTheAgesLib.Result`1.Exception">
+            <summary>
+            The Exception that was thrown.
+            </summary>
+        </member>
+        <member name="M:IdleOfTheAgesLib.Result`1.#ctor(`0,System.String,System.Exception)">
+            <summary>
+            Instantiates a new Result object.
+            </summary>
+            <param name="value">The target object.</param>
+            <param name="errorReason">The reason the call failed.</param>
+            <param name="exception">The exception that was thrown.</param>
+        </member>
+        <member name="M:IdleOfTheAgesLib.Result`1.op_Implicit(IdleOfTheAgesLib.Result{`0})~`0">
+            <summary>
+            Implicitly casts a <see cref="T:IdleOfTheAgesLib.Result"/> object to a <typeparamref name="T"/>.
+            </summary>
+            <param name="result">The result object to cast.</param>
+        </member>
+        <member name="M:IdleOfTheAgesLib.Result`1.op_Implicit(`0)~IdleOfTheAgesLib.Result{`0}">
+            <summary>
+            Implicitly casts a <typeparamref name="T"/> value to a <see cref="T:IdleOfTheAgesLib.Result"/>.
+            </summary>
+            <param name="value">The bool value to cast.</param>
+        </member>
+        <member name="M:IdleOfTheAgesLib.Result`1.op_Implicit(System.ValueTuple{`0,System.String})~IdleOfTheAgesLib.Result{`0}">
+            <summary>
+            Implicitly casts a <see cref="T:System.Tuple`2"/> of a <typeparamref name="T"/> value and a <see cref="T:System.String"/> value to a <see cref="T:IdleOfTheAgesLib.Result"/> value to a <see cref="T:IdleOfTheAgesLib.Result`1"/>.
+            </summary>
+            <param name="value">The tuple object to cast.</param>
+        </member>
+        <member name="M:IdleOfTheAgesLib.Result`1.op_Implicit(System.ValueTuple{`0,System.String,System.Exception})~IdleOfTheAgesLib.Result{`0}">
+            <summary>
+            Implicitly casts a <see cref="T:System.Tuple`3"/> of a <typeparamref name="T"/> value, a <see cref="T:System.String"/> value, and an <see cref="P:IdleOfTheAgesLib.Result`1.Exception"/> object to a <see cref="T:IdleOfTheAgesLib.Result`1"/>.
+            </summary>
+            <param name="value">The tuple object to cast.</param>
+        </member>
+        <member name="T:IdleOfTheAgesLib.Models.ModJsonData.AgeData">
+            <summary>
+            An age that the player can be in.
+            </summary>
+        </member>
+        <member name="T:IdleOfTheAgesLib.Models.ModJsonData.BaseDataElement">
+            <summary>
+            A base class for data elements.
+            </summary>
+        </member>
+        <member name="P:IdleOfTheAgesLib.Models.ModJsonData.BaseDataElement.Namespace">
+            <summary>
+            The namespace of the object.
+            </summary>
+        </member>
+        <member name="P:IdleOfTheAgesLib.Models.ModJsonData.BaseDataElement.Name">
+            <summary>
+            The name of the object.
+            </summary>
+        </member>
+        <member name="P:IdleOfTheAgesLib.Models.ModJsonData.BaseDataElement.ID">
+            <summary>
+            The ID of the object.
+            </summary>
+        </member>
+        <member name="P:IdleOfTheAgesLib.Models.ModJsonData.BaseDataElement.NamespacedID">
+            <summary>
+            Gets the object's namespaced ID.
+            </summary>
+        </member>
+        <member name="T:IdleOfTheAgesLib.Models.ModJsonData.VisisbleDataElement">
+            <summary>
+            A base class for data elements that are visible to the user.
+            </summary>
+        </member>
+        <member name="P:IdleOfTheAgesLib.Models.ModJsonData.VisisbleDataElement.TranslationKey">
+            <summary>
+            The translation key of the element.
+            </summary>
+        </member>
+        <member name="P:IdleOfTheAgesLib.Models.ModJsonData.VisisbleDataElement.SortingOrder">
+            <summary>
+            The Age that this age should be after.
+            </summary>
+        </member>
+        <member name="T:IdleOfTheAgesLib.Models.ModJsonData.ThumbnailDataElement">
+            <summary>
+            A base class for data elements that are visible to the user and have a thumbnail.
+            </summary>
+        </member>
+        <member name="P:IdleOfTheAgesLib.Models.ModJsonData.ThumbnailDataElement.Thumbnail">
+            <summary>
+            The thumbnail ID of the object.
+            </summary>
+        </member>
+        <member name="T:IdleOfTheAgesLib.Models.ModJsonData.ItemData">
+            <summary>
+            An item that can be obtained in the game.
+            </summary>
+        </member>
+        <member name="P:IdleOfTheAgesLib.Models.ModJsonData.ItemData.DescriptionKey">
+            <summary>
+            The key to the description of the item.
+            </summary>
+        </member>
+        <member name="P:IdleOfTheAgesLib.Models.ModJsonData.ItemData.SellPrice">
+            <summary>
+            The sell price of this item.
+            </summary>
+        </member>
+        <member name="P:IdleOfTheAgesLib.Models.ModJsonData.ItemData.Metadata">
+            <summary>
+            Metadata for this item.
+            </summary>
+        </member>
+        <member name="P:IdleOfTheAgesLib.Models.ModJsonData.ItemData.Category">
+            <summary>
+            The category of this item.
+            <para>This is used for searching.</para>
+            </summary>
+        </member>
+        <member name="P:IdleOfTheAgesLib.Models.ModJsonData.ItemData.Type">
+            <summary>
+            The type of item this is.
+            <para>This is used for searching.</para>
+            </summary>
+        </member>
+        <member name="P:IdleOfTheAgesLib.Models.ModJsonData.ItemData.RequiredForCompletion">
+            <summary>
+            Whether this item is required for completing the game.
+            </summary>
+        </member>
+        <member name="T:IdleOfTheAgesLib.Models.ModJsonData.ModData">
+            <summary>
+            The data class is used for defining mod gameplay data.
+            </summary>
+        </member>
+        <member name="P:IdleOfTheAgesLib.Models.ModJsonData.ModData.Namespace">
+            <summary>
+            The namespace the data sits in.
+            </summary>
+        </member>
+        <member name="P:IdleOfTheAgesLib.Models.ModJsonData.ModData.Ages">
+            <summary>
+            The ages that the mod adds.
+            </summary>
+        </member>
+        <member name="P:IdleOfTheAgesLib.Models.ModJsonData.ModData.SkillCategories">
+            <summary>
+            The skill categories that the mod adds.
+            </summary>
+        </member>
+        <member name="P:IdleOfTheAgesLib.Models.ModJsonData.ModData.Skills">
+            <summary>
+            The skills that the mod adds.
+            </summary>
+        </member>
+        <member name="T:IdleOfTheAgesLib.Models.ModJsonData.SkillCategoryData">
+            <summary>
+            A category a skill can be a part of.
+            </summary>
+        </member>
+        <member name="T:IdleOfTheAgesLib.Models.ModJsonData.SkillData">
+            <summary>
+            Represents the data for a skill that is being added.
+            </summary>
+        </member>
+        <member name="P:IdleOfTheAgesLib.Models.ModJsonData.SkillData.SkillCategory">
+            <summary>
+            The skill category this Skill falls under.
+            </summary>
+        </member>
+        <member name="P:IdleOfTheAgesLib.Models.ModJsonData.SkillData.UnlockAge">
+            <summary>
+            The age in which this skill is unlocked.
+            </summary>
+        </member>
+        <member name="P:IdleOfTheAgesLib.Models.ModJsonData.SkillData.SkillUI">
+            <summary>
+            The ID of the skill's UI class.
+            </summary>
+        </member>
+        <member name="T:IdleOfTheAgesLib.Models.ModJsonData.SortingOrderData">
+            <summary>
+            Allows for sorting elements in different ways.
+            <para>Elements that use <see cref="P:IdleOfTheAgesLib.Models.ModJsonData.SortingOrderData.After"/> are considered as having the same <see cref="P:IdleOfTheAgesLib.Models.ModJsonData.SortingOrderData.Order"/> as the element they are referring.</para>
+            </summary>
+        </member>
+        <member name="P:IdleOfTheAgesLib.Models.ModJsonData.SortingOrderData.After">
+            <summary>
+            The element that should precede this element.
+            </summary>
+        </member>
+        <member name="P:IdleOfTheAgesLib.Models.ModJsonData.SortingOrderData.Order">
+            <summary>
+            A numeric value of where this element should be sorted.
+            </summary>
+        </member>
+        <member name="T:IdleOfTheAgesLib.Services.IAgeService">
+            <summary>
+            A service that holds all the ages that exist.
+            </summary>
+        </member>
+        <member name="M:IdleOfTheAgesLib.Services.IAgeService.RegisterAge(IdleOfTheAgesLib.Models.ModJsonData.AgeData)">
+            <summary>
+            Registers an age that he player can reach.
+            <para>If a later age is set to be after the same age as this age, that age will precede this age.</para>
+            <para>The namespace field will be filled in automatically.</para>
+            </summary>
+            <param name="age">The age to register.</param>
+        </member>
+        <member name="T:IdleOfTheAgesLib.Services.IDataLoader">
+            <summary>
+            Allows for loading in <see cref="T:IdleOfTheAgesLib.Models.ModJsonData.ModData"/> objects.
+            </summary>
+        </member>
+        <member name="M:IdleOfTheAgesLib.Services.IDataLoader.LoadData(System.String[])">
+            <summary>
+            Loads in a <see cref="T:IdleOfTheAgesLib.Models.ModJsonData.ModData"/> object from the mod folder.
+            </summary>
+            <param name="pathSegments">The path to the json file.</param>
+        </member>
+        <member name="M:IdleOfTheAgesLib.Services.IDataLoader.RegisterTextures(System.String[])">
+            <summary>
+            Registers textures from this mod to the game.
+            </summary>
+            <param name="pathSegments">The root path.</param>
+        </member>
+        <member name="M:IdleOfTheAgesLib.Services.IDataLoader.LoadLanguages(System.String[])">
+            <summary>
+            Loads the language files in the given path.
+            </summary>
+            <param name="pathSegments">The path the language files are located at.</param>
+        </member>
+        <member name="T:IdleOfTheAgesLib.Services.Inventory.IItemService">
+            <summary>
+            A service that holds data about all the items registered in the game.
+            </summary>
+        </member>
+        <member name="M:IdleOfTheAgesLib.Services.Inventory.IItemService.RegisterItem(IdleOfTheAgesLib.Models.ModJsonData.ItemData)">
+            <summary>
+            Registers an item to the service.
+            </summary>
+            <param name="item">The item to register.</param>
+        </member>
+        <member name="M:IdleOfTheAgesLib.Services.Inventory.IItemService.GetItemData(System.String)">
+            <summary>
+            Obtains the item data for an item.
+            </summary>
+            <param name="itemID">The item ID to obtain the item data for.</param>
+            <returns>The item data for the item.</returns>
+        </member>
+        <member name="T:IdleOfTheAgesLib.Services.ISkillService">
+            <summary>
+            A service that keeps track of all available skills.
+            </summary>
+        </member>
+        <member name="P:IdleOfTheAgesLib.Services.ISkillService.CurrentlyShowingSkill">
+            <summary>
+            The skill that should be shown.
+            </summary>
+        </member>
+        <member name="E:IdleOfTheAgesLib.Services.ISkillService.CurrentlyShowingSkillChangedEvent">
+            <summary>
+            An event that is fired when the currently showing skill changes.
+            </summary>
+        </member>
+        <member name="M:IdleOfTheAgesLib.Services.ISkillService.RegisterSkillData(IdleOfTheAgesLib.Models.ModJsonData.SkillData)">
+            <summary>
+            Registers the skill data for a skill to the game.
+            </summary>
+            <param name="skillData">The skill data to register.</param>
+        </member>
+        <member name="M:IdleOfTheAgesLib.Services.ISkillService.RegisterSkillImplementation``1(System.String)">
+            <summary>
+            Registers the implementation for a skill to the game.
+            </summary>
+            <typeparam name="TSkill">The type of the skill to register.</typeparam>
+            <param name="skillID">The ID of the skill.</param>
+        </member>
+        <member name="M:IdleOfTheAgesLib.Services.ISkillService.RegisterSkillImplementation(System.Type,System.String)">
+            <summary>
+            Registers the implementation for a skill to the game.
+            </summary>
+            <param name="skillType">The type of the skill to register.</param>
+            <param name="skillID">The ID of the skill.</param>
+        </member>
+        <member name="M:IdleOfTheAgesLib.Services.ISkillService.GetSkills">
+            <summary>
+            Gets all skills currently registered in the game.
+            </summary>
+            <returns>The skills currently registered in the game.</returns>
+        </member>
+        <member name="M:IdleOfTheAgesLib.Services.ISkillService.ChangeShowingSkill(System.String)">
+            <summary>
+            Changes the skill that is being shown.
+            </summary>
+            <param name="skillID">The ID of the skill that should be shown.</param>
+        </member>
+        <member name="T:IdleOfTheAgesLib.Services.ITranslationService">
+            <summary>
+            Allows for translation of text.
+            </summary>
+        </member>
+        <member name="P:IdleOfTheAgesLib.Services.ITranslationService.CurrentLanguage">
+            <summary>
+            The currently selected language.
+            </summary>
+        </member>
+        <member name="M:IdleOfTheAgesLib.Services.ITranslationService.ChangeLanguage(IdleOfTheAgesLib.Data.Language)">
+            <summary>
+            Changes the language of the game.
+            </summary>
+            <param name="language">The new game language.</param>
+        </member>
+        <member name="M:IdleOfTheAgesLib.Services.ITranslationService.GetLanguageString(System.String)">
+            <summary>
+            Gets the language string for the given key.
+            </summary>
+            <param name="key">The key to translate.</param>
+            <returns>The requested language string.</returns>
+        </member>
+        <member name="M:IdleOfTheAgesLib.Services.ITranslationService.LoadLanguagePath(IdleOfTheAgesLib.Data.Language,System.String)">
+            <summary>
+            Loads the path of the memory file for the language into memory so it can be read if the language is needed.
+            </summary>
+            <param name="language">The language the file is for.</param>
+            <param name="path">The path to the file.</param>
+        </member>
+        <member name="T:IdleOfTheAgesLib.Services.UI.IElementLibrary">
+            <summary>
+            A library that contains the registered element pieces.
+            <para>With <see cref="M:IdleOfTheAgesLib.Services.UI.IElementLibrary.Create``1(System.String,System.String)"/>, an instance can be created.
+            Afterwards, this instance can also be obtained through the <see cref="T:IdleOfTheAgesLib.Services.UI.IUIService"/>.</para>
+            </summary>
+        </member>
+        <member name="M:IdleOfTheAgesLib.Services.UI.IElementLibrary.RegisterElement``1(System.String)">
+            <summary>
+            Registers an element to the library.
+            </summary>
+            <typeparam name="TElement">The type of the element to register.</typeparam>
+            <param name="identifier">The identifier of the element.</param>
+        </member>
+        <member name="M:IdleOfTheAgesLib.Services.UI.IElementLibrary.RegisterElement(System.Type,System.String)">
+            <summary>
+            Registers an element to the library.
+            </summary>
+            <param name="type">The type of the element to register.</param>
+            <param name="identifier">The identifier of the element.</param>
+        </member>
+        <member name="M:IdleOfTheAgesLib.Services.UI.IElementLibrary.Create``1(System.String,System.String)">
+            <summary>
+            Creates a new instance of an element with the specified identifier.
+            </summary>
+            <typeparam name="TElement">The type of the element to create.</typeparam>
+            <param name="instanceIdentifier">The identifier for the newly created element.</param>
+            <param name="identifier">The identifier of the element to create.</param>
+            <returns>The newly created element.</returns>
+        </member>
+        <member name="M:IdleOfTheAgesLib.Services.UI.IElementLibrary.Create(System.Type,System.String,System.String)">
+            <summary>
+            Creates a new instance of an element with the specified identifier.
+            </summary>
+            <param name="type">The type of the element to create.</param>
+            <param name="instanceIdentifier">The identifier for the newly created element.</param>
+            <param name="identifier">The identifier of the element to create.</param>
+            <returns>The newly created element.</returns>
+        </member>
+        <member name="T:IdleOfTheAgesLib.Services.UI.IStyleService">
+            <summary>
+            A service to hold all the style sheets.
+            </summary>
+        </member>
+        <member name="M:IdleOfTheAgesLib.Services.UI.IStyleService.AddStyle(System.String,System.String)">
+            <summary>
+            Adds a style to the collection
+            </summary>
+            <param name="identifier">The identifier of the style.</param>
+            <param name="json">The style in json format.</param>
+        </member>
+        <member name="M:IdleOfTheAgesLib.Services.UI.IStyleService.GetStyle(System.String)">
+            <summary>
+            Gets a style based on it's identifier.
+            </summary>
+            <param name="style">The style to request.</param>
+            <returns>The requested style.</returns>
+        </member>
+        <member name="T:IdleOfTheAgesLib.Services.UI.ITextureLibrary">
+            <summary>
+            A texture library where textures are loaded into.
+            </summary>
+        </member>
+        <member name="M:IdleOfTheAgesLib.Services.UI.ITextureLibrary.RegisterTextures(System.String,System.String)">
+            <summary>
+            Registers textures within a root folder.
+            </summary>
+            <param name="textureID">The namespaced ID of the texture.</param>
+            <param name="path">The path to the texture.</param>
+        </member>
+        <member name="M:IdleOfTheAgesLib.Services.UI.ITextureLibrary.GetTexture(System.String)">
+            <summary>
+            Gets a registered texture, loading it in if it's the first time it is requested.
+            </summary>
+            <param name="textureID">The texture to obtain.</param>
+            <returns>The requested texture.</returns>
+        </member>
+        <member name="T:IdleOfTheAgesLib.Services.UI.IUIService">
+            <summary>
+            A service to interact with the UI elements that exist.
+            </summary>
+        </member>
+        <member name="M:IdleOfTheAgesLib.Services.UI.IUIService.GetRoot">
+            <summary>
+            Gets the root <see cref="T:IdleOfTheAgesLib.UI.Element"/>.
+            </summary>
+            <returns>The root UI element of the game.</returns>
+        </member>
+        <member name="M:IdleOfTheAgesLib.Services.UI.IUIService.AddElement(IdleOfTheAgesLib.UI.Element,System.String)">
+            <summary>
+            Adds an element to the UI Service that has been spawned to the screen.
+            </summary>
+            <param name="element">The element that was added.</param>
+            <param name="identifier">The unique identifier of the element.</param>
+        </member>
+        <member name="M:IdleOfTheAgesLib.Services.UI.IUIService.GetElement``1(System.String)">
+            <summary>
+            Gets an element that has been spawned.
+            </summary>
+            <typeparam name="TElement">The type of the element to obtain.</typeparam>
+            <param name="identifier">The unique identifier of the element.</param>
+            <returns>The requested element.</returns>
+        </member>
+        <member name="M:IdleOfTheAgesLib.Services.UI.IUIService.GetElement(System.String)">
+            <summary>
+            Gets an element that has been spawned.
+            </summary>
+            <param name="identifier">The unique identifier of the element.</param>
+            <returns>The requested element.</returns>
+        </member>
+        <member name="T:IdleOfTheAgesLib.IModLibrary">
+            <summary>
+            Contains all mods that have been loaded.
+            </summary>
+        </member>
+        <member name="M:IdleOfTheAgesLib.IModLibrary.RegisterMod(System.String,IdleOfTheAgesLib.Data.IModObject)">
+            <summary>
+            Registers a mod to the mod library.
+            </summary>
+            <param name="namespace">The namespace of the mod.</param>
+            <param name="modObject">The mod object.</param>
+        </member>
+        <member name="M:IdleOfTheAgesLib.IModLibrary.ModExists(System.String)">
+            <summary>
+            Checks whether a mod with the specified <paramref name="namespace"/> exists.
+            </summary>
+            <param name="namespace">The namespace to check for.</param>
+            <returns><see langword="true"/> if the mod exists.</returns>
+        </member>
+        <member name="M:IdleOfTheAgesLib.IModLibrary.GetModObject(System.String)">
+            <summary>
+            Gets the mod object of a mod.
+            </summary>
+            <param name="namespace">The namespace of the mod to get the mod object for.</param>
+            <returns>The requested mod object.</returns>
+        </member>
+        <member name="T:IdleOfTheAgesLib.UI.Element">
+            <summary>
+            Base class for building a visual element container.
+            </summary>
+        </member>
+        <member name="F:IdleOfTheAgesLib.UI.Element.childElements">
+            <summary>
+            The child elements of this element.
+            </summary>
+        </member>
+        <member name="M:IdleOfTheAgesLib.UI.Element.AddElement(IdleOfTheAgesLib.UI.Element)">
+            <summary>
+            Adds a child element to this element.
+            </summary>
+            <param name="element">The element to add.</param>
+        </member>
+        <member name="M:IdleOfTheAgesLib.UI.Element.InsertElement(IdleOfTheAgesLib.UI.Element,System.Int32)">
+            <summary>
+            Inserts a child element into this element.
+            </summary>
+            <param name="element">The element to add.</param>
+            <param name="index">Where to insert the element.</param>
+        </member>
+        <member name="M:IdleOfTheAgesLib.UI.Element.Initialize">
+            <summary>
+            Initializes the element.
+            </summary>
+        </member>
+        <member name="M:IdleOfTheAgesLib.UI.Element.Rebuild">
+            <summary>
+            Rebuilds the element and its child elements.
+            <para>This function breaks down and rebuilds from the ground up when called.</para>
+            </summary>
+            <returns>Returns its <see cref="T:UnityEngine.UIElements.VisualElement"/> to show.</returns>
+        </member>
+        <member name="M:IdleOfTheAgesLib.UI.Element.ApplyManipulator(UnityEngine.UIElements.IManipulator)">
+            <summary>
+            Applies a <see cref="T:UnityEngine.UIElements.IManipulator"/> on the <see cref="T:UnityEngine.UIElements.VisualElement"/>.
+            </summary>
+            <param name="manipulator">The <see cref="T:UnityEngine.UIElements.IManipulator"/> to apply.</param>
+        </member>
+        <member name="T:IdleOfTheAgesLib.UI.Element`1">
+            <summary>
+            Base class for building a visual element container.
+            </summary>
+        </member>
+        <member name="M:IdleOfTheAgesLib.UI.Element`1.#ctor">
+            <summary>
+            Instantiates a new <see cref="T:IdleOfTheAgesLib.UI.Element`1"/> object.
+            </summary>
+        </member>
+        <member name="M:IdleOfTheAgesLib.UI.Element`1.Rebuild">
+            <inheritdoc/>
+        </member>
+        <member name="M:IdleOfTheAgesLib.UI.Element`1.RebuildInternal">
+            <summary>
+            Internal rebuild function that returns the target visual element generically.
+            </summary>
+            <returns>The target element.</returns>
+        </member>
+        <member name="M:IdleOfTheAgesLib.UI.Element`1.ApplyManipulator(UnityEngine.UIElements.IManipulator)">
+            <inheritdoc/>
+        </member>
+        <member name="M:IdleOfTheAgesLib.UI.Element`1.TranslateElement(UnityEngine.Vector3)">
+            <summary>
+            Translates the element based on its <see cref="P:UnityEngine.UIElements.VisualElement.transform"/>.
+            </summary>
+            <param name="translation">How much to move it.</param>
+        </member>
+        <member name="M:IdleOfTheAgesLib.UI.Element`1.RegisterCallback``1(UnityEngine.UIElements.EventCallback{``0})">
+            <summary>
+            Registers a callback to the target element.
+            </summary>
+            <typeparam name="TEventType">The type of event to register to.</typeparam>
+            <param name="callback">The callback that should be fired.</param>
+        </member>
+        <member name="M:IdleOfTheAgesLib.UI.Element`1.UnregisterCallback``1(UnityEngine.UIElements.EventCallback{``0})">
+            <summary>
+            Unregisters a callback from the target element.
+            </summary>
+            <typeparam name="TEventType">The type of event to unregister from.</typeparam>
+            <param name="callback">The callback that should be removed.</param>
+        </member>
+        <member name="T:IdleOfTheAgesLib.UI.ElementInteracter`1">
+            <summary>
+            Allows for interacting with an <see cref="T:IdleOfTheAgesLib.UI.Element"/>.
+            </summary>
+            <typeparam name="T"></typeparam>
+        </member>
+        <member name="F:IdleOfTheAgesLib.UI.ElementInteracter`1.element">
+            <summary>
+            The element we are interacting with.
+            </summary>
+        </member>
+        <member name="P:IdleOfTheAgesLib.UI.ElementInteracter`1.TargetStartPosition">
+            <summary>
+            The start position in world space of the element when dragging started.
+            </summary>
+        </member>
+        <member name="P:IdleOfTheAgesLib.UI.ElementInteracter`1.PointerStartPosition">
+            <summary>
+            The start position of the pointer in world space when dragging started.
+            </summary>
+        </member>
+        <member name="P:IdleOfTheAgesLib.UI.ElementInteracter`1.PointerPreviousPosition">
+            <summary>
+            The position of the pointer at the previous frame.
+            </summary>
+        </member>
+        <member name="P:IdleOfTheAgesLib.UI.ElementInteracter`1.PointerStartDelta">
+            <summary>
+            The change in pointer position from when the dragging started.
+            </summary>
+        </member>
+        <member name="P:IdleOfTheAgesLib.UI.ElementInteracter`1.PointerFrameDelta">
+            <summary>
+            The change in pointer position from the last frame.
+            </summary>
+        </member>
+        <member name="M:IdleOfTheAgesLib.UI.ElementInteracter`1.#ctor(`0)">
+            <summary>
+            Instantiates a new <see cref="T:IdleOfTheAgesLib.UI.ElementInteracter`1"/>.
+            </summary>
+            <param name="target">The element we interact with.</param>
+        </member>
+        <member name="M:IdleOfTheAgesLib.UI.ElementInteracter`1.RegisterCallbacksOnTarget">
+            <inheritdoc/>
+        </member>
+        <member name="M:IdleOfTheAgesLib.UI.ElementInteracter`1.UnregisterCallbacksFromTarget">
+            <inheritdoc/>
+        </member>
+        <member name="M:IdleOfTheAgesLib.UI.ElementInteracter`1.OnPointerDown(UnityEngine.UIElements.PointerDownEvent)">
+            <summary>
+            Called when dragging starts.
+            </summary>
+            <param name="args">The arguments of the event.</param>
+        </member>
+        <member name="M:IdleOfTheAgesLib.UI.ElementInteracter`1.OnPointerMove(UnityEngine.UIElements.PointerMoveEvent)">
+            <summary>
+            Called when the pointer moves while dragging.
+            </summary>
+            <param name="args">The arguments of the event.</param>
+        </member>
+        <member name="M:IdleOfTheAgesLib.UI.ElementInteracter`1.OnPointerUp(UnityEngine.UIElements.PointerUpEvent)">
+            <summary>
+            Called when dragging ends.
+            </summary>
+            <param name="args">The arguments of the event.</param>
+        </member>
+        <member name="T:IdleOfTheAgesLib.UI.Elements.ISidebarElement">
+            <summary>
+            The sidebar element of the game.
+            </summary>
+        </member>
+        <member name="T:IdleOfTheAgesLib.UI.Styles.IStyleEntry">
+            <summary>
+            Represents a style entry that contains style data for <see cref="T:IdleOfTheAgesLib.UI.Element"/>s.
+            </summary>
+        </member>
+        <member name="M:IdleOfTheAgesLib.UI.Styles.IStyleEntry.ApplyToStyle(UnityEngine.UIElements.IStyle)">
+            <summary>
+            Applies the entries's styles to the <paramref name="style"/>.
+            </summary>
+            <param name="style">The style to apply this entries's styles to.</param>
+        </member>
+    </members>
+</doc>
