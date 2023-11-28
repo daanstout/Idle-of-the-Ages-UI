@@ -4,7 +4,7 @@ using IdleOfTheAgesLib;
 
 using UnityEngine;
 
-namespace IdleOfTheAges.Services {
+namespace IdleOfTheAges.Prefabs {
     [Service(typeof(IPrefabSpawner), serviceLevel: ServiceAttribute.ServiceLevelEnum.Public)]
     public class PrefabSpawner : IPrefabSpawner {
         private readonly IDependencyInjector dependencyInjector;

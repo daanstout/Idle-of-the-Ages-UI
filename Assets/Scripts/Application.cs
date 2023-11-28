@@ -1,19 +1,19 @@
 ﻿using IdleOfTheAges.Data;
 using IdleOfTheAges.DependencyInjection;
-using IdleOfTheAges.Services;
-using IdleOfTheAges.Services.UI;
+using IdleOfTheAges.Prefabs;
+using IdleOfTheAges.UI;
 
 using IdleOfTheAgesLib;
+using IdleOfTheAgesLib.Attributes;
 using IdleOfTheAgesLib.Data;
 using IdleOfTheAgesLib.DependencyInjection;
-using IdleOfTheAgesLib.Services;
-using IdleOfTheAgesLib.Services.UI;
+using IdleOfTheAgesLib.Skills;
+using IdleOfTheAgesLib.Translation;
+using IdleOfTheAgesLib.UI;
 
 using Newtonsoft.Json;
 
 using System;
-using System.Collections;
-using System.Collections.Generic;
 using System.IO;
 using System.Reflection;
 
@@ -26,7 +26,7 @@ namespace IdleOfTheAges {
     public class Application : MonoBehaviour {
         private ServiceLibrary mainServiceLibrary;
         private ServiceLibrary publicServiceLibrary;
-        private ElementLibrary mainElementLibrary;
+        private UIManagerService mainUIManagerService;
         private IModLibrary modLibrary;
 
         private void Start() {
@@ -34,12 +34,12 @@ namespace IdleOfTheAges {
             mainServiceLibrary.Bind<IServiceLibrary>().ToInstance(mainServiceLibrary);
             publicServiceLibrary = new ServiceLibrary(mainServiceLibrary);
             publicServiceLibrary.Bind<IServiceLibrary>().ToInstance(publicServiceLibrary);
+            mainUIManagerService = new UIManagerService(null, mainServiceLibrary);
+            mainServiceLibrary.Bind<IUIManagerService>().ToInstance(mainUIManagerService);
 
             RegisterServices(Assembly.GetExecutingAssembly(), mainServiceLibrary, publicServiceLibrary);
-
-            mainElementLibrary = new ElementLibrary(null, mainServiceLibrary, mainServiceLibrary.Get<IUIService>());
-            mainServiceLibrary.Bind<IElementLibrary>().ToInstance(mainElementLibrary);
-            RegisterUI(Assembly.GetExecutingAssembly(), mainElementLibrary);
+            RegisterUIElements(Assembly.GetExecutingAssembly(), mainServiceLibrary.Get<IElementLibrary>());
+            RegisterUIManagers(Assembly.GetExecutingAssembly(), mainUIManagerService);
 
             modLibrary = mainServiceLibrary.Get<IModLibrary>();
 
@@ -49,7 +49,7 @@ namespace IdleOfTheAges {
                 LoadMod(modFolder);
             }
 
-            mainServiceLibrary.Get<ITranslationService>().ChangeLanguage(Language.en_US);
+            mainServiceLibrary.Get<ITranslationService>().ChangeLanguage(Language.nl_NL);
 
             mainServiceLibrary.Get<IPrefabSpawner>().SpawnPrefab("UIRoot");
         }
@@ -70,11 +70,10 @@ namespace IdleOfTheAges {
             }
 
             var modServiceLibrary = new ServiceLibrary(publicServiceLibrary);
-            var modElementLibrary = new ElementLibrary(mainElementLibrary, modServiceLibrary, mainServiceLibrary.Get<IUIService>());
-
             modServiceLibrary.Bind<IServiceLibrary>().ToInstance(modServiceLibrary);
-            modServiceLibrary.Bind<IElementLibrary>().ToInstance(modElementLibrary);
-
+            var modUIManagerService = new UIManagerService(mainUIManagerService, modServiceLibrary);
+            modServiceLibrary.Bind<IUIManagerService>().ToInstance(modUIManagerService);
+            
             ModObject modObject = new ModObject {
                 Namespace = manifest.Namespace,
                 Mod = (IMod)Activator.CreateInstance(modClass),
@@ -88,7 +87,7 @@ namespace IdleOfTheAges {
             modObject.Init();
             RegisterModSpecificServices(modObject.ServiceRegistry);
             RegisterServices(assembly, publicServiceLibrary, modObject.ServiceRegistry);
-            RegisterUI(assembly, modElementLibrary);
+            RegisterUIElements(assembly, mainServiceLibrary.Get<IElementLibrary>());
             modObject.Mod.RegisterPublicServices(publicServiceLibrary);
             modObject.Mod.RegisterServices(modServiceLibrary);
             modObject.Mod.ModLoaded(modObject.ServiceLibrary);
@@ -101,14 +100,25 @@ namespace IdleOfTheAges {
             serviceRegistry.RegisterService<IDataLoader, DataLoader>(null);
         }
 
-        private void RegisterUI(Assembly assembly, IElementLibrary elementLibrary) {
+        private void RegisterUIElements(Assembly assembly, IElementLibrary elementLibrary) {
             foreach (var type in assembly.GetTypes()) {
                 var attrib = type.GetCustomAttribute<UIElementAttribute>();
 
                 if (attrib == null)
                     continue;
 
-                elementLibrary.RegisterElement(type, attrib.Identifier);
+                elementLibrary.RegisterElement(attrib.ElementInterface, type, attrib.Key);
+            }
+        }
+
+        private void RegisterUIManagers(Assembly assembly, IUIManagerService uiManagerService) {
+            foreach (var type in assembly.GetTypes()) {
+                var attrib = type.GetCustomAttribute<UIManagerAttribute>();
+
+                if (attrib == null)
+                    continue;
+
+                uiManagerService.RegisterManager(attrib.ManagerInterfaceType, type, attrib.Identifier);
             }
         }
 

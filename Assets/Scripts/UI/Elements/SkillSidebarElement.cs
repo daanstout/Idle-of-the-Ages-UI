@@ -1,64 +1,52 @@
-using IdleOfTheAgesLib;
-using IdleOfTheAgesLib.Services;
-using IdleOfTheAgesLib.Services.UI;
+using IdleOfTheAgesLib.Attributes;
 using IdleOfTheAgesLib.UI;
+using IdleOfTheAgesLib.UI.Elements;
+using IdleOfTheAgesLib.UI.Models;
+
+using System;
 
 using UnityEngine.UIElements;
 
-namespace IdleOfTheAges.UI {
+namespace IdleOfTheAges.UI.Elements {
     /// <summary>
     /// An element to display a skill in the sidebar the user can navigate to.
     /// </summary>
-    [UIElement]
-    public class SkillSidebarElement : Element<Box> {
+    [UIElement(typeof(ISkillSidebarElement))]
+    public class SkillSidebarElement : Element<Box, SkillSidebarModel>, ISkillSidebarElement {
         private readonly Image thumbnailImage = new();
         private readonly Label skillNameLabel = new();
         private readonly Label levelLabel = new();
-        private readonly ITextureLibrary textureLibrary;
-        private readonly ISkillService skillService;
-        private readonly ITranslationService translationService;
-        private SkillSidebarModel skillSidebarModel;
 
         /// <summary>
         /// Instantiates a new SKill Sidebar Element.
         /// </summary>
-        /// <param name="gameState">The current state of the game.</param>
-        public SkillSidebarElement(ITextureLibrary textureLibrary, ISkillService skillService, ITranslationService translationService) : base() {
-            this.textureLibrary = textureLibrary;
-            this.skillService = skillService;
-            this.translationService = translationService;
-
+        public SkillSidebarElement() : base() {
             RegisterCallback<ClickEvent>(OnElementClicked);
         }
 
-        public void Initialize(SkillSidebarModel skillSidebarModel) {
-            this.skillSidebarModel = skillSidebarModel;
-        }
+        public event Action<string> SkillClickedEvent;
 
         /// <inheritdoc/>
         protected override Box RebuildInternal() {
             var target = base.RebuildInternal();
 
-            //target.style.height = 100;
-
-            thumbnailImage.image = textureLibrary.GetTexture(skillSidebarModel.SkillThumbnail);
+            thumbnailImage.image = Data.SkillThumbnail;
             thumbnailImage.style.height = 30;
             thumbnailImage.style.width = 30;
             target.Add(thumbnailImage);
 
-            skillNameLabel.text = translationService.GetLanguageString(skillSidebarModel.SkillTranslationKey);
-            //skillNameLabel.style.width = 100;
+            skillNameLabel.text = Data.SkillDisplayText;
             target.Add(skillNameLabel);
 
             target.style.flexDirection = FlexDirection.Row;
 
-            levelLabel.text = $"{skillSidebarModel.SkillLevel}/{skillSidebarModel.SkillMaxLevel}";
+            levelLabel.text = $"{Data.SkillLevel}/{Data.SkillMaxLevel}";
 
             return target;
         }
 
         private void OnElementClicked(ClickEvent args) {
-            skillService.ChangeShowingSkill(skillSidebarModel.SkillID);
+            SkillClickedEvent?.Invoke(Data.SkillID);
         }
     }
 }

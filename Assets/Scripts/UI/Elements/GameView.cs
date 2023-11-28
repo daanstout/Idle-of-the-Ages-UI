@@ -1,25 +1,22 @@
-﻿using IdleOfTheAgesLib;
-using IdleOfTheAgesLib.Services.UI;
+﻿using IdleOfTheAgesLib.Attributes;
 using IdleOfTheAgesLib.UI;
+using IdleOfTheAgesLib.UI.Elements;
+using IdleOfTheAgesLib.UI.Models;
 
 using UnityEngine.UIElements;
 
-namespace IdleOfTheAges.UI {
-    [UIElement]
-    public class GameView : Element<Box> {
+namespace IdleOfTheAges.UI.Elements {
+    [UIElement(typeof(IGameViewElement))]
+    public class GameView : Element<Box, GameViewModel>, IGameViewElement {
         private readonly TwoPaneSplitView splitView = new(0, 200, TwoPaneSplitViewOrientation.Horizontal);
         private SidebarElement sidebarElement;
         private SkillView skillView;
+        private GameViewModel gameViewModel;
 
-        private readonly IElementLibrary elementLibrary;
-
-        public GameView(IElementLibrary elementLibrary) {
-            this.elementLibrary = elementLibrary;
-        }
 
         public override void Initialize() {
-            sidebarElement = elementLibrary.Create<SidebarElement>("Side Bar");
-            skillView = elementLibrary.Create<SkillView>("Skill View");
+            //sidebarElement = elementLibrary.Create<SidebarElement>("Side Bar");
+            //skillView = elementLibrary.Create<SkillView>("Skill View");
         }
 
         protected override Box RebuildInternal() {
@@ -28,8 +25,10 @@ namespace IdleOfTheAges.UI {
             target.StretchToParentSize();
 
             splitView.Clear();
-            splitView.Add(sidebarElement.Rebuild());
-            splitView.Add(skillView.Rebuild());
+            splitView.Add(Data.SidebarElement.GetVisualElement());
+            splitView.Add(new Box());
+            //splitView.Add(sidebarElement.g);
+            //splitView.Add(skillView.Rebuild());
 
             target.Add(splitView);
 

@@ -1,4 +1,5 @@
 ﻿using IdleOfTheAgesLib.DependencyInjection;
+using IdleOfTheAgesLib.Extensions.ServiceLibrary;
 
 using System;
 
@@ -11,8 +12,7 @@ namespace IdleOfTheAges.DependencyInjection {
 
         public bool IsSingleton { get; set; } = true;
 
-        private readonly Type? instanceType;
-
+        private Type? instanceType;
         private TType? instance;
         private bool isResolved;
         private bool isResolving;
@@ -69,6 +69,10 @@ namespace IdleOfTheAges.DependencyInjection {
             isResolving = false;
             IsSingleton = true;
             this.instance = (TType)instance;
+        }
+
+        public void SetInstanceType(Type instanceType) {
+            this.instanceType = instanceType;
         }
     }
 }

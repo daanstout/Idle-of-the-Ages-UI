@@ -1,10 +1,10 @@
 ﻿using IdleOfTheAgesLib;
 using IdleOfTheAgesLib.Models.ModJsonData;
-using IdleOfTheAgesLib.Services;
+using IdleOfTheAgesLib.Skills;
 
 using System.Collections.Generic;
 
-namespace IdleOfTheAges.Services {
+namespace IdleOfTheAges.Skills {
     [Service(typeof(IAgeService), serviceLevel: ServiceAttribute.ServiceLevelEnum.Public)]
     internal class AgeService : IAgeService {
         private readonly List<AgeData> ages = new();

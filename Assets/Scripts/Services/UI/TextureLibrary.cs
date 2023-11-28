@@ -1,12 +1,12 @@
 ﻿using IdleOfTheAgesLib;
-using IdleOfTheAgesLib.Services.UI;
+using IdleOfTheAgesLib.UI;
 
 using System.Collections.Generic;
 using System.IO;
 
 using UnityEngine;
 
-namespace IdleOfTheAges.Services.UI {
+namespace IdleOfTheAges.UI {
     [Service(typeof(ITextureLibrary), serviceLevel: ServiceAttribute.ServiceLevelEnum.Public)]
     public class TextureLibrary : ITextureLibrary {
         private readonly Dictionary<string, string> registeredTextures = new();

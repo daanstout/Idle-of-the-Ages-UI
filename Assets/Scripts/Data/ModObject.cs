@@ -1,5 +1,4 @@
 ﻿using IdleOfTheAgesLib;
-using IdleOfTheAgesLib.Data;
 using IdleOfTheAgesLib.DependencyInjection;
 
 namespace IdleOfTheAges.Data {

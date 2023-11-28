@@ -1,16 +1,17 @@
 ﻿using IdleOfTheAgesLib;
-using IdleOfTheAgesLib.Data;
-using IdleOfTheAgesLib.Services;
+using IdleOfTheAgesLib.Translation;
 
 using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 
-namespace IdleOfTheAges.Services {
+namespace IdleOfTheAges.Translation {
     [Service(typeof(ITranslationService), serviceLevel: ServiceAttribute.ServiceLevelEnum.Public)]
     public class TranslationService : ITranslationService {
         public Language CurrentLanguage { get; private set; }
+
+        public event Action<Language> LanguageChangedEvent;
 
         private readonly Dictionary<Language, HashSet<string>> languagePaths = new();
         private readonly Dictionary<string, string> translations = new();

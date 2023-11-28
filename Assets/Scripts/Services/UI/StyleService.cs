@@ -1,7 +1,7 @@
-﻿using IdleOfTheAges.UI;
+﻿using IdleOfTheAges.UI.Styles;
 
 using IdleOfTheAgesLib;
-using IdleOfTheAgesLib.Services.UI;
+using IdleOfTheAgesLib.UI;
 using IdleOfTheAgesLib.UI.Styles;
 
 using Newtonsoft.Json;
@@ -9,7 +9,7 @@ using Newtonsoft.Json.Serialization;
 
 using System.Collections.Generic;
 
-namespace IdleOfTheAges.Services.UI {
+namespace IdleOfTheAges.UI {
     [Service(typeof(IStyleService), serviceLevel: ServiceAttribute.ServiceLevelEnum.Public)]
     public class StyleService : IStyleService {
         private static readonly JsonSerializerSettings settings = new() {

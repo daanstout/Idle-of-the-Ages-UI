@@ -1,14 +1,12 @@
-﻿using IdleOfTheAgesLib;
-using IdleOfTheAgesLib.Data;
-using IdleOfTheAgesLib.Services;
-using IdleOfTheAgesLib.Services.UI;
+﻿using IdleOfTheAgesLib.Attributes;
+using IdleOfTheAgesLib.Skills;
 using IdleOfTheAgesLib.UI;
 
 using UnityEngine.UIElements;
 
-namespace IdleOfTheAges.UI {
-    [UIElement]
-    public class SkillView : Element<Box> {
+namespace IdleOfTheAges.UI.Elements {
+    [UIElement(typeof(ISkillView))]
+    public class SkillView : Element<Box, object>, ISkillView {
         private readonly ISkillService skillService;
         private readonly IUIService uiService;
 
@@ -26,13 +24,13 @@ namespace IdleOfTheAges.UI {
 
             var skillView = uiService.GetElement($"SKILL_VIEW_{skillService.CurrentlyShowingSkill.NamespacedID}").Value;
 
-            target.Add(skillView.Rebuild());
+            target.Add(skillView.GetVisualElement());
 
             return target;
         }
 
         private void OnCurrentlyShowingSkillChangedEvent(SkillImplementation skill) {
-            Rebuild();
+            RebuildInternal();
         }
     }
 }

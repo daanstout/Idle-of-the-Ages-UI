@@ -3,8 +3,6 @@ using IdleOfTheAgesLib.DependencyInjection;
 
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Reflection;
 
 #nullable enable
 
@@ -73,22 +71,6 @@ namespace IdleOfTheAges.DependencyInjection {
             }
 
             return resolver.Resolve(this);
-        }
-
-        public object[] GetInstances(IEnumerable<ParameterInfo> types) {
-            var typesArray = types.ToArray();
-
-            object[] result = new object[typesArray.Length];
-
-            for (int i = 0; i < typesArray.Length; i++) {
-                var param = typesArray[i];
-
-                var attrib = param.GetCustomAttribute<DependencyIdentifierAttribute>();
-
-                result[i] = Get(param.ParameterType, attrib?.Key);
-            }
-
-            return result;
         }
 
         public IEnumerable<string> GetAllServiceNames() {

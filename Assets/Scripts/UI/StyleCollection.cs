@@ -5,7 +5,7 @@ using System.Collections.Generic;
 
 using UnityEngine.UIElements;
 
-namespace IdleOfTheAges.UI {
+namespace IdleOfTheAges.UI.Styles {
     public class StyleCollection : IStyleEntry{
         private readonly List<StyleEntry> styles;
 

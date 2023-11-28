@@ -1,50 +1,62 @@
-﻿using IdleOfTheAges.DependencyInjection;
-
-using IdleOfTheAgesLib;
-using IdleOfTheAgesLib.DependencyInjection;
-using IdleOfTheAgesLib.Services.UI;
+﻿using IdleOfTheAgesLib;
 using IdleOfTheAgesLib.UI;
 
 using System;
+using System.Collections.Generic;
 
-namespace IdleOfTheAges.Services.UI {
+namespace IdleOfTheAges.UI {
+    [Service(typeof(IElementLibrary), serviceLevel: ServiceAttribute.ServiceLevelEnum.Public)]
     public class ElementLibrary : IElementLibrary {
-        private readonly IElementLibrary parent;
-        private readonly ServiceLibrary serviceLibrary;
-        private readonly IUIService uiService;
+        private struct ElementKey : IEquatable<ElementKey> {
+            public Type Type { get; set; }
 
-        public ElementLibrary(IElementLibrary parent, IServiceLibrary serviceLibrary, IUIService uiService) {
-            this.parent = parent;
-            this.serviceLibrary = new ServiceLibrary(serviceLibrary);
-            this.uiService = uiService;
-        }
+            public string Key { get; set; }
 
-        public Result<TElement> Create<TElement>(string instanceIdentifier, string identifier = null) where TElement : Element {
-            return (TElement)Create(typeof(TElement), instanceIdentifier, identifier);
-        }
-
-        public Result<Element> Create(Type type, string instanceIdentifier, string identifier = null) {
-            if (string.IsNullOrWhiteSpace(instanceIdentifier)) {
-                return (null, "Instance Identifier is empty!");
+            public ElementKey(Type type, string key) {
+                Type = type;
+                Key = key;
             }
 
-            if (!serviceLibrary.ContainsService(type, identifier)) {
-                return parent?.Create(type, instanceIdentifier, identifier) ?? (null, $"No element was registered for identifier {identifier}");
-            }
+            public static implicit operator ElementKey((Type type, string Key) tuple) => new ElementKey(tuple.type, tuple.Key);
 
-            var instance = (Element)serviceLibrary.Get(type, identifier);
+            public override readonly string ToString() => $"Type: {Type} - Key: {Key}";
 
-            uiService.AddElement(instance, instanceIdentifier);
+            public override bool Equals(object obj) => obj is ElementKey key && Equals(key);
+            public bool Equals(ElementKey other) => EqualityComparer<Type>.Default.Equals(Type, other.Type) && Key == other.Key;
+            public override int GetHashCode() => HashCode.Combine(Type, Key);
 
-            instance.Initialize();
-
-            return instance;
+            public static bool operator ==(ElementKey left, ElementKey right) => left.Equals(right);
+            public static bool operator !=(ElementKey left, ElementKey right) => !(left == right);
         }
 
-        public Result RegisterElement<TElement>(string identifier = null) => RegisterElement(typeof(TElement), identifier);
+        private readonly Dictionary<ElementKey, Type> elementDictionary = new();
 
-        public Result RegisterElement(Type type, string identifier = null) {
-            serviceLibrary.Bind(type, identifier).IsSingleton = false;
+        public Result<TElement> GetElement<TElement>(string key = null) where TElement : IElement => new((TElement)GetElement(typeof(TElement), key).Value);
+        
+        public Result<IElement> GetElement(Type interfaceType, string key = null) {
+            if(elementDictionary.TryGetValue((interfaceType, key), out var type)) {
+                var element = (IElement)Activator.CreateInstance(type);
+                return new Result<IElement>(element);
+            }
+
+            return (null, $"No element registered for {(interfaceType, key)}");
+        }
+
+        public Result RegisterElement<TInterface, TElement>(string key = null)
+            where TInterface : IElement
+            where TElement : Element => RegisterElement(typeof(TInterface), typeof(TElement), null);
+
+        public Result RegisterElement(Type interfaceType, Type elementType, string key = null) {
+            if (!interfaceType.IsInterface) {
+                return (false, $"Type {interfaceType.FullName} is not an interface!", new ArgumentException(nameof(interfaceType)));
+            }
+
+            if (elementType.IsInterface || elementType.IsAbstract) {
+                return (false, $"Type {elementType.FullName} is an interface or an abstract class", new ArgumentException(nameof(elementType)));
+            }
+
+            elementDictionary[(interfaceType, key)] = elementType;
+
             return true;
         }
     }

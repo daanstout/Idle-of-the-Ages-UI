@@ -1,10 +1,9 @@
 ﻿using IdleOfTheAgesLib;
-using IdleOfTheAgesLib.Data;
 
 using System;
 using System.Collections.Generic;
 
-namespace IdleOfTheAges.Services {
+namespace IdleOfTheAges {
     [Service(typeof(IModLibrary), serviceLevel: ServiceAttribute.ServiceLevelEnum.Public)]
     internal class ModLibrary : IModLibrary {
         private readonly Dictionary<string, IModObject> loadedMods = new();

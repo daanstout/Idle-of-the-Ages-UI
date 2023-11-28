@@ -1,10 +1,9 @@
 ﻿using IdleOfTheAgesLib;
-using IdleOfTheAgesLib.Services.UI;
 using IdleOfTheAgesLib.UI;
 
 using System.Collections.Generic;
 
-namespace IdleOfTheAges.Services.UI {
+namespace IdleOfTheAges.UI {
     [Service(typeof(IUIService), serviceLevel: ServiceAttribute.ServiceLevelEnum.Public)]
     public class UIService : IUIService {
         private static readonly string ROOT_STRING = "root";

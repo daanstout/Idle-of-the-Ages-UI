@@ -1,21 +1,22 @@
-using IdleOfTheAgesLib.Services.UI;
+using IdleOfTheAgesLib.UI;
+using IdleOfTheAgesLib.UI.Managers;
 
 using UnityEngine;
 using UnityEngine.UIElements;
 
-namespace IdleOfTheAges.UI {
+namespace IdleOfTheAges.UI.Styles {
     public class StyleRoot : MonoBehaviour
     {
-        private IElementLibrary elementLibrary;
+        private IUIManagerService uiManagerService;
 
         [SerializeField] private UIDocument panelSettings;
 
-        public void InjectDependencies(IElementLibrary elementLibrary) {
-            this.elementLibrary = elementLibrary;
+        public void InjectDependencies(IUIManagerService uiManagerService) {
+            this.uiManagerService = uiManagerService;
         }
 
         private void Start() {
-            panelSettings.rootVisualElement.Add(elementLibrary.Create<GameView>("Game View").Value.Rebuild());
+            panelSettings.rootVisualElement.Add(uiManagerService.GetManager<IGameViewManager>("Game View").Value.GetElement().GetVisualElement());
         }
     }
 }

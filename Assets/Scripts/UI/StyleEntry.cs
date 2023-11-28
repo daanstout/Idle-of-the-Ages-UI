@@ -5,7 +5,7 @@ using System;
 using UnityEngine;
 using UnityEngine.UIElements;
 
-namespace IdleOfTheAges.UI {
+namespace IdleOfTheAges.UI.Styles {
     public class StyleEntry : IStyleEntry {
         private abstract class StyleData {
             public static implicit operator bool(StyleData style) => style != null;

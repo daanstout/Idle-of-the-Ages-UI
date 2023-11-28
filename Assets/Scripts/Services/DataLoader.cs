@@ -1,8 +1,8 @@
 ﻿using IdleOfTheAgesLib;
-using IdleOfTheAgesLib.Data;
 using IdleOfTheAgesLib.Models.ModJsonData;
-using IdleOfTheAgesLib.Services;
-using IdleOfTheAgesLib.Services.UI;
+using IdleOfTheAgesLib.Skills;
+using IdleOfTheAgesLib.Translation;
+using IdleOfTheAgesLib.UI;
 
 using Newtonsoft.Json;
 using Newtonsoft.Json.Serialization;
@@ -12,7 +12,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 
-namespace IdleOfTheAges.Services {
+namespace IdleOfTheAges {
     public class DataLoader : IDataLoader {
         private static readonly JsonSerializerSettings settings = new() {
             ContractResolver = new DefaultContractResolver {

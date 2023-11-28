@@ -1,13 +1,12 @@
 using IdleOfTheAgesLib;
-using IdleOfTheAgesLib.Data;
 using IdleOfTheAgesLib.Models.ModJsonData;
-using IdleOfTheAgesLib.Services;
-using IdleOfTheAgesLib.Services.UI;
+using IdleOfTheAgesLib.Skills;
+using IdleOfTheAgesLib.UI;
 
 using System;
 using System.Collections.Generic;
 
-namespace IdleOfTheAges.Services {
+namespace IdleOfTheAges.Skills {
     [Service(typeof(ISkillService), serviceLevel: ServiceAttribute.ServiceLevelEnum.Public)]
     public class SkillService : ISkillService {
         public SkillImplementation CurrentlyShowingSkill { get; private set; }
@@ -34,8 +33,8 @@ namespace IdleOfTheAges.Services {
 
             skill.Initialize(modLibrary.GetModObject(skill.Namespace).Value.ServiceLibrary);
 
-            elementLibrary.RegisterElement(skill.SkillUI, skill.NamespacedID);
-            elementLibrary.Create(skill.SkillUI, $"SKILL_VIEW_{skill.NamespacedID}", skill.NamespacedID);
+            //elementLibrary.RegisterElement(skill.SkillUI, skill.NamespacedID);
+            //elementLibrary.Create(skill.SkillUI, $"SKILL_VIEW_{skill.NamespacedID}", skill.NamespacedID);
 
             skills.Add(skill.NamespacedID, skill);
 
