@@ -889,14 +889,14 @@
             The namespace of the object.
             </summary>
         </member>
-        <member name="P:IdleOfTheAgesLib.Models.ModJsonData.BaseDataElement.Name">
-            <summary>
-            The name of the object.
-            </summary>
-        </member>
         <member name="P:IdleOfTheAgesLib.Models.ModJsonData.BaseDataElement.ID">
             <summary>
             The ID of the object.
+            </summary>
+        </member>
+        <member name="P:IdleOfTheAgesLib.Models.ModJsonData.BaseDataElement.Name">
+            <summary>
+            The name of the object.
             </summary>
         </member>
         <member name="P:IdleOfTheAgesLib.Models.ModJsonData.BaseDataElement.NamespacedID">
@@ -1024,6 +1024,11 @@
         <member name="P:IdleOfTheAgesLib.Models.ModJsonData.PageData.TargetID">
             <summary>
             The ID of the target behind the page.
+            </summary>
+        </member>
+        <member name="P:IdleOfTheAgesLib.Models.ModJsonData.PageData.PageGroup">
+            <summary>
+            The ID of the page group this page belongs to.
             </summary>
         </member>
         <member name="T:IdleOfTheAgesLib.Models.ModJsonData.PageGroupData">

@@ -13,12 +13,6 @@ namespace IdleOfTheAges.UI.Elements {
         private SkillView skillView;
         private GameViewModel gameViewModel;
 
-
-        public override void Initialize() {
-            //sidebarElement = elementLibrary.Create<SidebarElement>("Side Bar");
-            //skillView = elementLibrary.Create<SkillView>("Skill View");
-        }
-
         protected override Box RebuildInternal() {
             var target = base.RebuildInternal();
 

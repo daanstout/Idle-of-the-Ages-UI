@@ -18,7 +18,8 @@
             "skill_category": "IdleOfTheAgesGame:generating",
             "thumbnail": "IdleOfTheAgesGame:tree",
             "translation_key": "Woodcutting",
-            "unlock_age": "IdleOfTheAgesGame:Stone_Age"
+            "unlock_age": "IdleOfTheAgesGame:Stone_Age",
+            "page_group": "IdleOfTheAgesGame:generating"
         },
         {
             "id": "mining",
@@ -26,7 +27,8 @@
             "skill_category": "IdleOfTheAgesGame:generating",
             "thumbnail": "IdleOfTheAgesGame:tree",
             "translation_key": "Mining",
-            "unlock_age": "IdleOfTheAgesGame:Stone_Age"
+            "unlock_age": "IdleOfTheAgesGame:Stone_Age",
+            "page_group": "IdleOfTheAgesGame:generating"
         }
     ],
     "skill_categories": [
@@ -35,6 +37,38 @@
             "name": "Generating",
             "translation_key": "Generating",
             "thumbnail": ""
+        }
+    ],
+    "page_groups": [
+        {
+            "id": "general",
+            "name": "General",
+            "translation_key": "General",
+            "sorting_order": {
+                "order": 0
+            }
+        },
+        {
+            "id": "generating",
+            "name": "Generating",
+            "translation_key": "Generating",
+            "sorting_order": {
+                "order": 10
+            }
+        }
+    ],
+    "pages": [
+        {
+            "id": "woodcutting_page",
+            "name": "Woodcutting Page",
+            "translation_key": "Woodcutting",
+            "sorting_order": {
+                "order": 0
+            },
+            "thumbnail": "IdleOfTheAgesGame:tree",
+            "page_type": "skill",
+            "target_id": "IdleOfTheAgesGame:woodcutting",
+            "page_group": "IdleOfTheAgesGame:Generating"
         }
     ],
     "items": [

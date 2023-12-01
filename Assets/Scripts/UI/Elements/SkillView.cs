@@ -15,10 +15,6 @@ namespace IdleOfTheAges.UI.Elements {
             this.uiService = uiService;
         }
 
-        public override void Initialize() {
-            skillService.CurrentlyShowingSkillChangedEvent += OnCurrentlyShowingSkillChangedEvent;
-        }
-
         protected override Box RebuildInternal() {
             var target = base.RebuildInternal();
 

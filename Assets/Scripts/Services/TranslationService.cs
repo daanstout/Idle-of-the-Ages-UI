@@ -31,6 +31,8 @@ namespace IdleOfTheAges.Translation {
 
             LoadLanguage(CurrentLanguage);
 
+            LanguageChangedEvent?.Invoke(language);
+
             return true;
         }
 
