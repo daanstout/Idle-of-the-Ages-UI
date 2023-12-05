@@ -4,9 +4,8 @@ using IdleOfTheAgesLib.UI.Managers;
 using UnityEngine;
 using UnityEngine.UIElements;
 
-namespace IdleOfTheAges.UI.Styles {
-    public class StyleRoot : MonoBehaviour
-    {
+namespace IdleOfTheAges {
+    public class StyleRoot : MonoBehaviour {
         private IUIManagerService uiManagerService;
 
         [SerializeField] private UIDocument panelSettings;

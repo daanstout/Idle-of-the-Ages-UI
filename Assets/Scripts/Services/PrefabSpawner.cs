@@ -1,6 +1,5 @@
-﻿using IdleOfTheAges.DependencyInjection;
-
-using IdleOfTheAgesLib;
+﻿using IdleOfTheAgesLib;
+using IdleOfTheAgesLib.DependencyInjection;
 
 using UnityEngine;
 
