@@ -69,6 +69,18 @@
             "page_type": "skill",
             "target_id": "IdleOfTheAgesGame:woodcutting",
             "page_group": "IdleOfTheAgesGame:Generating"
+        },
+        {
+            "id": "mining_page",
+            "name": "Mining Page",
+            "translation_key": "Mining",
+            "sorting_order": {
+                "after": "IdleOfTheAgesGame:woodcutting_page"
+            },
+            "thumbnail": "IdleOfTheAgesGame:tree",
+            "page_type": "skill",
+            "target_id": "IdleOfTheAgesGame:mining",
+            "page_group": "IdleOfTheAgesGame:Generating"
         }
     ],
     "items": [
