@@ -68,7 +68,7 @@
             "thumbnail": "IdleOfTheAgesGame:tree",
             "page_type": "skill",
             "target_id": "IdleOfTheAgesGame:woodcutting",
-            "page_group": "IdleOfTheAgesGame:Generating"
+            "page_group": "IdleOfTheAgesGame:generating"
         },
         {
             "id": "mining_page",
@@ -80,7 +80,7 @@
             "thumbnail": "IdleOfTheAgesGame:tree",
             "page_type": "skill",
             "target_id": "IdleOfTheAgesGame:mining",
-            "page_group": "IdleOfTheAgesGame:Generating"
+            "page_group": "IdleOfTheAgesGame:generating"
         }
     ],
     "items": [

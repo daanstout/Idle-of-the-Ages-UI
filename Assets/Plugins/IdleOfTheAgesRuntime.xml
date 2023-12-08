@@ -218,7 +218,7 @@
             Allows for loading in data into the game.
             </summary>
         </member>
-        <member name="M:IdleOfTheAgesRuntime.DataLoader.#ctor(IdleOfTheAgesLib.IModObject,IdleOfTheAgesLib.Skills.IAgeService,IdleOfTheAgesLib.Skills.ISkillService,IdleOfTheAgesLib.UI.ITextureLibrary,IdleOfTheAgesLib.Translation.ITranslationService)">
+        <member name="M:IdleOfTheAgesRuntime.DataLoader.#ctor(IdleOfTheAgesLib.IModObject,IdleOfTheAgesLib.Skills.IAgeService,IdleOfTheAgesLib.Skills.ISkillService,IdleOfTheAgesLib.UI.ITextureLibrary,IdleOfTheAgesLib.Translation.ITranslationService,IdleOfTheAgesLib.UI.IPageGroupService)">
             <summary>
             Initializes a new instance of the <see cref="T:IdleOfTheAgesRuntime.DataLoader"/> class.
             </summary>
@@ -227,6 +227,7 @@
             <param name="skillService">The skill service to load skills into.</param>
             <param name="textureLibrary">The texture library to load textures into.</param>
             <param name="translationService">The translation service to load translation files into.</param>
+            <param name="pageGroupService">THe page group service to load page info into.</param>
         </member>
         <member name="M:IdleOfTheAgesRuntime.DataLoader.LoadData(System.String[])">
             <inheritdoc/>
@@ -324,13 +325,37 @@
             The element for the main game view.
             </summary>
         </member>
-        <member name="M:IdleOfTheAgesRuntime.UI.Elements.GameView.RebuildInternal">
+        <member name="M:IdleOfTheAgesRuntime.UI.Elements.GameView.BuildElement(UnityEngine.UIElements.Box)">
+            <inheritdoc/>
+        </member>
+        <member name="T:IdleOfTheAgesRuntime.UI.Elements.PageGroupElement">
+            <summary>
+            An element that renders a group of <see cref="T:IdleOfTheAgesLib.UI.Elements.IPageItemElement"/>s.
+            </summary>
+        </member>
+        <member name="M:IdleOfTheAgesRuntime.UI.Elements.PageGroupElement.BuildElement(UnityEngine.UIElements.Box)">
+            <inheritdoc/>
+        </member>
+        <member name="T:IdleOfTheAgesRuntime.UI.Elements.PageItemElement">
+            <summary>
+            An element that represents a page item within a <see cref="T:IdleOfTheAgesLib.UI.Elements.IPageListElement"/>.
+            </summary>
+        </member>
+        <member name="M:IdleOfTheAgesRuntime.UI.Elements.PageItemElement.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:IdleOfTheAgesRuntime.UI.Elements.PageItemElement"/> class.
+            </summary>
+        </member>
+        <member name="M:IdleOfTheAgesRuntime.UI.Elements.PageItemElement.BuildElement(UnityEngine.UIElements.Box)">
             <inheritdoc/>
         </member>
         <member name="T:IdleOfTheAgesRuntime.UI.Elements.PageListElement">
             <summary>
             An element that represents a page list in the sidebar with <see cref="T:IdleOfTheAgesLib.UI.Elements.IPageGroupElement"/>s.
             </summary>
+        </member>
+        <member name="M:IdleOfTheAgesRuntime.UI.Elements.PageListElement.BuildElement(UnityEngine.UIElements.Box)">
+            <inheritdoc/>
         </member>
         <member name="T:IdleOfTheAgesRuntime.UI.Managers.GameViewManager">
             <summary>
@@ -350,17 +375,62 @@
         <member name="M:IdleOfTheAgesRuntime.UI.Managers.GameViewManager.IdleOfTheAgesLib#UI#Managers#IUIManager#GetElement">
             <inheritdoc/>
         </member>
+        <member name="T:IdleOfTheAgesRuntime.UI.Managers.PageGroupManager">
+            <summary>
+            Manages the <see cref="T:IdleOfTheAgesLib.UI.Elements.IPageGroupElement"/>.
+            </summary>
+        </member>
+        <member name="M:IdleOfTheAgesRuntime.UI.Managers.PageGroupManager.#ctor(IdleOfTheAgesLib.UI.IElementLibrary,IdleOfTheAgesLib.UI.IPageGroupService,IdleOfTheAgesLib.UI.IUIManagerService)">
+            <summary>
+            Initializes a new instance of the <see cref="T:IdleOfTheAgesRuntime.UI.Managers.PageGroupManager"/> class.
+            </summary>
+            <param name="elementLibrary">The element library to get elements from.</param>
+            <param name="pageGroupService">The page group service to get page data from.</param>
+            <param name="uiManagerService">The UI manager service to get other managers from.</param>
+        </member>
+        <member name="M:IdleOfTheAgesRuntime.UI.Managers.PageGroupManager.InjectPageGroup(IdleOfTheAgesLib.Models.ModJsonData.PageGroupData)">
+            <inheritdoc/>
+        </member>
+        <member name="M:IdleOfTheAgesRuntime.UI.Managers.PageGroupManager.IdleOfTheAgesLib#UI#Managers#IUIManager#GetElement">
+            <inheritdoc/>
+        </member>
+        <member name="M:IdleOfTheAgesRuntime.UI.Managers.PageGroupManager.GetElement">
+            <inheritdoc/>
+        </member>
+        <member name="T:IdleOfTheAgesRuntime.UI.Managers.PageItemManager">
+            <summary>
+            Manages the <see cref="T:IdleOfTheAgesLib.UI.Elements.IPageItemElement"/>.
+            </summary>
+        </member>
+        <member name="M:IdleOfTheAgesRuntime.UI.Managers.PageItemManager.#ctor(IdleOfTheAgesLib.UI.IElementLibrary,IdleOfTheAgesLib.Translation.ITranslationService,IdleOfTheAgesLib.UI.ITextureLibrary)">
+            <summary>
+            Initializes a new instance of the <see cref="T:IdleOfTheAgesRuntime.UI.Managers.PageItemManager"/> class.
+            </summary>
+            <param name="elementLibrary">The element library to get the elements from.</param>
+            <param name="translationService">The translation service to translate text.</param>
+            <param name="textureLibrary">The texture library to obtain textures from.</param>
+        </member>
+        <member name="M:IdleOfTheAgesRuntime.UI.Managers.PageItemManager.InjectPageData(IdleOfTheAgesLib.Models.ModJsonData.PageData)">
+            <inheritdoc/>
+        </member>
+        <member name="M:IdleOfTheAgesRuntime.UI.Managers.PageItemManager.IdleOfTheAgesLib#UI#Managers#IUIManager#GetElement">
+            <inheritdoc/>
+        </member>
+        <member name="M:IdleOfTheAgesRuntime.UI.Managers.PageItemManager.GetElement">
+            <inheritdoc/>
+        </member>
         <member name="T:IdleOfTheAgesRuntime.UI.Managers.PageListManager">
             <summary>
             Manages the <see cref="T:IdleOfTheAgesLib.UI.Elements.IPageListElement"/>.
             </summary>
         </member>
-        <member name="M:IdleOfTheAgesRuntime.UI.Managers.PageListManager.#ctor(IdleOfTheAgesLib.UI.IElementLibrary,IdleOfTheAgesLib.UI.IPageGroupService)">
+        <member name="M:IdleOfTheAgesRuntime.UI.Managers.PageListManager.#ctor(IdleOfTheAgesLib.UI.IElementLibrary,IdleOfTheAgesLib.UI.IPageGroupService,IdleOfTheAgesLib.UI.IUIManagerService)">
             <summary>
             Initializes a new instance of the <see cref="T:IdleOfTheAgesRuntime.UI.Managers.PageListManager"/> class.
             </summary>
             <param name="elementLibrary">The element library to get elements from.</param>
             <param name="pageGroupService">The page group service to get page group data from.</param>
+            <param name="uiManagerService">The UI Manager Service to get other managers from.</param>
         </member>
         <member name="M:IdleOfTheAgesRuntime.UI.Managers.PageListManager.IdleOfTheAgesLib#UI#Managers#IUIManager#GetElement">
             <inheritdoc/>
