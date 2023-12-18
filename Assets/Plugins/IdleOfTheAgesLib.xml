@@ -86,12 +86,16 @@
             Injects an object with its dependencies through a function called: <code>InjectDependencies(...).</code>
             </summary>
             <param name="target">The object to inject.</param>
+            <returns>Whether there were any issues with the injection.</returns>
+            <exception cref="T:System.ArgumentNullException">Thrown if <paramref name="target"/> is null.</exception>
+            <exception cref="T:System.ArgumentException">Thrown if <paramref name="target"/> does not contain a function called `InjectDependencies`.</exception>
         </member>
         <member name="M:IdleOfTheAgesLib.DependencyInjection.IDependencyInjector.InjectDependencies(UnityEngine.GameObject)">
             <summary>
             Injects <see cref="T:UnityEngine.MonoBehaviour"/>s on a <see cref="T:UnityEngine.GameObject"/> with dependencies through a function called: <code>InjectDependencies(...).</code>
             </summary>
             <param name="gameObject">The gameobject to inject.</param>
+            <returns>Whether there were any issues with the injection.</returns>
         </member>
         <member name="T:IdleOfTheAgesLib.DependencyInjection.IResolver">
             <summary>
@@ -356,7 +360,7 @@
             <param name="message">The message to log.</param>
             <param name="objects">Parameters to add to the message.</param>
         </member>
-        <member name="M:IdleOfTheAgesLib.ILogger.Warn(System.String,System.Object[])">
+        <member name="M:IdleOfTheAgesLib.ILogger.Warning(System.String,System.Object[])">
             <summary>
             Logs a warning to the logger.
             </summary>
@@ -535,6 +539,22 @@
             An age that the player can be in.
             </summary>
         </member>
+        <member name="M:IdleOfTheAgesLib.Models.ModJsonData.AgeData.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:IdleOfTheAgesLib.Models.ModJsonData.AgeData"/> class.
+            </summary>
+        </member>
+        <member name="M:IdleOfTheAgesLib.Models.ModJsonData.AgeData.#ctor(System.String,System.String,System.String,System.String,IdleOfTheAgesLib.Models.ModJsonData.SortingOrderData,System.String)">
+            <summary>
+            Initializes a new instance of the <see cref="T:IdleOfTheAgesLib.Models.ModJsonData.AgeData"/> class.
+            </summary>
+            <param name="namespace">The namespace of the element.</param>
+            <param name="id">The ID of the element.</param>
+            <param name="name">The name of the element.</param>
+            <param name="translationKey">The translation key of the element.</param>
+            <param name="sortingOrder">The sorting order of the element.</param>
+            <param name="thumbnail">The thumbnail for the element.</param>
+        </member>
         <member name="T:IdleOfTheAgesLib.Models.ModJsonData.BaseDataElement">
             <summary>
             A base class for data elements.
@@ -560,6 +580,19 @@
             Gets the object's namespaced ID.
             </summary>
         </member>
+        <member name="M:IdleOfTheAgesLib.Models.ModJsonData.BaseDataElement.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:IdleOfTheAgesLib.Models.ModJsonData.BaseDataElement"/> class.
+            </summary>
+        </member>
+        <member name="M:IdleOfTheAgesLib.Models.ModJsonData.BaseDataElement.#ctor(System.String,System.String,System.String)">
+            <summary>
+            Initializes a new instance of the <see cref="T:IdleOfTheAgesLib.Models.ModJsonData.BaseDataElement"/> class.
+            </summary>
+            <param name="namespace">The namespace of the element.</param>
+            <param name="id">The ID of the element.</param>
+            <param name="name">The name of the element.</param>
+        </member>
         <member name="T:IdleOfTheAgesLib.Models.ModJsonData.VisisbleDataElement">
             <summary>
             A base class for data elements that are visible to the user.
@@ -575,6 +608,21 @@
             Gets or sets the Age that this age should be after.
             </summary>
         </member>
+        <member name="M:IdleOfTheAgesLib.Models.ModJsonData.VisisbleDataElement.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:IdleOfTheAgesLib.Models.ModJsonData.VisisbleDataElement"/> class.
+            </summary>
+        </member>
+        <member name="M:IdleOfTheAgesLib.Models.ModJsonData.VisisbleDataElement.#ctor(System.String,System.String,System.String,System.String,IdleOfTheAgesLib.Models.ModJsonData.SortingOrderData)">
+            <summary>
+            Initializes a new instance of the <see cref="T:IdleOfTheAgesLib.Models.ModJsonData.VisisbleDataElement"/> class.
+            </summary>
+            <param name="namespace">The namespace of the element.</param>
+            <param name="id">The ID of the element.</param>
+            <param name="name">The name of the element.</param>
+            <param name="translationKey">The translation key of the element.</param>
+            <param name="sortingOrder">The sorting order of the element.</param>
+        </member>
         <member name="T:IdleOfTheAgesLib.Models.ModJsonData.ThumbnailDataElement">
             <summary>
             A base class for data elements that are visible to the user and have a thumbnail.
@@ -584,6 +632,22 @@
             <summary>
             Gets the thumbnail ID of the object.
             </summary>
+        </member>
+        <member name="M:IdleOfTheAgesLib.Models.ModJsonData.ThumbnailDataElement.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:IdleOfTheAgesLib.Models.ModJsonData.ThumbnailDataElement"/> class.
+            </summary>
+        </member>
+        <member name="M:IdleOfTheAgesLib.Models.ModJsonData.ThumbnailDataElement.#ctor(System.String,System.String,System.String,System.String,IdleOfTheAgesLib.Models.ModJsonData.SortingOrderData,System.String)">
+            <summary>
+            Initializes a new instance of the <see cref="T:IdleOfTheAgesLib.Models.ModJsonData.ThumbnailDataElement"/> class.
+            </summary>
+            <param name="namespace">The namespace of the element.</param>
+            <param name="id">The ID of the element.</param>
+            <param name="name">The name of the element.</param>
+            <param name="translationKey">The translation key of the element.</param>
+            <param name="sortingOrder">The sorting order of the element.</param>
+            <param name="thumbnail">The thumbnail for the element.</param>
         </member>
         <member name="T:IdleOfTheAgesLib.Models.ModJsonData.ItemData">
             <summary>
@@ -627,6 +691,29 @@
             Gets the item's tag. This indicates what type of item it is and is used for things such as storage and equipping.
             </summary>
         </member>
+        <member name="M:IdleOfTheAgesLib.Models.ModJsonData.ItemData.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:IdleOfTheAgesLib.Models.ModJsonData.ItemData"/> class.
+            </summary>
+        </member>
+        <member name="M:IdleOfTheAgesLib.Models.ModJsonData.ItemData.#ctor(System.String,System.String,System.String,System.String,IdleOfTheAgesLib.Models.ModJsonData.SortingOrderData,System.String,System.String,System.Int32,System.Collections.Generic.Dictionary{System.String,System.Object},System.String,System.String,System.Boolean,System.String)">
+            <summary>
+            Initializes a new instance of the <see cref="T:IdleOfTheAgesLib.Models.ModJsonData.ItemData"/> class.
+            </summary>
+            <param name="namespace">The namespace of the element.</param>
+            <param name="id">The ID of the element.</param>
+            <param name="name">The name of the element.</param>
+            <param name="translationKey">The translation key of the element.</param>
+            <param name="sortingOrder">The sorting order of the element.</param>
+            <param name="thumbnail">The thumbnail for the element.</param>
+            <param name="descriptionKey">The description key of the item.</param>
+            <param name="sellPrice">The sell price of the item.</param>
+            <param name="metadata">The metadata of the item.</param>
+            <param name="category">The category of the item.</param>
+            <param name="type">The type of the item.</param>
+            <param name="requiredForCompletion">Whether or not the item is required to consider the game "completed".</param>
+            <param name="tag">The tags of the item.</param>
+        </member>
         <member name="T:IdleOfTheAgesLib.Models.ModJsonData.PageData">
             <summary>
             Represents a page in the <see cref="T:IdleOfTheAgesLib.Models.ModJsonData.PageGroupData"/>.
@@ -662,15 +749,65 @@
             Gets the ID of the page group this page belongs to.
             </summary>
         </member>
+        <member name="M:IdleOfTheAgesLib.Models.ModJsonData.PageData.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:IdleOfTheAgesLib.Models.ModJsonData.PageData"/> class.
+            </summary>
+        </member>
+        <member name="M:IdleOfTheAgesLib.Models.ModJsonData.PageData.#ctor(System.String,System.String,System.String,System.String,IdleOfTheAgesLib.Models.ModJsonData.SortingOrderData,System.String,IdleOfTheAgesLib.Models.ModJsonData.PageData.PageTypeValues,System.String,System.String)">
+            <summary>
+            Initializes a new instance of the <see cref="T:IdleOfTheAgesLib.Models.ModJsonData.PageData"/> class.
+            </summary>
+            <param name="namespace">The namespace of the element.</param>
+            <param name="id">The ID of the element.</param>
+            <param name="name">The name of the element.</param>
+            <param name="translationKey">The translation key of the element.</param>
+            <param name="sortingOrder">The sorting order of the element.</param>
+            <param name="thumbnail">The thumbnail for the element.</param>
+            <param name="pageType">The type of page this is.</param>
+            <param name="targetID">The ID of the target behind the page.</param>
+            <param name="pageGroup">The Id of the page group this page belongs to.</param>
+        </member>
         <member name="T:IdleOfTheAgesLib.Models.ModJsonData.PageGroupData">
             <summary>
             Data for page groups in the sidebar.
             </summary>
         </member>
+        <member name="M:IdleOfTheAgesLib.Models.ModJsonData.PageGroupData.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:IdleOfTheAgesLib.Models.ModJsonData.PageGroupData"/> class.
+            </summary>
+        </member>
+        <member name="M:IdleOfTheAgesLib.Models.ModJsonData.PageGroupData.#ctor(System.String,System.String,System.String,System.String,IdleOfTheAgesLib.Models.ModJsonData.SortingOrderData)">
+            <summary>
+            Initializes a new instance of the <see cref="T:IdleOfTheAgesLib.Models.ModJsonData.PageGroupData"/> class.
+            </summary>
+            <param name="namespace">The namespace of the element.</param>
+            <param name="id">The ID of the element.</param>
+            <param name="name">The name of the element.</param>
+            <param name="translationKey">The translation key of the element.</param>
+            <param name="sortingOrder">The sorting order of the element.</param>
+        </member>
         <member name="T:IdleOfTheAgesLib.Models.ModJsonData.SkillCategoryData">
             <summary>
             A category a skill can be a part of.
             </summary>
+        </member>
+        <member name="M:IdleOfTheAgesLib.Models.ModJsonData.SkillCategoryData.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:IdleOfTheAgesLib.Models.ModJsonData.SkillCategoryData"/> class.
+            </summary>
+        </member>
+        <member name="M:IdleOfTheAgesLib.Models.ModJsonData.SkillCategoryData.#ctor(System.String,System.String,System.String,System.String,IdleOfTheAgesLib.Models.ModJsonData.SortingOrderData,System.String)">
+            <summary>
+            Initializes a new instance of the <see cref="T:IdleOfTheAgesLib.Models.ModJsonData.SkillCategoryData"/> class.
+            </summary>
+            <param name="namespace">The namespace of the element.</param>
+            <param name="id">The ID of the element.</param>
+            <param name="name">The name of the element.</param>
+            <param name="translationKey">The translation key of the element.</param>
+            <param name="sortingOrder">The sorting order of the element.</param>
+            <param name="thumbnail">The thumbnail for the element.</param>
         </member>
         <member name="T:IdleOfTheAgesLib.Models.ModJsonData.SkillData">
             <summary>
@@ -697,6 +834,26 @@
             Gets the page group the skill should be filed under.
             </summary>
         </member>
+        <member name="M:IdleOfTheAgesLib.Models.ModJsonData.SkillData.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:IdleOfTheAgesLib.Models.ModJsonData.SkillData"/> class.
+            </summary>
+        </member>
+        <member name="M:IdleOfTheAgesLib.Models.ModJsonData.SkillData.#ctor(System.String,System.String,System.String,System.String,IdleOfTheAgesLib.Models.ModJsonData.SortingOrderData,System.String,System.String,System.String,System.String,System.String)">
+            <summary>
+            Initializes a new instance of the <see cref="T:IdleOfTheAgesLib.Models.ModJsonData.SkillData"/> class.
+            </summary>
+            <param name="namespace">The namespace of the element.</param>
+            <param name="id">The ID of the element.</param>
+            <param name="name">The name of the element.</param>
+            <param name="translationKey">The translation key of the element.</param>
+            <param name="sortingOrder">The sorting order of the element.</param>
+            <param name="thumbnail">The thumbnail for the element.</param>
+            <param name="skillCategory">The skill category this skill falls under.</param>
+            <param name="unlockAge">The age in which this skill is unlocked.</param>
+            <param name="skillUI">The ID of the skill's UI class.</param>
+            <param name="pageGroup">The page group this skill should be filed under.</param>
+        </member>
         <member name="T:IdleOfTheAgesLib.Models.ModJsonData.SortingOrderData">
             <summary>
             Allows for sorting elements in different ways.
@@ -712,6 +869,18 @@
             <summary>
             Gets a numeric value of where this element should be sorted.
             </summary>
+        </member>
+        <member name="M:IdleOfTheAgesLib.Models.ModJsonData.SortingOrderData.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:IdleOfTheAgesLib.Models.ModJsonData.SortingOrderData"/> class.
+            </summary>
+        </member>
+        <member name="M:IdleOfTheAgesLib.Models.ModJsonData.SortingOrderData.#ctor(System.String,System.Int32)">
+            <summary>
+            Initializes a new instance of the <see cref="T:IdleOfTheAgesLib.Models.ModJsonData.SortingOrderData"/> class.
+            </summary>
+            <param name="after">The lement that should precede this element.</param>
+            <param name="order">The numeric value of where this element should be stored.</param>
         </member>
         <member name="T:IdleOfTheAgesLib.Models.ModData">
             <summary>
@@ -791,6 +960,7 @@
             Implicitly casts a <see cref="T:IdleOfTheAgesLib.Result"/> object to a <see cref="T:System.Boolean"/>.
             </summary>
             <param name="result">The result object to cast.</param>
+            <exception cref="T:System.InvalidOperationException">Thrown if the <paramref name="result"/> object is <see langword="null"/>.</exception>
         </member>
         <member name="M:IdleOfTheAgesLib.Result.op_Implicit(System.Boolean)~IdleOfTheAgesLib.Result">
             <summary>
@@ -843,6 +1013,7 @@
             <summary>
             Throws an exception if the <see cref="T:IdleOfTheAgesLib.Result`1"/> object is in an invalid state.
             </summary>
+            <exception cref="T:System.Exception">Thrown if the object is not in a valid state and no exception was provided.</exception>
         </member>
         <member name="M:IdleOfTheAgesLib.Result`1.op_Implicit(IdleOfTheAgesLib.Result{`0})~System.Boolean">
             <summary>
@@ -850,12 +1021,15 @@
             <para>This returns <see langword="true"/> if the call was successful, and <see langword="false"/> if something went wrong.</para>
             </summary>
             <param name="result">The result object to cast.</param>
+            <exception cref="T:System.InvalidOperationException">Thrown if the <paramref name="result"/> object is <see langword="null"/>.</exception>
         </member>
         <member name="M:IdleOfTheAgesLib.Result`1.op_Implicit(IdleOfTheAgesLib.Result{`0})~`0">
             <summary>
             Implicitly casts a <see cref="T:IdleOfTheAgesLib.Result`1"/> object to a <typeparamref name="T"/>.
             </summary>
             <param name="result">The result object to cast.</param>
+            <exception cref="T:System.InvalidOperationException">Thrown if the <paramref name="result"/> object is <see langword="null"/>.</exception>
+            <exception cref="P:IdleOfTheAgesLib.Result`1.Exception">Thrown if the <see cref="P:IdleOfTheAgesLib.Result`1.Exception"/> is not <see langword="null"/>.</exception>
         </member>
         <member name="M:IdleOfTheAgesLib.Result`1.op_Implicit(`0)~IdleOfTheAgesLib.Result{`0}">
             <summary>
@@ -986,6 +1160,14 @@
             <param name="skillID">The ID of the skill.</param>
             <returns>A <see cref="T:IdleOfTheAgesLib.Result"/> object to check if the call was successful.</returns>
         </member>
+        <member name="M:IdleOfTheAgesLib.Skills.ISkillService.GetSkill``1(System.String)">
+            <summary>
+            Gets a skill implementation.
+            </summary>
+            <typeparam name="TSkill">The type of the skill to get.</typeparam>
+            <param name="skillID">The ID of the skill to get.</param>
+            <returns>The requested skill.</returns>
+        </member>
         <member name="M:IdleOfTheAgesLib.Skills.ISkillService.GetSkills">
             <summary>
             Gets all skills currently registered in the game.
@@ -998,6 +1180,21 @@
             </summary>
             <param name="skillID">The ID of the skill that should be shown.</param>
             <returns>A <see cref="T:IdleOfTheAgesLib.Result"/> object to check if the call was successful.</returns>
+        </member>
+        <member name="T:IdleOfTheAgesLib.Skills.ModifierCalculationType">
+            <summary>
+            An enum that is used to indicate what type of calculations should be done with percentage values to calculate the final modifier time.
+            </summary>
+        </member>
+        <member name="F:IdleOfTheAgesLib.Skills.ModifierCalculationType.Additive">
+            <summary>
+            The percentages should be added together.
+            </summary>
+        </member>
+        <member name="F:IdleOfTheAgesLib.Skills.ModifierCalculationType.Multiplicative">
+            <summary>
+            The percentages should be multiplied together.
+            </summary>
         </member>
         <member name="T:IdleOfTheAgesLib.Skills.ModifierData">
             <summary>
@@ -1021,7 +1218,7 @@
         </member>
         <member name="P:IdleOfTheAgesLib.Skills.ModifierData.PercentModifier">
             <summary>
-            Gets the percent modifier that shouldbe applied.
+            Gets or sets the percent modifier that shouldbe applied.
             </summary>
         </member>
         <member name="M:IdleOfTheAgesLib.Skills.ModifierData.#ctor(System.String,System.String)">
@@ -1030,6 +1227,21 @@
             </summary>
             <param name="modifierSource">The source of the modification data.</param>
             <param name="modifierTarget">The target stat this modifier is affecting.</param>
+        </member>
+        <member name="T:IdleOfTheAgesLib.Skills.ModifierOrder">
+            <summary>
+            An enum that is used to indicate in what order the modifiers should be applied.
+            </summary>
+        </member>
+        <member name="F:IdleOfTheAgesLib.Skills.ModifierOrder.FlatFirst">
+            <summary>
+            The <see cref="P:IdleOfTheAgesLib.Skills.ModifierData.FlatModifier"/> should be applied first.
+            </summary>
+        </member>
+        <member name="F:IdleOfTheAgesLib.Skills.ModifierOrder.PercentageFirst">
+            <summary>
+            The <see cref="P:IdleOfTheAgesLib.Skills.ModifierData.PercentModifier"/> should be applied first.
+            </summary>
         </member>
         <member name="T:IdleOfTheAgesLib.Skills.SkillAttribute">
             <summary>
@@ -1351,6 +1563,11 @@
             An element that represents a page item within a <see cref="T:IdleOfTheAgesLib.UI.Elements.IPageListElement"/>.
             </summary>
         </member>
+        <member name="E:IdleOfTheAgesLib.UI.Elements.IPageItemElement.PageItemClickedEvent">
+            <summary>
+            An event that gets fired when the page item is clicked on by the user.
+            </summary>
+        </member>
         <member name="T:IdleOfTheAgesLib.UI.Elements.IPageListElement">
             <summary>
             An element that represents a page list in the sidebar with <see cref="T:IdleOfTheAgesLib.UI.Elements.IPageGroupElement"/>s.
@@ -1399,6 +1616,11 @@
             <param name="elementInterface">The type of the interface this element implements.</param>
             <param name="key">The key to identify this class implementation.</param>
         </member>
+        <member name="T:IdleOfTheAgesLib.UI.Managers.IGamePageManager">
+            <summary>
+            Represents a manager for game pages.
+            </summary>
+        </member>
         <member name="T:IdleOfTheAgesLib.UI.Managers.IGameViewManager">
             <summary>
             Represents a manager for the <see cref="T:IdleOfTheAgesLib.UI.Elements.IGameViewElement"/>.
@@ -1418,6 +1640,11 @@
         <member name="T:IdleOfTheAgesLib.UI.Managers.IPageItemManager">
             <summary>
             Manages the <see cref="T:IdleOfTheAgesLib.UI.Elements.IPageItemElement"/>.
+            </summary>
+        </member>
+        <member name="E:IdleOfTheAgesLib.UI.Managers.IPageItemManager.PageItemClickedEvent">
+            <summary>
+            An event that gets fired when the item gets clicked on.
             </summary>
         </member>
         <member name="M:IdleOfTheAgesLib.UI.Managers.IPageItemManager.InjectPageData(IdleOfTheAgesLib.Models.ModJsonData.PageData)">
@@ -1496,11 +1723,17 @@
             Gets the sidebar element.
             </summary>
         </member>
-        <member name="M:IdleOfTheAgesLib.UI.Models.GameViewModel.#ctor(IdleOfTheAgesLib.UI.Elements.IPageListElement)">
+        <member name="P:IdleOfTheAgesLib.UI.Models.GameViewModel.PageElement">
+            <summary>
+            Gets the page to render to the user.
+            </summary>
+        </member>
+        <member name="M:IdleOfTheAgesLib.UI.Models.GameViewModel.#ctor(IdleOfTheAgesLib.UI.Elements.IPageListElement,IdleOfTheAgesLib.UI.Elements.IElement)">
             <summary>
             Initializes a new instance of the <see cref="T:IdleOfTheAgesLib.UI.Models.GameViewModel"/> class.
             </summary>
             <param name="sidebarElement">The page list to render in the sidebar.</param>
+            <param name="pageElement">The page to render.</param>
         </member>
         <member name="T:IdleOfTheAgesLib.UI.Models.PageGroupModel">
             <summary>
@@ -1641,51 +1874,68 @@
             <param name="key">The key the element is stored under.</param>
             <returns>The requested element.</returns>
         </member>
-        <member name="T:IdleOfTheAgesLib.UI.IPageGroupService">
+        <member name="T:IdleOfTheAgesLib.UI.IPageService">
             <summary>
             A service to keep track of the <see cref="T:IdleOfTheAgesLib.Models.ModJsonData.PageGroupData"/>s and <see cref="T:IdleOfTheAgesLib.Models.ModJsonData.PageData"/>s in the sidebar.
             </summary>
         </member>
-        <member name="M:IdleOfTheAgesLib.UI.IPageGroupService.RegisterPageGroup(IdleOfTheAgesLib.Models.ModJsonData.PageGroupData)">
+        <member name="P:IdleOfTheAgesLib.UI.IPageService.ActivePage">
+            <summary>
+            Gets the ID of the page that is currently active.
+            </summary>
+        </member>
+        <member name="E:IdleOfTheAgesLib.UI.IPageService.OnPageChangedEvent">
+            <summary>
+            An even that gets fired when the <see cref="P:IdleOfTheAgesLib.UI.IPageService.ActivePage"/> is changed.
+            </summary>
+        </member>
+        <member name="M:IdleOfTheAgesLib.UI.IPageService.RegisterPageGroup(IdleOfTheAgesLib.Models.ModJsonData.PageGroupData)">
             <summary>
             Registers a <see cref="T:IdleOfTheAgesLib.Models.ModJsonData.PageGroupData"/>.
             </summary>
             <param name="pageGroup">The <see cref="T:IdleOfTheAgesLib.Models.ModJsonData.PageGroupData"/> to register.</param>
             <returns>A <see cref="T:IdleOfTheAgesLib.Result"/> object to check if the call was successful.</returns>
         </member>
-        <member name="M:IdleOfTheAgesLib.UI.IPageGroupService.RegisterPage(IdleOfTheAgesLib.Models.ModJsonData.PageData)">
+        <member name="M:IdleOfTheAgesLib.UI.IPageService.RegisterPage(IdleOfTheAgesLib.Models.ModJsonData.PageData)">
             <summary>
             Registers a <see cref="T:IdleOfTheAgesLib.Models.ModJsonData.PageData"/>.
             </summary>
             <param name="page">The <see cref="T:IdleOfTheAgesLib.Models.ModJsonData.PageData"/> to register.</param>
             <returns>A <see cref="T:IdleOfTheAgesLib.Result"/> object to check if the call was successful.</returns>
         </member>
-        <member name="M:IdleOfTheAgesLib.UI.IPageGroupService.GetAllPageGroups">
+        <member name="M:IdleOfTheAgesLib.UI.IPageService.GetAllPageGroups">
             <summary>
             Gets all registered <see cref="T:IdleOfTheAgesLib.Models.ModJsonData.PageGroupData"/>.
             </summary>
             <returns>An <see cref="T:System.Collections.Generic.IEnumerable`1"/> with all <see cref="T:IdleOfTheAgesLib.Models.ModJsonData.PageGroupData"/>.</returns>
         </member>
-        <member name="M:IdleOfTheAgesLib.UI.IPageGroupService.GetPagesInPageGroup(System.String)">
+        <member name="M:IdleOfTheAgesLib.UI.IPageService.GetPagesInPageGroup(System.String)">
             <summary>
             Gets all registered <see cref="T:IdleOfTheAgesLib.Models.ModJsonData.PageData"/> within a <see cref="T:IdleOfTheAgesLib.Models.ModJsonData.PageGroupData"/>.
             </summary>
             <param name="pageGroupID">The ID of the page group to get the pages in.</param>
             <returns>An <see cref="T:System.Collections.Generic.IEnumerable`1"/> with all <see cref="T:IdleOfTheAgesLib.Models.ModJsonData.PageData"/> in the <see cref="T:IdleOfTheAgesLib.Models.ModJsonData.PageGroupData"/>.</returns>
         </member>
-        <member name="M:IdleOfTheAgesLib.UI.IPageGroupService.GetPageGroup(System.String)">
+        <member name="M:IdleOfTheAgesLib.UI.IPageService.GetPageGroup(System.String)">
             <summary>
             Gets a <see cref="T:IdleOfTheAgesLib.Models.ModJsonData.PageGroupData"/>.
             </summary>
             <param name="pageGroupID">The <see cref="T:IdleOfTheAgesLib.Models.ModJsonData.PageGroupData"/> to obtain.</param>
             <returns>The requested <see cref="T:IdleOfTheAgesLib.Models.ModJsonData.PageGroupData"/>.</returns>
         </member>
-        <member name="M:IdleOfTheAgesLib.UI.IPageGroupService.GetPage(System.String)">
+        <member name="M:IdleOfTheAgesLib.UI.IPageService.GetPage(System.String)">
             <summary>
             Gets a <see cref="T:IdleOfTheAgesLib.Models.ModJsonData.PageData"/>.
             </summary>
             <param name="pageID">The <see cref="T:IdleOfTheAgesLib.Models.ModJsonData.PageData"/> to obtain.</param>
             <returns>The requested <see cref="T:IdleOfTheAgesLib.Models.ModJsonData.PageData"/>.</returns>
+        </member>
+        <member name="M:IdleOfTheAgesLib.UI.IPageService.ChangeActivePage(System.String)">
+            <summary>
+            Changes the active page that the user is viewing.
+            </summary>
+            <param name="pageId">The ID of the page that should become active.</param>
+            <returns>Whether or not changing the page was successful.</returns>
         </member>
         <member name="T:IdleOfTheAgesLib.UI.IStyleService">
             <summary>
@@ -1812,6 +2062,18 @@
             Applies the entries's styles to the <paramref name="style"/>.
             </summary>
             <param name="style">The style to apply this entries's styles to.</param>
+        </member>
+        <member name="T:IdleOfTheAgesLib.User.IPlayerService">
+            <summary>
+            A service that holds all relevant information about the player.
+            <para>For information about the player, see <see cref="T:IdleOfTheAgesLib.User.IUserService"/>.</para>
+            </summary>
+        </member>
+        <member name="T:IdleOfTheAgesLib.User.IUserService">
+            <summary>
+            A service that holds all relevant information about the user.
+            <para>For information about the player, see <see cref="T:IdleOfTheAgesLib.User.IPlayerService"/>.</para>
+            </summary>
         </member>
     </members>
 </doc>

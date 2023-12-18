@@ -15,7 +15,10 @@ namespace IdleOfTheAges {
         }
 
         private void Start() {
-            panelSettings.rootVisualElement.Add(uiManagerService.GetManager<IGameViewManager>("Game View").Value.GetElement().GetVisualElement());
+            var manager = uiManagerService.GetManager<IGameViewManager>("Game View").Value;
+            var element = manager.GetElement();
+            var visualElement = element.GetVisualElement();
+            panelSettings.rootVisualElement.Add(visualElement);
         }
     }
 }

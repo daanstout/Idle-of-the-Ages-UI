@@ -210,7 +210,7 @@
         <member name="M:IdleOfTheAgesRuntime.Logger.Info(System.String,System.Object[])">
             <inheritdoc/>
         </member>
-        <member name="M:IdleOfTheAgesRuntime.Logger.Warn(System.String,System.Object[])">
+        <member name="M:IdleOfTheAgesRuntime.Logger.Warning(System.String,System.Object[])">
             <inheritdoc/>
         </member>
         <member name="T:IdleOfTheAgesRuntime.DataLoader">
@@ -218,7 +218,7 @@
             Allows for loading in data into the game.
             </summary>
         </member>
-        <member name="M:IdleOfTheAgesRuntime.DataLoader.#ctor(IdleOfTheAgesLib.IModObject,IdleOfTheAgesLib.Skills.IAgeService,IdleOfTheAgesLib.Skills.ISkillService,IdleOfTheAgesLib.UI.ITextureLibrary,IdleOfTheAgesLib.Translation.ITranslationService,IdleOfTheAgesLib.UI.IPageGroupService)">
+        <member name="M:IdleOfTheAgesRuntime.DataLoader.#ctor(IdleOfTheAgesLib.IModObject,IdleOfTheAgesLib.Skills.IAgeService,IdleOfTheAgesLib.Skills.ISkillService,IdleOfTheAgesLib.UI.ITextureLibrary,IdleOfTheAgesLib.Translation.ITranslationService,IdleOfTheAgesLib.UI.IPageService)">
             <summary>
             Initializes a new instance of the <see cref="T:IdleOfTheAgesRuntime.DataLoader"/> class.
             </summary>
@@ -286,6 +286,9 @@
         <member name="M:IdleOfTheAgesRuntime.Skills.SkillService.RegisterSkillImplementation(System.Type,System.String)">
             <inheritdoc/>
         </member>
+        <member name="M:IdleOfTheAgesRuntime.Skills.SkillService.GetSkill``1(System.String)">
+            <inheritdoc/>
+        </member>
         <member name="M:IdleOfTheAgesRuntime.Skills.SkillService.GetSkills">
             <inheritdoc/>
         </member>
@@ -341,6 +344,9 @@
             An element that represents a page item within a <see cref="T:IdleOfTheAgesLib.UI.Elements.IPageListElement"/>.
             </summary>
         </member>
+        <member name="E:IdleOfTheAgesRuntime.UI.Elements.PageItemElement.PageItemClickedEvent">
+            <inheritdoc/>
+        </member>
         <member name="M:IdleOfTheAgesRuntime.UI.Elements.PageItemElement.#ctor">
             <summary>
             Initializes a new instance of the <see cref="T:IdleOfTheAgesRuntime.UI.Elements.PageItemElement"/> class.
@@ -362,12 +368,19 @@
             Represents a manager for the <see cref="T:IdleOfTheAgesLib.UI.Elements.IGameViewElement"/>.
             </summary>
         </member>
-        <member name="M:IdleOfTheAgesRuntime.UI.Managers.GameViewManager.#ctor(IdleOfTheAgesLib.UI.IElementLibrary,IdleOfTheAgesLib.UI.IUIManagerService)">
+        <member name="M:IdleOfTheAgesRuntime.UI.Managers.GameViewManager.#ctor(IdleOfTheAgesLib.UI.IElementLibrary,IdleOfTheAgesLib.UI.IUIManagerService,IdleOfTheAgesLib.UI.IPageService,IdleOfTheAgesLib.IModLibrary)">
             <summary>
             Initializes a new instance of the <see cref="T:IdleOfTheAgesRuntime.UI.Managers.GameViewManager"/> class.
             </summary>
             <param name="elementLibrary">The element library to get elements from.</param>
             <param name="uiManagerService">The ui manager to get other managers from.</param>
+            <param name="pageService">The page service that keeps track of the active page.</param>
+            <param name="modLibrary">The mod library to get other mod data from.</param>
+        </member>
+        <member name="M:IdleOfTheAgesRuntime.UI.Managers.GameViewManager.Finalize">
+            <summary>
+            Finalizes an instance of the <see cref="T:IdleOfTheAgesRuntime.UI.Managers.GameViewManager"/> class.
+            </summary>
         </member>
         <member name="M:IdleOfTheAgesRuntime.UI.Managers.GameViewManager.GetElement">
             <inheritdoc/>
@@ -380,7 +393,7 @@
             Manages the <see cref="T:IdleOfTheAgesLib.UI.Elements.IPageGroupElement"/>.
             </summary>
         </member>
-        <member name="M:IdleOfTheAgesRuntime.UI.Managers.PageGroupManager.#ctor(IdleOfTheAgesLib.UI.IElementLibrary,IdleOfTheAgesLib.UI.IPageGroupService,IdleOfTheAgesLib.UI.IUIManagerService)">
+        <member name="M:IdleOfTheAgesRuntime.UI.Managers.PageGroupManager.#ctor(IdleOfTheAgesLib.UI.IElementLibrary,IdleOfTheAgesLib.UI.IPageService,IdleOfTheAgesLib.UI.IUIManagerService)">
             <summary>
             Initializes a new instance of the <see cref="T:IdleOfTheAgesRuntime.UI.Managers.PageGroupManager"/> class.
             </summary>
@@ -401,6 +414,9 @@
             <summary>
             Manages the <see cref="T:IdleOfTheAgesLib.UI.Elements.IPageItemElement"/>.
             </summary>
+        </member>
+        <member name="E:IdleOfTheAgesRuntime.UI.Managers.PageItemManager.PageItemClickedEvent">
+            <inheritdoc/>
         </member>
         <member name="M:IdleOfTheAgesRuntime.UI.Managers.PageItemManager.#ctor(IdleOfTheAgesLib.UI.IElementLibrary,IdleOfTheAgesLib.Translation.ITranslationService,IdleOfTheAgesLib.UI.ITextureLibrary)">
             <summary>
@@ -424,7 +440,7 @@
             Manages the <see cref="T:IdleOfTheAgesLib.UI.Elements.IPageListElement"/>.
             </summary>
         </member>
-        <member name="M:IdleOfTheAgesRuntime.UI.Managers.PageListManager.#ctor(IdleOfTheAgesLib.UI.IElementLibrary,IdleOfTheAgesLib.UI.IPageGroupService,IdleOfTheAgesLib.UI.IUIManagerService)">
+        <member name="M:IdleOfTheAgesRuntime.UI.Managers.PageListManager.#ctor(IdleOfTheAgesLib.UI.IElementLibrary,IdleOfTheAgesLib.UI.IPageService,IdleOfTheAgesLib.UI.IUIManagerService)">
             <summary>
             Initializes a new instance of the <see cref="T:IdleOfTheAgesRuntime.UI.Managers.PageListManager"/> class.
             </summary>
@@ -455,27 +471,36 @@
         <member name="M:IdleOfTheAgesRuntime.UI.ElementLibrary.RegisterElement(System.Type,System.Type,System.String)">
             <inheritdoc/>
         </member>
-        <member name="T:IdleOfTheAgesRuntime.UI.PageGroupService">
+        <member name="T:IdleOfTheAgesRuntime.UI.PageService">
             <summary>
             A service to keep track of the <see cref="T:IdleOfTheAgesLib.Models.ModJsonData.PageGroupData"/>s and <see cref="T:IdleOfTheAgesLib.Models.ModJsonData.PageData"/>s in the sidebar.
             </summary>
         </member>
-        <member name="M:IdleOfTheAgesRuntime.UI.PageGroupService.GetAllPageGroups">
+        <member name="E:IdleOfTheAgesRuntime.UI.PageService.OnPageChangedEvent">
             <inheritdoc/>
         </member>
-        <member name="M:IdleOfTheAgesRuntime.UI.PageGroupService.GetPage(System.String)">
+        <member name="P:IdleOfTheAgesRuntime.UI.PageService.ActivePage">
             <inheritdoc/>
         </member>
-        <member name="M:IdleOfTheAgesRuntime.UI.PageGroupService.GetPageGroup(System.String)">
+        <member name="M:IdleOfTheAgesRuntime.UI.PageService.ChangeActivePage(System.String)">
             <inheritdoc/>
         </member>
-        <member name="M:IdleOfTheAgesRuntime.UI.PageGroupService.GetPagesInPageGroup(System.String)">
+        <member name="M:IdleOfTheAgesRuntime.UI.PageService.GetAllPageGroups">
             <inheritdoc/>
         </member>
-        <member name="M:IdleOfTheAgesRuntime.UI.PageGroupService.RegisterPage(IdleOfTheAgesLib.Models.ModJsonData.PageData)">
+        <member name="M:IdleOfTheAgesRuntime.UI.PageService.GetPage(System.String)">
             <inheritdoc/>
         </member>
-        <member name="M:IdleOfTheAgesRuntime.UI.PageGroupService.RegisterPageGroup(IdleOfTheAgesLib.Models.ModJsonData.PageGroupData)">
+        <member name="M:IdleOfTheAgesRuntime.UI.PageService.GetPageGroup(System.String)">
+            <inheritdoc/>
+        </member>
+        <member name="M:IdleOfTheAgesRuntime.UI.PageService.GetPagesInPageGroup(System.String)">
+            <inheritdoc/>
+        </member>
+        <member name="M:IdleOfTheAgesRuntime.UI.PageService.RegisterPage(IdleOfTheAgesLib.Models.ModJsonData.PageData)">
+            <inheritdoc/>
+        </member>
+        <member name="M:IdleOfTheAgesRuntime.UI.PageService.RegisterPageGroup(IdleOfTheAgesLib.Models.ModJsonData.PageGroupData)">
             <inheritdoc/>
         </member>
         <member name="T:IdleOfTheAgesRuntime.UI.TextureLibrary">
@@ -529,6 +554,18 @@
         </member>
         <member name="M:IdleOfTheAgesRuntime.UI.Services.UIService.GetElement(System.String)">
             <inheritdoc/>
+        </member>
+        <member name="T:IdleOfTheAgesRuntime.User.PlayerService">
+            <summary>
+            A service that holds all relevant information about the player.
+            <para>For information about the player, see <see cref="T:IdleOfTheAgesLib.User.IUserService"/>.</para>
+            </summary>
+        </member>
+        <member name="T:IdleOfTheAgesRuntime.User.UserService">
+            <summary>
+            A service that holds all relevant information about the user.
+            <para>For information about the player, see <see cref="T:IdleOfTheAgesLib.User.IPlayerService"/>.</para>
+            </summary>
         </member>
     </members>
 </doc>
