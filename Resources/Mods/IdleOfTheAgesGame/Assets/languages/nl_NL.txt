@@ -1,0 +1,5 @@
+Woodcutting=Hout Hakken
+Mining=Mijnen
+Generating=Genererende
+Stone_Age=Stenen Tijd
+Tree=Boom

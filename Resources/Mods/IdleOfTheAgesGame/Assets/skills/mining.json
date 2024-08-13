@@ -1,0 +1,28 @@
+{
+    "$schema": "../../Idle-of-the-Ages.wiki/JsonSchemas/ModData/data.json",
+    "skills": [
+        {
+            "id": "mining",
+            "name": "Mining",
+            "skill_category": "IdleOfTheAgesGame:generating",
+            "thumbnail": "IdleOfTheAgesGame:tree",
+            "translation_key": "Mining",
+            "unlock_age": "IdleOfTheAgesGame:Stone_Age",
+            "page_group": "IdleOfTheAgesGame:generating"
+        }
+    ],
+    "pages": [
+        {
+            "id": "mining_page",
+            "name": "Mining Page",
+            "translation_key": "Mining",
+            "sorting_order": {
+                "after": "IdleOfTheAgesGame:woodcutting_page"
+            },
+            "thumbnail": "IdleOfTheAgesGame:tree",
+            "page_type": "skill",
+            "target_id": "IdleOfTheAgesGame:mining",
+            "page_group": "IdleOfTheAgesGame:generating"
+        }
+    ]
+}

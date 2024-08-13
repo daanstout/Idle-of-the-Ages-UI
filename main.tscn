@@ -1,0 +1,13 @@
+[gd_scene load_steps=2 format=3 uid="uid://ct3bcaus0nfwr"]
+
+[ext_resource type="Script" path="res://Scripts/Application.cs" id="1_0min3"]
+
+[node name="Main" type="Node2D"]
+script = ExtResource("1_0min3")
+
+[node name="Label" type="Label" parent="."]
+offset_left = 559.0
+offset_top = 273.0
+offset_right = 599.0
+offset_bottom = 296.0
+text = "Test"

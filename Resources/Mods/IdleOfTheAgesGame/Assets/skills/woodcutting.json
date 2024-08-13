@@ -1,0 +1,100 @@
+{
+    "$schema": "../../Idle-of-the-Ages.wiki/JsonSchemas/ModData/data.json",
+    "skills": [
+        {
+            "id": "woodcutting",
+            "name": "Woodcutting",
+            "skill_category": "IdleOfTheAgesGame:generating",
+            "thumbnail": "IdleOfTheAgesGame:tree",
+            "translation_key": "Woodcutting",
+            "unlock_age": "IdleOfTheAgesGame:Stone_Age",
+            "page_group": "IdleOfTheAgesGame:generating"
+        }
+    ],
+    "pages": [
+        {
+            "id": "woodcutting_page",
+            "name": "Woodcutting Page",
+            "translation_key": "Woodcutting",
+            "sorting_order": {
+                "order": 0
+            },
+            "thumbnail": "IdleOfTheAgesGame:tree",
+            "page_type": "skill",
+            "target_id": "IdleOfTheAgesGame:woodcutting",
+            "page_group": "IdleOfTheAgesGame:generating"
+        }
+    ],
+    "items": [
+        {
+            "id": "logs",
+            "name": "Logs",
+            "translation_key": "Logs",
+            "thumbnail": "IdleOfTheAgesGame:Tree",
+            "sorting_order": {
+                "order": 0
+            },
+            "sell_price": 5,
+            "category": "logs woodcutting",
+            "description": "Logs_Description",
+            "type": "logs",
+            "required_for_completion": true
+        },
+        {
+            "id": "oak_logs",
+            "name": "Oak Logs",
+            "translation_key": "Logs_Oak",
+            "thumbnail": "IdleOfTheAgesGame:Tree",
+            "sorting_order": {
+                "after": "IdleOfTheAgesGame:logs"
+            },
+            "sell_price": 10,
+            "category": "logs woodcutting",
+            "description": "Logs_Oak_Description",
+            "type": "logs",
+            "required_for_completion": true
+        }
+    ],
+    "actions": [
+        {
+            "skill_id": "IdleOfTheAgesGame:woodcutting",
+            "actions": [
+                {
+                    "id": "woodcutting:oak",
+                    "name": "Woodcutting Oak",
+                    "translation_key": "Woodcutting_Oak",
+                    "thumbnail": "IdleOfTheAgesGame:tree",
+                    "base_duration": 1.0,
+                    "base_xp": 5,
+                    "base_expertise": 5,
+                    "base_expertise_pool": 3,
+                    "required_level": 1
+                }
+            ]
+        }
+    ],
+    "loot_tables": [
+        {
+            "target_type": "skill",
+            "target_id": "IdleOfTheAgesGame:woodcutting",
+            "loot_entries": [
+                {
+                    "item_id": "IdleOfTheAgesGame:logs",
+                    "guaranteed": "true",
+                    "base_amount": 1
+                }
+            ]
+        },
+        {
+            "target_type": "action",
+            "target_id": "IdleOfTheAgesGame:woodcutting:oak",
+            "loot_entries": [
+                {
+                    "item_id": "IdleOfTheAgesGame:oak_logs",
+                    "guaranteed": "true",
+                    "base_amount": 1
+                }
+            ]
+        }
+    ]
+}

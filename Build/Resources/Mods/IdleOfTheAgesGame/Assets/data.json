@@ -1,0 +1,60 @@
+﻿{
+    "$schema": "../Idle-of-the-Ages.wiki/JsonSchemas/ModData/data.json",
+    "namespace": "IdleOfTheAgesGame",
+    "skills": [
+        {
+            "id": "woodcutting",
+            "name": "Woodcutting",
+            "translation_key": "Woodcutting",
+            "thumbnail": "IdleOfTheAgesGame:tree",
+            "sorting_order": {
+                "order": 0
+            },
+            "skill_category": "IdleOfTheAgesGame:generating"
+        },
+        {
+            "id": "mining",
+            "name": "Mining",
+            "translation_key": "Mining",
+            "thumbnail": "IdleOfTheAgesGame:tree",
+            "sorting_order": {
+                "after": "IdleOfTheAgesGame:woodcutting"
+            },
+            "skill_category": "IdleOfTheAgesGame:generating"
+        }
+    ],
+    "skill_categories": [
+        {
+            "id": "generating",
+            "name": "Generating"
+        }
+    ],
+    "page_groups": [
+        {
+            "id": "general",
+            "name": "General",
+            "translation_key": "General",
+            "sorting_order": {
+                "order": 0
+            }
+        },
+        {
+            "id": "generating",
+            "name": "Generating",
+            "translation_key": "Generating",
+            "sorting_order": {
+                "order": 10
+            }
+        }
+    ],
+    "sub_data": [
+        [
+            "Data",
+            "mining.json"
+        ],
+        [
+            "Data",
+            "woodcutting.json"
+        ]
+    ]
+}
