@@ -2003,6 +2003,13 @@
             <param name="overwriteIfExists">Whether or not to overwrite an existing ui model if one is already present.</param>
             <returns><see langword="true"/> if the model has been updated, <see langword="false"/> if not.</returns>
         </member>
+        <member name="M:IdleOfTheAgesLib.UI.Elements.UIContext.CallModelMethod(System.String)">
+            <summary>
+            Calls the provided method on the model.
+            </summary>
+            <param name="methodName">The name of the method to call.</param>
+            <returns>The result of the method call.</returns>
+        </member>
         <member name="T:IdleOfTheAgesLib.UI.IUIManager">
             <summary>
             The UI manager that manages the UI of the application and is responsible for adding new UI.
@@ -2011,11 +2018,12 @@
             </para>
             </summary>
         </member>
-        <member name="M:IdleOfTheAgesLib.UI.IUIManager.AddUI(System.String)">
+        <member name="M:IdleOfTheAgesLib.UI.IUIManager.AddUI(System.String,System.String)">
             <summary>
             Adds a piece of UI to the screen.
             </summary>
             <param name="uiID">The ID of the UI to add.</param>
+            <param name="parentID">The ID of the parent node.</param>
             <returns>Returns whether the UI was succesfully added.</returns>
         </member>
         <member name="T:IdleOfTheAgesLib.UI.Parsing.IParserLibrary">
