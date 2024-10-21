@@ -201,6 +201,17 @@
             <param name="itemID">The ID of the item this item stack represents.</param>
             <param name="itemData">The item data for this item stack.</param>
         </member>
+        <member name="T:IdleOfTheAgesRuntime.IO.FileLoader">
+            <summary>
+            Allows for registering and loading files.
+            </summary>
+        </member>
+        <member name="M:IdleOfTheAgesRuntime.IO.FileLoader.GetFileContents(System.String,System.String,System.Boolean)">
+            <inheritdoc/>
+        </member>
+        <member name="M:IdleOfTheAgesRuntime.IO.FileLoader.RegisterFile(System.String,System.String,System.String,System.Boolean)">
+            <inheritdoc/>
+        </member>
         <member name="T:IdleOfTheAgesRuntime.DataLoader">
             <summary>
             Allows for loading in data into the game.
@@ -211,14 +222,14 @@
             Extensions we explicitly ignore during the loading of data and don't log errors for.
             </summary>
         </member>
-        <member name="M:IdleOfTheAgesRuntime.DataLoader.#ctor(IdleOfTheAgesLib.Skills.ISkillService,IdleOfTheAgesLib.Translation.ITranslationService,IdleOfTheAgesLib.Skills.IActionLibrary,IdleOfTheAgesLib.UI.Parsing.IParserService)">
+        <member name="M:IdleOfTheAgesRuntime.DataLoader.#ctor(IdleOfTheAgesLib.Skills.ISkillService,IdleOfTheAgesLib.Translation.ITranslationService,IdleOfTheAgesLib.Skills.IActionLibrary,IdleOfTheAgesLib.IO.IFileLoader)">
             <summary>
             Initializes a new instance of the <see cref="T:IdleOfTheAgesRuntime.DataLoader"/> class.
             </summary>
             <param name="skillService">The skill service to load skills into.</param>
             <param name="translationService">The translation service to load translation files into.</param>
             <param name="actionLibrary">The action library to load actions into.</param>
-            <param name="parserService">The parser service to load UI files into.</param>
+            <param name="fileLoader">The file loader to register files into.</param>
         </member>
         <member name="M:IdleOfTheAgesRuntime.DataLoader.LoadData(IdleOfTheAgesLib.IModObject)">
             <inheritdoc/>
@@ -407,149 +418,226 @@
             A service that parses HTML files into trees that can be used to create the UI.
             </summary>
         </member>
+        <member name="M:IdleOfTheAgesRuntime.UI.Parsing.ParserService.#ctor(IdleOfTheAgesLib.IO.IFileLoader)">
+            <summary>
+            Initializes a new instance of the <see cref="T:IdleOfTheAgesRuntime.UI.Parsing.ParserService"/> class.
+            </summary>
+            <param name="fileLoader">The file loader to load the files with.</param>
+        </member>
         <member name="M:IdleOfTheAgesRuntime.UI.Parsing.ParserService.GetUI(System.String)">
             <inheritdoc/>
         </member>
-        <member name="M:IdleOfTheAgesRuntime.UI.Parsing.ParserService.RegisterFile(System.String,System.String)">
-            <inheritdoc/>
-        </member>
-        <member name="T:IdleOfTheAgesRuntime.UI.Parsing.ParserStateMachine.ElementParserState">
+        <member name="T:IdleOfTheAgesRuntime.UI.Parsing.ParserStateMachine.CssParsing.CssStarterState">
             <summary>
-            A state that parses elements.
+            The initial state to parse a CSS file.
             </summary>
         </member>
-        <member name="P:IdleOfTheAgesRuntime.UI.Parsing.ParserStateMachine.ElementParserState.Instance">
+        <member name="P:IdleOfTheAgesRuntime.UI.Parsing.ParserStateMachine.CssParsing.CssStarterState.Instance">
             <summary>
             Gets a static instance to use.
             </summary>
         </member>
-        <member name="M:IdleOfTheAgesRuntime.UI.Parsing.ParserStateMachine.ElementParserState.Tick(IdleOfTheAgesRuntime.UI.Parsing.ParserStateMachine.ParserState)">
+        <member name="M:IdleOfTheAgesRuntime.UI.Parsing.ParserStateMachine.CssParsing.CssStarterState.Tick(IdleOfTheAgesRuntime.UI.Parsing.ParserStateMachine.ParserData{IdleOfTheAgesLib.UI.Parsing.Trees.CssNode})">
             <inheritdoc/>
         </member>
-        <member name="T:IdleOfTheAgesRuntime.UI.Parsing.ParserStateMachine.MetadataParserState">
+        <member name="T:IdleOfTheAgesRuntime.UI.Parsing.ParserStateMachine.HtmlParsing.ElementParserState">
+            <summary>
+            A state that parses elements.
+            </summary>
+        </member>
+        <member name="P:IdleOfTheAgesRuntime.UI.Parsing.ParserStateMachine.HtmlParsing.ElementParserState.Instance">
+            <summary>
+            Gets a static instance to use.
+            </summary>
+        </member>
+        <member name="M:IdleOfTheAgesRuntime.UI.Parsing.ParserStateMachine.HtmlParsing.ElementParserState.Tick(IdleOfTheAgesRuntime.UI.Parsing.ParserStateMachine.ParserData{IdleOfTheAgesLib.UI.Parsing.Trees.HtmlNode})">
+            <inheritdoc/>
+        </member>
+        <member name="T:IdleOfTheAgesRuntime.UI.Parsing.ParserStateMachine.HtmlParsing.HtmlStarterState">
+            <summary>
+            The initial state to parse a HTML file.
+            </summary>
+        </member>
+        <member name="P:IdleOfTheAgesRuntime.UI.Parsing.ParserStateMachine.HtmlParsing.HtmlStarterState.Instance">
+            <summary>
+            Gets a static instance to use.
+            </summary>
+        </member>
+        <member name="M:IdleOfTheAgesRuntime.UI.Parsing.ParserStateMachine.HtmlParsing.HtmlStarterState.Tick(IdleOfTheAgesRuntime.UI.Parsing.ParserStateMachine.ParserData{IdleOfTheAgesLib.UI.Parsing.Trees.HtmlNode})">
+            <inheritdoc/>
+        </member>
+        <member name="T:IdleOfTheAgesRuntime.UI.Parsing.ParserStateMachine.HtmlParsing.MetadataParserState">
             <summary>
             A state that parses metadata.
             </summary>
         </member>
-        <member name="P:IdleOfTheAgesRuntime.UI.Parsing.ParserStateMachine.MetadataParserState.Instance">
+        <member name="P:IdleOfTheAgesRuntime.UI.Parsing.ParserStateMachine.HtmlParsing.MetadataParserState.Instance">
             <summary>
              Gets a static instance to use.
             </summary>
         </member>
-        <member name="M:IdleOfTheAgesRuntime.UI.Parsing.ParserStateMachine.MetadataParserState.Tick(IdleOfTheAgesRuntime.UI.Parsing.ParserStateMachine.ParserState)">
+        <member name="M:IdleOfTheAgesRuntime.UI.Parsing.ParserStateMachine.HtmlParsing.MetadataParserState.Tick(IdleOfTheAgesRuntime.UI.Parsing.ParserStateMachine.ParserData{IdleOfTheAgesLib.UI.Parsing.Trees.HtmlNode})">
             <inheritdoc/>
         </member>
-        <member name="T:IdleOfTheAgesRuntime.UI.Parsing.ParserStateMachine.ParserState">
+        <member name="T:IdleOfTheAgesRuntime.UI.Parsing.ParserStateMachine.HtmlParsing.PostElementParserState">
+            <summary>
+            A state that decides what to do after parsing the tag's element.
+            </summary>
+        </member>
+        <member name="P:IdleOfTheAgesRuntime.UI.Parsing.ParserStateMachine.HtmlParsing.PostElementParserState.Instance">
+            <summary>
+             Gets a static instance to use.
+            </summary>
+        </member>
+        <member name="M:IdleOfTheAgesRuntime.UI.Parsing.ParserStateMachine.HtmlParsing.PostElementParserState.Tick(IdleOfTheAgesRuntime.UI.Parsing.ParserStateMachine.ParserData{IdleOfTheAgesLib.UI.Parsing.Trees.HtmlNode})">
+            <inheritdoc/>
+        </member>
+        <member name="T:IdleOfTheAgesRuntime.UI.Parsing.ParserStateMachine.ParserData`1">
             <summary>
             Contains the state of the parser.
             </summary>
+            <typeparam name="T">The type of node being parsed.</typeparam>
         </member>
-        <member name="P:IdleOfTheAgesRuntime.UI.Parsing.ParserStateMachine.ParserState.Html">
-            <summary>
-            Gets the HTML to parse.
-            </summary>
-        </member>
-        <member name="P:IdleOfTheAgesRuntime.UI.Parsing.ParserStateMachine.ParserState.RootNode">
+        <member name="P:IdleOfTheAgesRuntime.UI.Parsing.ParserStateMachine.ParserData`1.RootNode">
             <summary>
             Gets the root node of the parsed HTML.
             </summary>
         </member>
-        <member name="P:IdleOfTheAgesRuntime.UI.Parsing.ParserStateMachine.ParserState.CurrentNode">
+        <member name="P:IdleOfTheAgesRuntime.UI.Parsing.ParserStateMachine.ParserData`1.CurrentNode">
             <summary>
             Gets or sets the current node that is being parsed.
             </summary>
         </member>
-        <member name="P:IdleOfTheAgesRuntime.UI.Parsing.ParserStateMachine.ParserState.CurrentCharacterIndex">
+        <member name="P:IdleOfTheAgesRuntime.UI.Parsing.ParserStateMachine.ParserData`1.ParsingInput">
             <summary>
-            Gets or sets the current character index that is being parsed.
+            Gets the parsing input to the parser.
             </summary>
         </member>
-        <member name="P:IdleOfTheAgesRuntime.UI.Parsing.ParserStateMachine.ParserState.CurrentLineCharacter">
+        <member name="P:IdleOfTheAgesRuntime.UI.Parsing.ParserStateMachine.ParserData`1.CloseNodeWhenFinished">
             <summary>
-            Gets the current character that is being parsed.
+            Gets or sets a value indicating whether the <see cref="P:IdleOfTheAgesRuntime.UI.Parsing.ParserStateMachine.ParserData`1.CurrentNode"/> should be closed when the current tag is finished parsing.
             </summary>
         </member>
-        <member name="P:IdleOfTheAgesRuntime.UI.Parsing.ParserStateMachine.ParserState.IsFinished">
-            <summary>
-            Gets a value indicating whether the current line has finished being parsed.
-            </summary>
-        </member>
-        <member name="P:IdleOfTheAgesRuntime.UI.Parsing.ParserStateMachine.ParserState.CloseNodeWhenFinished">
-            <summary>
-            Gets or sets a value indicating whether the <see cref="P:IdleOfTheAgesRuntime.UI.Parsing.ParserStateMachine.ParserState.CurrentNode"/> should be closed when the current tag is finished parsing.
-            </summary>
-        </member>
-        <member name="P:IdleOfTheAgesRuntime.UI.Parsing.ParserStateMachine.ParserState.StateToReturnTo">
+        <member name="P:IdleOfTheAgesRuntime.UI.Parsing.ParserStateMachine.ParserData`1.StateToReturnTo">
             <summary>
             Gets or sets the state to return to when finishing certain tasks.
             </summary>
         </member>
-        <member name="M:IdleOfTheAgesRuntime.UI.Parsing.ParserStateMachine.ParserState.#ctor(System.String)">
+        <member name="M:IdleOfTheAgesRuntime.UI.Parsing.ParserStateMachine.ParserData`1.#ctor(System.String)">
             <summary>
-            Initializes a new instance of the <see cref="T:IdleOfTheAgesRuntime.UI.Parsing.ParserStateMachine.ParserState"/> class.
+            Initializes a new instance of the <see cref="T:IdleOfTheAgesRuntime.UI.Parsing.ParserStateMachine.ParserData`1"/> class.
             </summary>
-            <param name="html">The html to parse.</param>
+            <param name="input">The input to parse.</param>
         </member>
-        <member name="M:IdleOfTheAgesRuntime.UI.Parsing.ParserStateMachine.ParserState.ReadCurrentChar">
+        <member name="T:IdleOfTheAgesRuntime.UI.Parsing.ParserStateMachine.ParsingInput">
+            <summary>
+            Contains the input being parsed.
+            </summary>
+        </member>
+        <member name="P:IdleOfTheAgesRuntime.UI.Parsing.ParserStateMachine.ParsingInput.Input">
+            <summary>
+            Gets the HTML to parse.
+            </summary>
+        </member>
+        <member name="P:IdleOfTheAgesRuntime.UI.Parsing.ParserStateMachine.ParsingInput.CurrentCharacterIndex">
+            <summary>
+            Gets or sets the current character index that is being parsed.
+            </summary>
+        </member>
+        <member name="P:IdleOfTheAgesRuntime.UI.Parsing.ParserStateMachine.ParsingInput.CurrentLineCharacter">
+            <summary>
+            Gets the current character that is being parsed.
+            </summary>
+        </member>
+        <member name="P:IdleOfTheAgesRuntime.UI.Parsing.ParserStateMachine.ParsingInput.IsFinished">
+            <summary>
+            Gets a value indicating whether the current line has finished being parsed.
+            </summary>
+        </member>
+        <member name="M:IdleOfTheAgesRuntime.UI.Parsing.ParserStateMachine.ParsingInput.#ctor(System.String)">
+            <summary>
+            Initializes a new instance of the <see cref="T:IdleOfTheAgesRuntime.UI.Parsing.ParserStateMachine.ParsingInput"/> class.
+            </summary>
+            <param name="input">The input that is being parsed.</param>
+        </member>
+        <member name="M:IdleOfTheAgesRuntime.UI.Parsing.ParserStateMachine.ParsingInput.ReadCurrentChar">
             <summary>
             Reads the current character, and moving towards the next character.
             </summary>
             <returns>The character currently being processed.</returns>
         </member>
-        <member name="M:IdleOfTheAgesRuntime.UI.Parsing.ParserStateMachine.ParserState.GetCurrentChar">
+        <member name="M:IdleOfTheAgesRuntime.UI.Parsing.ParserStateMachine.ParsingInput.GetCurrentChar">
             <summary>
             Gets the current character.
             </summary>
             <returns>The character currently being processed.</returns>
         </member>
-        <member name="M:IdleOfTheAgesRuntime.UI.Parsing.ParserStateMachine.ParserState.ReadCurrentWord">
+        <member name="M:IdleOfTheAgesRuntime.UI.Parsing.ParserStateMachine.ParsingInput.ReadCurrentWord(IdleOfTheAgesRuntime.UI.Parsing.ParserStateMachine.CharactersFlags,System.Char[])">
             <summary>
             Reads the next word from the HTML, and moves towards the next character.
             </summary>
+            <param name="charactersFlags">The character types that are allowed.</param>
+            <param name="explicitlyAllowedCharacters">Explicitly allowed characters.</param>
             <returns>The next word from the HTML.</returns>
         </member>
-        <member name="M:IdleOfTheAgesRuntime.UI.Parsing.ParserStateMachine.ParserState.GetCurrentWord">
+        <member name="M:IdleOfTheAgesRuntime.UI.Parsing.ParserStateMachine.ParsingInput.GetCurrentWord(IdleOfTheAgesRuntime.UI.Parsing.ParserStateMachine.CharactersFlags,System.Char[])">
             <summary>
             Gets the next word from the HTML.
             </summary>
+            <param name="charactersFlags">The character types that are allowed.</param>
+            <param name="explicitlyAllowedCharacters">Explicitly allowed characters.</param>
             <returns>The next word from the HTML.</returns>
         </member>
-        <member name="M:IdleOfTheAgesRuntime.UI.Parsing.ParserStateMachine.ParserState.SkipWhiteSpace">
+        <member name="M:IdleOfTheAgesRuntime.UI.Parsing.ParserStateMachine.ParsingInput.SkipWhiteSpace">
             <summary>
             Skips characters until a non-whitespace character is encountered.
             </summary>
         </member>
-        <member name="M:IdleOfTheAgesRuntime.UI.Parsing.ParserStateMachine.ParserState.Advance">
+        <member name="M:IdleOfTheAgesRuntime.UI.Parsing.ParserStateMachine.ParsingInput.Advance">
             <summary>
             Advances to the next character.
             </summary>
             <returns><see langword="true"/> if there are still more characters to process, otherwise <see langword="false"/>.</returns>
         </member>
-        <member name="T:IdleOfTheAgesRuntime.UI.Parsing.ParserStateMachine.PostElementParserState">
+        <member name="M:IdleOfTheAgesRuntime.UI.Parsing.ParserStateMachine.ParsingInput.Advance(System.Char)">
             <summary>
-            A state that decides what to do after parsing the tag's element.
+            Advances to the next character if the current character is equal to <paramref name="character"/>.
+            </summary>
+            <param name="character">The character the current character needs to be to advance.</param>
+            <returns>
+            <see langword="true"/> if there are still more characters to process and the current character is equal to the <paramref name="character"/>,
+            otherwise <see langword="false"/>.
+            </returns>
+        </member>
+        <member name="T:IdleOfTheAgesRuntime.UI.Parsing.ParserStateMachine.CharactersFlags">
+            <summary>
+            An enum that can be used to indicate character types.
             </summary>
         </member>
-        <member name="P:IdleOfTheAgesRuntime.UI.Parsing.ParserStateMachine.PostElementParserState.Instance">
+        <member name="F:IdleOfTheAgesRuntime.UI.Parsing.ParserStateMachine.CharactersFlags.None">
             <summary>
-             Gets a static instance to use.
+            No characters match the flag.
             </summary>
         </member>
-        <member name="M:IdleOfTheAgesRuntime.UI.Parsing.ParserStateMachine.PostElementParserState.Tick(IdleOfTheAgesRuntime.UI.Parsing.ParserStateMachine.ParserState)">
-            <inheritdoc/>
-        </member>
-        <member name="T:IdleOfTheAgesRuntime.UI.Parsing.ParserStateMachine.StarterState">
+        <member name="F:IdleOfTheAgesRuntime.UI.Parsing.ParserStateMachine.CharactersFlags.Letters">
             <summary>
-            The initial state to parse a line.
+            Letters match the flag.
             </summary>
         </member>
-        <member name="P:IdleOfTheAgesRuntime.UI.Parsing.ParserStateMachine.StarterState.Instance">
+        <member name="F:IdleOfTheAgesRuntime.UI.Parsing.ParserStateMachine.CharactersFlags.Numbers">
             <summary>
-            Gets a static instance to use.
+            Numbers match the flag.
             </summary>
         </member>
-        <member name="M:IdleOfTheAgesRuntime.UI.Parsing.ParserStateMachine.StarterState.Tick(IdleOfTheAgesRuntime.UI.Parsing.ParserStateMachine.ParserState)">
-            <inheritdoc/>
+        <member name="F:IdleOfTheAgesRuntime.UI.Parsing.ParserStateMachine.CharactersFlags.Control">
+            <summary>
+            Control characters match the flag.
+            </summary>
+        </member>
+        <member name="F:IdleOfTheAgesRuntime.UI.Parsing.ParserStateMachine.CharactersFlags.AlphaNumerical">
+            <summary>
+            Numbers and letters match the flag.
+            </summary>
         </member>
         <member name="T:IdleOfTheAgesRuntime.User.PlayerService">
             <summary>

@@ -1,0 +1,27 @@
+﻿{
+    "$schema": "../../Idle-of-the-Ages-Lib.wiki/JsonSchemas/ModData/data.json",
+    "skill_categories": [
+        {
+            "id": "generating",
+            "name": "Generating"
+        }
+    ],
+    "page_groups": [
+        {
+            "id": "general",
+            "name": "General",
+            "translation_key": "General",
+            "sorting_order": {
+                "order": 0
+            }
+        },
+        {
+            "id": "generating",
+            "name": "Generating",
+            "translation_key": "Generating",
+            "sorting_order": {
+                "order": 10
+            }
+        }
+    ]
+}

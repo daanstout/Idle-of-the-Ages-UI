@@ -363,11 +363,13 @@
         <member name="P:IdleOfTheAgesLib.ServiceAttribute`1.Key">
             <summary>
             Gets the key for identifying this service.
+            <para>Default = <see langword="null"/>.</para>
             </summary>
         </member>
         <member name="P:IdleOfTheAgesLib.ServiceAttribute`1.ServiceLevel">
             <summary>
             Gets whether this service should be public or private.
+            <para>Default = <see cref="F:IdleOfTheAgesLib.ServiceLevelEnum.Public"/>.</para>
             </summary>
         </member>
         <member name="T:IdleOfTheAgesLib.Extensions.ServiceLibrary.ServiceLibraryExtensions">
@@ -678,6 +680,50 @@
             </summary>
             <typeparam name="TGroup">The storage group to get the items from.</typeparam>
             <returns>An enumerable with all the items.</returns>
+        </member>
+        <member name="T:IdleOfTheAgesLib.IO.FileCategories">
+            <summary>
+            A static class containing file categories.
+            </summary>
+        </member>
+        <member name="F:IdleOfTheAgesLib.IO.FileCategories.FILE_TYPE_HTML">
+            <summary>
+            The HTML category.
+            </summary>
+        </member>
+        <member name="F:IdleOfTheAgesLib.IO.FileCategories.FILE_TYPE_CSS">
+            <summary>
+            The CSS category.
+            </summary>
+        </member>
+        <member name="F:IdleOfTheAgesLib.IO.FileCategories.FILE_TYPE_TEXT">
+            <summary>
+            The text category.
+            </summary>
+        </member>
+        <member name="T:IdleOfTheAgesLib.IO.IFileLoader">
+            <summary>
+            Allows for registering and loading files.
+            </summary>
+        </member>
+        <member name="M:IdleOfTheAgesLib.IO.IFileLoader.RegisterFile(System.String,System.String,System.String,System.Boolean)">
+            <summary>
+            Registers a file to the file loader.
+            </summary>
+            <param name="category">The category the file belongs to.</param>
+            <param name="identifier">The identifier for the file.</param>
+            <param name="path">The path to the file.</param>
+            <param name="cacheFile">If <see langword="true"/>, immediately reads and caches the file contents.</param>
+            <returns><see langword="true"/> if the file was succesfully cached, <see langword="false"/> if something went wrong.</returns>
+        </member>
+        <member name="M:IdleOfTheAgesLib.IO.IFileLoader.GetFileContents(System.String,System.String,System.Boolean)">
+            <summary>
+            Reads the contents of a file.
+            </summary>
+            <param name="category">The category the file belongs to.</param>
+            <param name="identifier">The identifier for the file.</param>
+            <param name="cacheFile">Whether to cache the file for faster lookup next time.</param>
+            <returns>The contents of the requested file.</returns>
         </member>
         <member name="T:IdleOfTheAgesLib.Models.Error">
             <summary>
@@ -1271,13 +1317,6 @@
             </summary>
             <typeparam name="T">The type of the object returned by the function.</typeparam>
             <param name="result">The result of the operation.</param>
-            <returns>The created Result object.</returns>
-        </member>
-        <member name="M:IdleOfTheAgesLib.Models.ResultBuilder.Build(System.Boolean)">
-            <summary>
-            Builds the result object.
-            </summary>
-            <param name="result">Whether the operation succeeded.</param>
             <returns>The created Result object.</returns>
         </member>
         <member name="T:IdleOfTheAgesLib.Models.Targets.ITarget">
@@ -1921,7 +1960,7 @@
             The base class for UI elements.
             </summary>
         </member>
-        <member name="M:IdleOfTheAgesLib.UI.Elements.ElementManager.ConstructObject(IdleOfTheAgesLib.UI.Parsing.Trees.Node,IdleOfTheAgesLib.UI.Elements.UIContext)">
+        <member name="M:IdleOfTheAgesLib.UI.Elements.ElementManager.ConstructObject(IdleOfTheAgesLib.UI.Parsing.Trees.HtmlNode,IdleOfTheAgesLib.UI.Elements.UIContext)">
             <summary>
             Constructs a UI element based on the node.
             <para>If no element should be shown, <see langword="null"/> should be returned.</para>
@@ -1930,7 +1969,7 @@
             <param name="context">The ui context to use while constructing the element.</param>
             <returns>The constructed UI element.</returns>
         </member>
-        <member name="M:IdleOfTheAgesLib.UI.Elements.ElementManager.Initialize(IdleOfTheAgesLib.UI.Parsing.Trees.Node,IdleOfTheAgesLib.UI.Elements.UIContext)">
+        <member name="M:IdleOfTheAgesLib.UI.Elements.ElementManager.Initialize(IdleOfTheAgesLib.UI.Parsing.Trees.HtmlNode,IdleOfTheAgesLib.UI.Elements.UIContext)">
             <summary>
             Allows the element manager to initialize the context or element with relevant data.
             </summary>
@@ -2097,18 +2136,10 @@
         </member>
         <member name="M:IdleOfTheAgesLib.UI.Parsing.IParserService.GetUI(System.String)">
             <summary>
-            Gets the root <see cref="T:IdleOfTheAgesLib.UI.Parsing.Trees.Node"/> for building the UI for the provided ui element.
+            Gets the root <see cref="T:IdleOfTheAgesLib.UI.Parsing.Trees.HtmlNode"/> for building the UI for the provided ui element.
             </summary>
             <param name="uiName">The name of the UI to get.</param>
-            <returns>The root <see cref="T:IdleOfTheAgesLib.UI.Parsing.Trees.Node"/> for the UI.</returns>
-        </member>
-        <member name="M:IdleOfTheAgesLib.UI.Parsing.IParserService.RegisterFile(System.String,System.String)">
-            <summary>
-            Registers UI files to the parser.
-            </summary>
-            <param name="uiName">The name of the UI.</param>
-            <param name="file">The path to the file of the UI.</param>
-            <returns>Whether the UI was succesfully registered.</returns>
+            <returns>The root <see cref="T:IdleOfTheAgesLib.UI.Parsing.Trees.HtmlNode"/> for the UI.</returns>
         </member>
         <member name="T:IdleOfTheAgesLib.UI.Parsing.Models.ParseContext">
             <summary>
@@ -2139,49 +2170,69 @@
             <param name="key">The key of the data to get.</param>
             <returns>The requested data.</returns>
         </member>
-        <member name="T:IdleOfTheAgesLib.UI.Parsing.Trees.Node">
+        <member name="T:IdleOfTheAgesLib.UI.Parsing.Trees.CssNode">
             <summary>
-            A node that contains information about a HTML tag for the UI.
+            Represents a node for a CSS element.
             </summary>
         </member>
-        <member name="P:IdleOfTheAgesLib.UI.Parsing.Trees.Node.Parent">
+        <member name="M:IdleOfTheAgesLib.UI.Parsing.Trees.CssNode.#ctor">
             <summary>
-            Gets the parent node of this node.
+            Initializes a new instance of the <see cref="T:IdleOfTheAgesLib.UI.Parsing.Trees.CssNode"/> class.
             </summary>
         </member>
-        <member name="P:IdleOfTheAgesLib.UI.Parsing.Trees.Node.ChildNodes">
+        <member name="T:IdleOfTheAgesLib.UI.Parsing.Trees.HtmlNode">
             <summary>
-            Gets the child nodes of this node.
+            Represents a node for a HTML element.
             </summary>
         </member>
-        <member name="P:IdleOfTheAgesLib.UI.Parsing.Trees.Node.Metadata">
+        <member name="P:IdleOfTheAgesLib.UI.Parsing.Trees.HtmlNode.Metadata">
             <summary>
             Gets the metadata of this node.
             </summary>
         </member>
-        <member name="P:IdleOfTheAgesLib.UI.Parsing.Trees.Node.HtmlTag">
+        <member name="M:IdleOfTheAgesLib.UI.Parsing.Trees.HtmlNode.#ctor">
             <summary>
-            Gets the HTML tag that this node is for.
+            Initializes a new instance of the <see cref="T:IdleOfTheAgesLib.UI.Parsing.Trees.HtmlNode"/> class.
             </summary>
         </member>
-        <member name="M:IdleOfTheAgesLib.UI.Parsing.Trees.Node.#ctor(System.String)">
-            <summary>
-            Initializes a new instance of the <see cref="T:IdleOfTheAgesLib.UI.Parsing.Trees.Node"/> class.
-            </summary>
-            <param name="htmlTag">The HTML tag this node is parsing.</param>
-        </member>
-        <member name="M:IdleOfTheAgesLib.UI.Parsing.Trees.Node.AddChildNode(IdleOfTheAgesLib.UI.Parsing.Trees.Node)">
-            <summary>
-            Adds a node as a child of this node.
-            </summary>
-            <param name="child">The child node of this node.</param>
-        </member>
-        <member name="M:IdleOfTheAgesLib.UI.Parsing.Trees.Node.AddMetadata(System.String,System.String)">
+        <member name="M:IdleOfTheAgesLib.UI.Parsing.Trees.HtmlNode.AddMetadata(System.String,System.String)">
             <summary>
             Add Metadata.
             </summary>
             <param name="key">key.</param>
             <param name="value">value.</param>
+        </member>
+        <member name="T:IdleOfTheAgesLib.UI.Parsing.Trees.Node`1">
+            <summary>
+            A node that contains information about a HTML tag for the UI.
+            </summary>
+            <typeparam name="T">The type of the node.</typeparam>
+        </member>
+        <member name="P:IdleOfTheAgesLib.UI.Parsing.Trees.Node`1.Parent">
+            <summary>
+            Gets the parent node of this node.
+            </summary>
+        </member>
+        <member name="P:IdleOfTheAgesLib.UI.Parsing.Trees.Node`1.ChildNodes">
+            <summary>
+            Gets the child nodes of this node.
+            </summary>
+        </member>
+        <member name="P:IdleOfTheAgesLib.UI.Parsing.Trees.Node`1.Identifier">
+            <summary>
+            Gets the HTML tag that this node is for.
+            </summary>
+        </member>
+        <member name="M:IdleOfTheAgesLib.UI.Parsing.Trees.Node`1.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:IdleOfTheAgesLib.UI.Parsing.Trees.Node`1"/> class.
+            </summary>
+        </member>
+        <member name="M:IdleOfTheAgesLib.UI.Parsing.Trees.Node`1.AddChildNode(`0)">
+            <summary>
+            Adds a node as a child of this node.
+            </summary>
+            <param name="child">The child node of this node.</param>
         </member>
         <member name="T:IdleOfTheAgesLib.UI.Parsing.UIModelAttribute">
             <summary>
