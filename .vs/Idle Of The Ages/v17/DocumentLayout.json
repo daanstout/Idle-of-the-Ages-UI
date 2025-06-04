@@ -3,6 +3,22 @@
   "WorkspaceRootPath": "C:\\Projects\\Idle of the Ages\\Idle of the Ages UI\\",
   "Documents": [
     {
+      "AbsoluteMoniker": "D:0:0:{7D91D68E-8483-4211-8506-083DD222856E}|Idle Of The Ages.csproj|c:\\projects\\idle of the ages\\idle of the ages ui\\scripts\\ui\\elementbuilders\\divbuilder.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{7D91D68E-8483-4211-8506-083DD222856E}|Idle Of The Ages.csproj|solutionrelative:scripts\\ui\\elementbuilders\\divbuilder.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{7D91D68E-8483-4211-8506-083DD222856E}|Idle Of The Ages.csproj|c:\\projects\\idle of the ages\\idle of the ages ui\\scripts\\ui\\elementbuilders\\elementbuilderbase.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{7D91D68E-8483-4211-8506-083DD222856E}|Idle Of The Ages.csproj|solutionrelative:scripts\\ui\\elementbuilders\\elementbuilderbase.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{7D91D68E-8483-4211-8506-083DD222856E}|Idle Of The Ages.csproj|c:\\projects\\idle of the ages\\idle of the ages ui\\scripts\\ui\\elements\\uielement.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{7D91D68E-8483-4211-8506-083DD222856E}|Idle Of The Ages.csproj|solutionrelative:scripts\\ui\\elements\\uielement.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{7D91D68E-8483-4211-8506-083DD222856E}|Idle Of The Ages.csproj|c:\\projects\\idle of the ages\\idle of the ages ui\\scripts\\ui\\services\\uibuilder.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{7D91D68E-8483-4211-8506-083DD222856E}|Idle Of The Ages.csproj|solutionrelative:scripts\\ui\\services\\uibuilder.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{7D91D68E-8483-4211-8506-083DD222856E}|Idle Of The Ages.csproj|c:\\projects\\idle of the ages\\idle of the ages ui\\scripts\\ui\\uimanagernode.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{7D91D68E-8483-4211-8506-083DD222856E}|Idle Of The Ages.csproj|solutionrelative:scripts\\ui\\uimanagernode.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
@@ -11,28 +27,12 @@
       "RelativeMoniker": "D:0:0:{7D91D68E-8483-4211-8506-083DD222856E}|Idle Of The Ages.csproj|solutionrelative:scripts\\application.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{7D91D68E-8483-4211-8506-083DD222856E}|Idle Of The Ages.csproj|c:\\projects\\idle of the ages\\idle of the ages ui\\scripts\\ui\\elements\\containerelement.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{7D91D68E-8483-4211-8506-083DD222856E}|Idle Of The Ages.csproj|solutionrelative:scripts\\ui\\elements\\containerelement.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{7D91D68E-8483-4211-8506-083DD222856E}|Idle Of The Ages.csproj|c:\\projects\\idle of the ages\\idle of the ages ui\\scripts\\ui\\elements\\modelelement.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{7D91D68E-8483-4211-8506-083DD222856E}|Idle Of The Ages.csproj|solutionrelative:scripts\\ui\\elements\\modelelement.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{7D91D68E-8483-4211-8506-083DD222856E}|Idle Of The Ages.csproj|c:\\projects\\idle of the ages\\idle of the ages ui\\scripts\\ui\\elements\\divelement.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{7D91D68E-8483-4211-8506-083DD222856E}|Idle Of The Ages.csproj|solutionrelative:scripts\\ui\\elements\\divelement.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{7D91D68E-8483-4211-8506-083DD222856E}|Idle Of The Ages.csproj|c:\\projects\\idle of the ages\\idle of the ages ui\\scripts\\services\\consolelogger.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{7D91D68E-8483-4211-8506-083DD222856E}|Idle Of The Ages.csproj|solutionrelative:scripts\\services\\consolelogger.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{7D91D68E-8483-4211-8506-083DD222856E}|Idle Of The Ages.csproj|c:\\projects\\idle of the ages\\idle of the ages ui\\scripts\\ui\\services\\uimanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{7D91D68E-8483-4211-8506-083DD222856E}|Idle Of The Ages.csproj|solutionrelative:scripts\\ui\\services\\uimanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{7D91D68E-8483-4211-8506-083DD222856E}|Idle Of The Ages.csproj|c:\\projects\\idle of the ages\\idle of the ages ui\\scripts\\ui\\models\\pagelistmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{7D91D68E-8483-4211-8506-083DD222856E}|Idle Of The Ages.csproj|solutionrelative:scripts\\ui\\models\\pagelistmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{7D91D68E-8483-4211-8506-083DD222856E}|Idle Of The Ages.csproj|c:\\projects\\idle of the ages\\idle of the ages ui\\scripts\\services\\consolelogger.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{7D91D68E-8483-4211-8506-083DD222856E}|Idle Of The Ages.csproj|solutionrelative:scripts\\services\\consolelogger.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -42,11 +42,11 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 0,
+          "SelectedChildIndex": 3,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 4,
               "Title": "UIManagerNode.cs",
               "DocumentMoniker": "C:\\Projects\\Idle of the Ages\\Idle of the Ages UI\\Scripts\\UI\\UIManagerNode.cs",
               "RelativeDocumentMoniker": "Scripts\\UI\\UIManagerNode.cs",
@@ -60,7 +60,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 5,
               "Title": "Application.cs",
               "DocumentMoniker": "C:\\Projects\\Idle of the Ages\\Idle of the Ages UI\\Scripts\\Application.cs",
               "RelativeDocumentMoniker": "Scripts\\Application.cs",
@@ -69,7 +69,54 @@
               "ViewState": "AQIAAAAAAAAAAAAAAAAAAAoAAAAUAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-07-10T08:50:38.311Z",
-              "IsPinned": true
+              "IsPinned": true,
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "ElementBuilderBase.cs",
+              "DocumentMoniker": "C:\\Projects\\Idle of the Ages\\Idle of the Ages UI\\Scripts\\UI\\ElementBuilders\\ElementBuilderBase.cs",
+              "RelativeDocumentMoniker": "Scripts\\UI\\ElementBuilders\\ElementBuilderBase.cs",
+              "ToolTip": "C:\\Projects\\Idle of the Ages\\Idle of the Ages UI\\Scripts\\UI\\ElementBuilders\\ElementBuilderBase.cs",
+              "RelativeToolTip": "Scripts\\UI\\ElementBuilders\\ElementBuilderBase.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAMAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-01-22T16:55:45.052Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "DivBuilder.cs",
+              "DocumentMoniker": "C:\\Projects\\Idle of the Ages\\Idle of the Ages UI\\Scripts\\UI\\ElementBuilders\\DivBuilder.cs",
+              "RelativeDocumentMoniker": "Scripts\\UI\\ElementBuilders\\DivBuilder.cs",
+              "ToolTip": "C:\\Projects\\Idle of the Ages\\Idle of the Ages UI\\Scripts\\UI\\ElementBuilders\\DivBuilder.cs",
+              "RelativeToolTip": "Scripts\\UI\\ElementBuilders\\DivBuilder.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAUAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-01-22T16:38:16.486Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:132:0:{1fc202d4-d401-403c-9834-5b218574bb67}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:131:0:{13b12e3e-c1b4-4539-9371-4fe9a0d523fc}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:130:0:{1fc202d4-d401-403c-9834-5b218574bb67}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:129:0:{13b12e3e-c1b4-4539-9371-4fe9a0d523fc}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:128:0:{116d2292-e37d-41cd-a077-ebacac4c8cc4}"
             },
             {
               "$type": "Bookmark",
@@ -81,67 +128,46 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 5,
+              "DocumentIndex": 3,
+              "Title": "UIBuilder.cs",
+              "DocumentMoniker": "C:\\Projects\\Idle of the Ages\\Idle of the Ages UI\\Scripts\\UI\\Services\\UIBuilder.cs",
+              "RelativeDocumentMoniker": "Scripts\\UI\\Services\\UIBuilder.cs",
+              "ToolTip": "C:\\Projects\\Idle of the Ages\\Idle of the Ages UI\\Scripts\\UI\\Services\\UIBuilder.cs",
+              "RelativeToolTip": "Scripts\\UI\\Services\\UIBuilder.cs",
+              "ViewState": "AQIAAAMAAAAAAAAAAAAAACoAAABTAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-12T09:03:28.932Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "UIElement.cs",
+              "DocumentMoniker": "C:\\Projects\\Idle of the Ages\\Idle of the Ages UI\\Scripts\\UI\\Elements\\UIElement.cs",
+              "RelativeDocumentMoniker": "Scripts\\UI\\Elements\\UIElement.cs",
+              "ToolTip": "C:\\Projects\\Idle of the Ages\\Idle of the Ages UI\\Scripts\\UI\\Elements\\UIElement.cs",
+              "RelativeToolTip": "Scripts\\UI\\Elements\\UIElement.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAwAAAAEAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-12T08:52:46.472Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
               "Title": "UIManager.cs",
               "DocumentMoniker": "C:\\Projects\\Idle of the Ages\\Idle of the Ages UI\\Scripts\\UI\\Services\\UIManager.cs",
               "RelativeDocumentMoniker": "Scripts\\UI\\Services\\UIManager.cs",
               "ToolTip": "C:\\Projects\\Idle of the Ages\\Idle of the Ages UI\\Scripts\\UI\\Services\\UIManager.cs",
               "RelativeToolTip": "Scripts\\UI\\Services\\UIManager.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAABgAAAAAAAAA",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAABsAAAAFAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-08-14T15:16:31.305Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "ContainerElement.cs",
-              "DocumentMoniker": "C:\\Projects\\Idle of the Ages\\Idle of the Ages UI\\Scripts\\UI\\Elements\\ContainerElement.cs",
-              "RelativeDocumentMoniker": "Scripts\\UI\\Elements\\ContainerElement.cs",
-              "ToolTip": "C:\\Projects\\Idle of the Ages\\Idle of the Ages UI\\Scripts\\UI\\Elements\\ContainerElement.cs",
-              "RelativeToolTip": "Scripts\\UI\\Elements\\ContainerElement.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAA0AAAAZAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-08-11T13:19:51.643Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "ModelElement.cs",
-              "DocumentMoniker": "C:\\Projects\\Idle of the Ages\\Idle of the Ages UI\\Scripts\\UI\\Elements\\ModelElement.cs",
-              "RelativeDocumentMoniker": "Scripts\\UI\\Elements\\ModelElement.cs",
-              "ToolTip": "C:\\Projects\\Idle of the Ages\\Idle of the Ages UI\\Scripts\\UI\\Elements\\ModelElement.cs",
-              "RelativeToolTip": "Scripts\\UI\\Elements\\ModelElement.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAEAAAAQAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-08-04T13:47:35.003Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 4,
-              "Title": "DivElement.cs",
-              "DocumentMoniker": "C:\\Projects\\Idle of the Ages\\Idle of the Ages UI\\Scripts\\UI\\Elements\\DivElement.cs",
-              "RelativeDocumentMoniker": "Scripts\\UI\\Elements\\DivElement.cs",
-              "ToolTip": "C:\\Projects\\Idle of the Ages\\Idle of the Ages UI\\Scripts\\UI\\Elements\\DivElement.cs",
-              "RelativeToolTip": "Scripts\\UI\\Elements\\DivElement.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAcAAAAEAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-08-01T18:27:05.345Z"
+              "WhenOpened": "2024-11-24T16:11:54.83Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 6,
-              "Title": "PageListModel.cs",
-              "DocumentMoniker": "C:\\Projects\\Idle of the Ages\\Idle of the Ages UI\\Scripts\\UI\\Models\\PageListModel.cs",
-              "RelativeDocumentMoniker": "Scripts\\UI\\Models\\PageListModel.cs",
-              "ToolTip": "C:\\Projects\\Idle of the Ages\\Idle of the Ages UI\\Scripts\\UI\\Models\\PageListModel.cs",
-              "RelativeToolTip": "Scripts\\UI\\Models\\PageListModel.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAkAAAAAAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-08-04T13:48:29.036Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 7,
               "Title": "ConsoleLogger.cs",
               "DocumentMoniker": "C:\\Projects\\Idle of the Ages\\Idle of the Ages UI\\Scripts\\Services\\ConsoleLogger.cs",
               "RelativeDocumentMoniker": "Scripts\\Services\\ConsoleLogger.cs",
@@ -149,7 +175,8 @@
               "RelativeToolTip": "Scripts\\Services\\ConsoleLogger.cs",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAACQAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-07-14T09:29:27.036Z"
+              "WhenOpened": "2024-07-14T09:29:27.036Z",
+              "EditorCaption": ""
             }
           ]
         }

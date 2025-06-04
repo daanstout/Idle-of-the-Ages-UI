@@ -11,6 +11,8 @@
     <None Include=".editorconfig" />
   </ItemGroup>
   <ItemGroup>
+    <PackageReference Include="ExCSS" Version="4.3.0" />
+    <PackageReference Include="HtmlAgilityPack" Version="1.11.71" />
     <PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
   </ItemGroup>
   <ItemGroup>
@@ -20,5 +22,17 @@
     <Reference Include="IdleOfTheAgesRuntime">
       <HintPath>Resources\IdleOfTheAgesRuntime.dll</HintPath>
     </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Scripts\UI\Models\" />
+  </ItemGroup>
+  <ItemGroup>
+    <PackageReference Update="Godot.SourceGenerators" Version="4.3.0" />
+  </ItemGroup>
+  <ItemGroup>
+    <PackageReference Update="GodotSharp" Version="4.3.0" />
+  </ItemGroup>
+  <ItemGroup>
+    <PackageReference Update="GodotSharpEditor" Version="4.3.0" />
   </ItemGroup>
 </Project>

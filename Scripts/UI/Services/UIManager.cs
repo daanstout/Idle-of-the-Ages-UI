@@ -1,29 +1,37 @@
 ﻿using IdleOfTheAgesLib;
-using IdleOfTheAgesLib.UI;
-using IdleOfTheAgesLib.UI.Parsing;
-using IdleOfTheAgesLib.UI.Parsing.Trees;
-using System;
+using IdleOfTheAgesLib.UI.Models;
+using IdleOfTheAgesLib.UI.Services;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace IdleOfTheAges.Scripts.UI.Services;
 
-[Service<IUIManager>]
+[Service<IUIManager>(ServiceLevel = ServiceLevelEnum.Public)]
 public class UIManager : IUIManager {
-    private readonly IParserLibrary parserLibrary;
-    private readonly IParserService parserService;
+    public IUIElement Root { get; }
 
-    private readonly Node rootNode = new(string.Empty);
-    private readonly Dictionary<string, Node> nodes = [];
+    private readonly IUIBuilder uiBuilder;
+    private readonly Dictionary<string, IUIElement> elementsWithID = [];
+    private readonly List<IUIElement> elementsWithoutID = [];
 
-    public UIManager(IParserLibrary parserLibrary, IParserService parserService) {
-        this.parserLibrary = parserLibrary;
-        this.parserService = parserService;
+    public UIManager(IUIBuilder uiBuilder) {
+        this.uiBuilder = uiBuilder;
     }
 
-    public Result AddUI(string uiID, string parentID) {
-        return true;
+    public Result<IUIElement> AddUI(string parentID, string templateID) {
+        var result = uiBuilder.BuildUI(templateID);
+
+        if (!result) {
+            return result.To<IUIElement>();
+        }
+
+        return result;
+    }
+
+    public Result<IUIElement> GetUI(string id) {
+        if (elementsWithID.TryGetValue(id, out var element)) {
+            return new Result<IUIElement>(element);
+        }
+
+        return (null, "No element with the provided ID exists!", new KeyNotFoundException());
     }
 }

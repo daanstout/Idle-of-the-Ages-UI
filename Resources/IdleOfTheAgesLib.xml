@@ -4,35 +4,9 @@
         <name>IdleOfTheAgesLib</name>
     </assembly>
     <members>
-        <member name="T:IdleOfTheAgesLib.Activity.IActivity">
-            <summary>
-            An activity the user can do.
-            </summary>
-        </member>
-        <member name="M:IdleOfTheAgesLib.Activity.IActivity.Tick(System.Single)">
-            <summary>
-            Ticks the activity.
-            </summary>
-            <param name="deltaTime">The time since the last tick.</param>
-        </member>
-        <member name="T:IdleOfTheAgesLib.Activity.IActivityLibrary">
-            <summary>
-            A library to keep track of all activities the player can do.
-            </summary>
-        </member>
-        <member name="T:IdleOfTheAgesLib.Activity.IActivityService">
-            <summary>
-            Keeps track of the current activity the user is doing.
-            </summary>
-        </member>
         <member name="T:IdleOfTheAgesLib.IModObject">
             <summary>
             Contains all relevant mod data.
-            </summary>
-        </member>
-        <member name="P:IdleOfTheAgesLib.IModObject.Logger">
-            <summary>
-            Gets a logger to log data to.
             </summary>
         </member>
         <member name="P:IdleOfTheAgesLib.IModObject.Mod">
@@ -385,92 +359,6 @@
             <param name="types">The parameters to obtain instances for.</param>
             <returns>An <see cref="T:System.Array"/> containing the instances in order.</returns>
         </member>
-        <member name="T:IdleOfTheAgesLib.FSM.FinishState`1">
-            <summary>
-            A state that indicates that the state machine is finished.
-            </summary>
-            <typeparam name="T">The type of the context data the state operates on.</typeparam>
-        </member>
-        <member name="P:IdleOfTheAgesLib.FSM.FinishState`1.Instance">
-            <summary>
-            Gets a static instance to use.
-            </summary>
-        </member>
-        <member name="M:IdleOfTheAgesLib.FSM.FinishState`1.Tick(`0)">
-            <inheritdoc/>
-        </member>
-        <member name="T:IdleOfTheAgesLib.FSM.State`1">
-            <summary>
-            Represents a state within the state machine.
-            </summary>
-            <typeparam name="T">The type of the context data the state operates on.</typeparam>
-        </member>
-        <member name="M:IdleOfTheAgesLib.FSM.State`1.Tick(`0)">
-            <summary>
-            Does a tick of the state.
-            <para>To indicate that the state machine should finish, return the <see cref="P:IdleOfTheAgesLib.FSM.FinishState`1.Instance"/>.</para>
-            </summary>
-            <param name="input">The input to operate on.</param>
-            <returns>The state that should be operated on next. It can be returned itself to keep operating on the same state.</returns>
-        </member>
-        <member name="M:IdleOfTheAgesLib.FSM.State`1.Finish">
-            <summary>
-            Call this to indicate that the state machine should finish execution.
-            </summary>
-            <returns>An instance of the <see cref="T:IdleOfTheAgesLib.FSM.FinishState`1"/> state.</returns>
-        </member>
-        <member name="T:IdleOfTheAgesLib.FSM.StateMachine`1">
-            <summary>
-            A state machine that can be used to act based on input.
-            </summary>
-            <typeparam name="T">The type of the context data the state machine operates on.</typeparam>
-        </member>
-        <member name="M:IdleOfTheAgesLib.FSM.StateMachine`1.#ctor(IdleOfTheAgesLib.FSM.State{`0})">
-            <summary>
-            Initializes a new instance of the <see cref="T:IdleOfTheAgesLib.FSM.StateMachine`1"/> class.
-            </summary>
-            <param name="initialState">The starting state of the state machine.</param>
-        </member>
-        <member name="M:IdleOfTheAgesLib.FSM.StateMachine`1.Tick(`0)">
-            <summary>
-            Does a tick of the state machine.
-            <para>To indicate that the state machine should finish, return the <see cref="P:IdleOfTheAgesLib.FSM.FinishState`1.Instance"/>.</para>
-            </summary>
-            <param name="input">The input to operate on.</param>
-            <returns><see langword="true"/> if the operation was succesful, <see langword="false"/> if not.</returns>
-        </member>
-        <member name="M:IdleOfTheAgesLib.FSM.StateMachine`1.RunToCompletion(`0)">
-            <summary>
-            Runs the state machine to completion.
-            </summary>
-            <param name="input">The input to the state machine.</param>
-            <returns><see langword="true"/> if the state machine ran to completion succesfully, otherwise <see langword="false"/>.</returns>
-        </member>
-        <member name="T:IdleOfTheAgesLib.FSM.StateMachineResult">
-            <summary>
-            Values that the state machine returns to indicate the current state of running the state machine.
-            </summary>
-        </member>
-        <member name="F:IdleOfTheAgesLib.FSM.StateMachineResult.None">
-            <summary>
-            Default state.
-            </summary>
-        </member>
-        <member name="F:IdleOfTheAgesLib.FSM.StateMachineResult.InProgress">
-            <summary>
-            The state machine is currently in progress.
-            </summary>
-        </member>
-        <member name="F:IdleOfTheAgesLib.FSM.StateMachineResult.Failed">
-            <summary>
-            The state machine has failed somewhere along the way.
-            </summary>
-        </member>
-        <member name="F:IdleOfTheAgesLib.FSM.StateMachineResult.Finished">
-            <summary>
-            The state machine has finished.
-            </summary>
-        </member>
         <member name="T:IdleOfTheAgesLib.ILogger">
             <summary>
             A logger to log information to.
@@ -718,12 +606,19 @@
         </member>
         <member name="M:IdleOfTheAgesLib.IO.IFileLoader.GetFileContents(System.String,System.String,System.Boolean)">
             <summary>
-            Reads the contents of a file.
+            Reads the contents of a registered file.
             </summary>
             <param name="category">The category the file belongs to.</param>
             <param name="identifier">The identifier for the file.</param>
             <param name="cacheFile">Whether to cache the file for faster lookup next time.</param>
             <returns>The contents of the requested file.</returns>
+        </member>
+        <member name="M:IdleOfTheAgesLib.IO.IFileLoader.ReadFile(System.String)">
+            <summary>
+            Reads the contents of a file.
+            </summary>
+            <param name="path">The path the file is at.</param>
+            <returns>The contents of the file.</returns>
         </member>
         <member name="T:IdleOfTheAgesLib.Models.Error">
             <summary>
@@ -1487,6 +1382,21 @@
             </summary>
             <param name="logger">The logger to print to.</param>
         </member>
+        <member name="M:IdleOfTheAgesLib.Result`1.Cast``1">
+            <summary>
+            Casts a result's value to a different type.
+            </summary>
+            <typeparam name="TOther">The type to cast to.</typeparam>
+            <returns>A result object for the casted type.</returns>
+        </member>
+        <member name="M:IdleOfTheAgesLib.Result`1.To``1(``0)">
+            <summary>
+            Casts a result to a result of a different type, while retaining any errors.
+            </summary>
+            <typeparam name="TOther">The type of the object to change to.</typeparam>
+            <param name="obj">The object to return with the result object.</param>
+            <returns>The casted result object.</returns>
+        </member>
         <member name="M:IdleOfTheAgesLib.Result`1.op_Implicit(IdleOfTheAgesLib.Result{`0})~System.Boolean">
             <summary>
             Implicitly casts a <see cref="T:IdleOfTheAgesLib.Result`1"/> object to a bool.
@@ -1939,304 +1849,171 @@
             </summary>
             <returns>An <see cref="T:System.Collections.Generic.IEnumerable`1"/> with all languages the game supports.</returns>
         </member>
-        <member name="T:IdleOfTheAgesLib.UI.Elements.ElementManager`1">
+        <member name="T:IdleOfTheAgesLib.UI.Attributes.ElementBuilderAttribute">
             <summary>
-            The base class for UI elements.
-            </summary>
-            <typeparam name="T">The type of the element that is created.</typeparam>
-        </member>
-        <member name="P:IdleOfTheAgesLib.UI.Elements.ElementManager`1.Element">
-            <summary>
-            Gets the element that is being managed.
+            Can be used to indicate that a class is used to build attributes.
             </summary>
         </member>
-        <member name="M:IdleOfTheAgesLib.UI.Elements.ElementManager`1.#ctor">
+        <member name="P:IdleOfTheAgesLib.UI.Attributes.ElementBuilderAttribute.ElementName">
             <summary>
-            Initializes a new instance of the <see cref="T:IdleOfTheAgesLib.UI.Elements.ElementManager`1"/> class.
+            Gets the name of the element the builder can build.
             </summary>
         </member>
-        <member name="T:IdleOfTheAgesLib.UI.Elements.ElementManager">
+        <member name="T:IdleOfTheAgesLib.UI.Models.IElementBuilder">
             <summary>
-            The base class for UI elements.
+            Represents a class that can build elements.
             </summary>
         </member>
-        <member name="M:IdleOfTheAgesLib.UI.Elements.ElementManager.ConstructObject(IdleOfTheAgesLib.UI.Parsing.Trees.HtmlNode,IdleOfTheAgesLib.UI.Elements.UIContext)">
+        <member name="M:IdleOfTheAgesLib.UI.Models.IElementBuilder.Build(HtmlAgilityPack.HtmlNode,IdleOfTheAgesLib.UI.Models.StyleData)">
             <summary>
-            Constructs a UI element based on the node.
-            <para>If no element should be shown, <see langword="null"/> should be returned.</para>
+            Builds a UI element based on the provided html and styles.
             </summary>
-            <param name="node">The node that contains data about the element.</param>
-            <param name="context">The ui context to use while constructing the element.</param>
-            <returns>The constructed UI element.</returns>
+            <param name="html">The html to build.</param>
+            <param name="styleData">The style data to use.</param>
+            <returns>The created UI element.</returns>
         </member>
-        <member name="M:IdleOfTheAgesLib.UI.Elements.ElementManager.Initialize(IdleOfTheAgesLib.UI.Parsing.Trees.HtmlNode,IdleOfTheAgesLib.UI.Elements.UIContext)">
+        <member name="T:IdleOfTheAgesLib.UI.Models.IUIElement">
             <summary>
-            Allows the element manager to initialize the context or element with relevant data.
-            </summary>
-            <param name="node">The node that contains data about the element.</param>
-            <param name="context">The ui context to use while constructing the element.</param>
-            <returns><see langword="true"/> if the initialisation was succesful, <see langword="false"/> if something went wrong.</returns>
-        </member>
-        <member name="M:IdleOfTheAgesLib.UI.Elements.ElementManager.Update(IdleOfTheAgesLib.UI.Elements.UIContext)">
-            <summary>
-            Updates the element to ensure the view changes when the state of the game changes.
-            </summary>
-            <param name="context">The ui context to use while updating the element.</param>
-            <returns><see langword="true"/> if the object was succesfully updated, <see langword="false"/> if something went wrong.</returns>
-        </member>
-        <member name="T:IdleOfTheAgesLib.UI.Elements.ElementManagerAttribute">
-            <summary>
-            An <see cref="T:System.Attribute"/> used to indicate that a class can create UI elements.
+            Represents a UI element in the game.
             </summary>
         </member>
-        <member name="P:IdleOfTheAgesLib.UI.Elements.ElementManagerAttribute.HtmlTag">
+        <member name="P:IdleOfTheAgesLib.UI.Models.IUIElement.ID">
             <summary>
-            Gets the tag the class is meant to construct elements for.
+            Gets the ID of the UI Element.
             </summary>
         </member>
-        <member name="M:IdleOfTheAgesLib.UI.Elements.ElementManagerAttribute.#ctor(System.String)">
+        <member name="P:IdleOfTheAgesLib.UI.Models.IUIElement.Classes">
             <summary>
-            Initializes a new instance of the <see cref="T:IdleOfTheAgesLib.UI.Elements.ElementManagerAttribute"/> class.
-            </summary>
-            <param name="htmlTag">The html tag the elements constructs for.</param>
-        </member>
-        <member name="T:IdleOfTheAgesLib.UI.Elements.ModelBase">
-            <summary>
-            A base class for UI models.
+            Gets the classes of this UI element.
             </summary>
         </member>
-        <member name="T:IdleOfTheAgesLib.UI.Elements.UIContext">
+        <member name="P:IdleOfTheAgesLib.UI.Models.IUIElement.Children">
             <summary>
-            Contains the UI context for creating UI elements from the parsed HTML.
+            Gets the children of this UI element.
             </summary>
         </member>
-        <member name="M:IdleOfTheAgesLib.UI.Elements.UIContext.AddContext(System.String,System.Object,System.Boolean)">
+        <member name="T:IdleOfTheAgesLib.UI.Models.StyleData">
             <summary>
-            Adds a context.
-            </summary>
-            <param name="key">The key of the context.</param>
-            <param name="context">The context to add.</param>
-            <param name="overwriteIfExists">If <see langword="true"/>, overwrites existing contexts with the same key.</param>
-            <returns>Whether the context was succesfully added.</returns>
-        </member>
-        <member name="M:IdleOfTheAgesLib.UI.Elements.UIContext.GetContext(System.String)">
-            <summary>
-            Gets the context stored at the provided key.
-            </summary>
-            <param name="key">The key of the context to get.</param>
-            <returns>The requested context.</returns>
-        </member>
-        <member name="M:IdleOfTheAgesLib.UI.Elements.UIContext.GetContext``1(System.String)">
-            <summary>
-            Gets the context stored at the provided key.
-            </summary>
-            <typeparam name="T">The type of the context to get.</typeparam>
-            <param name="key">The key of the context to get.</param>
-            <returns>The requested context.</returns>
-        </member>
-        <member name="M:IdleOfTheAgesLib.UI.Elements.UIContext.SetUIModel(System.Object,System.Boolean)">
-            <summary>
-            Sets the UI model to use.
-            </summary>
-            <param name="model">The ui model to use.</param>
-            <param name="overwriteIfExists">Whether or not to overwrite an existing ui model if one is already present.</param>
-            <returns><see langword="true"/> if the model has been updated, <see langword="false"/> if not.</returns>
-        </member>
-        <member name="M:IdleOfTheAgesLib.UI.Elements.UIContext.CallModelMethod(System.String)">
-            <summary>
-            Calls the provided method on the model.
-            </summary>
-            <param name="methodName">The name of the method to call.</param>
-            <returns>The result of the method call.</returns>
-        </member>
-        <member name="T:IdleOfTheAgesLib.UI.IUIManager">
-            <summary>
-            The UI manager that manages the UI of the application and is responsible for adding new UI.
-            <para>
-            This interface should be implemented by the UI framework.
-            </para>
+            Contains all the relevant styles as well as helper functions to get the required style information.
             </summary>
         </member>
-        <member name="M:IdleOfTheAgesLib.UI.IUIManager.AddUI(System.String,System.String)">
+        <member name="M:IdleOfTheAgesLib.UI.Models.StyleData.#ctor(IdleOfTheAgesLib.UI.Services.ICssLibrary)">
             <summary>
-            Adds a piece of UI to the screen.
+            Initializes a new instance of the <see cref="T:IdleOfTheAgesLib.UI.Models.StyleData"/> class.
             </summary>
-            <param name="uiID">The ID of the UI to add.</param>
-            <param name="parentID">The ID of the parent node.</param>
-            <returns>Returns whether the UI was succesfully added.</returns>
+            <param name="cssLibrary">The css library that contains all the css data.</param>
         </member>
-        <member name="T:IdleOfTheAgesLib.UI.Parsing.IParserLibrary">
+        <member name="M:IdleOfTheAgesLib.UI.Models.StyleData.GetStyles(System.String)">
             <summary>
-            A library that stores all the parsers available.
+            Gets all styles for the specified class.
             </summary>
+            <param name="className">The name of the class.</param>
+            <returns>The requested styles information.</returns>
         </member>
-        <member name="M:IdleOfTheAgesLib.UI.Parsing.IParserLibrary.GetElementManager(System.String)">
+        <member name="T:IdleOfTheAgesLib.UI.Services.ICssLibrary">
             <summary>
-            Gets the parser for the specific tag.
-            </summary>
-            <param name="tag">The tag to get the parser for.</param>
-            <returns>The requested parser.</returns>
-        </member>
-        <member name="M:IdleOfTheAgesLib.UI.Parsing.IParserLibrary.GetElementManager``1(System.String)">
-            <summary>
-            Gets the parser for the specific tag.
-            </summary>
-            <typeparam name="T">
-            The type of UI element it should return.
-            <para>
-            This should only be used by the platform that also manages the UI.
-            </para>
-            </typeparam>
-            <param name="tag">The tag to get the parser for.</param>
-            <returns>The requested parser.</returns>
-        </member>
-        <member name="M:IdleOfTheAgesLib.UI.Parsing.IParserLibrary.GetUIModel(System.String)">
-            <summary>
-            Gets a UI model.
-            </summary>
-            <param name="modelName">The model to obtain.</param>
-            <returns>The requested model.</returns>
-        </member>
-        <member name="M:IdleOfTheAgesLib.UI.Parsing.IParserLibrary.RegisterElementManager``1(System.String)">
-            <summary>
-            Registers a parser to the library.
-            </summary>
-            <typeparam name="T">The type of the parser.</typeparam>
-            <param name="tag">The tag the parser should parse for.</param>
-            <returns><see langword="true"/> if the parser was succesfully registered, otherwise <see langword="false"/>.</returns>
-        </member>
-        <member name="M:IdleOfTheAgesLib.UI.Parsing.IParserLibrary.RegisterElementManager(System.Type,System.String)">
-            <summary>
-            Registers a parser to the library.
-            </summary>
-            <param name="parserType">The type of the parser.</param>
-            <param name="tag">The tag the parser should parse for.</param>
-            <returns><see langword="true"/> if the parser was succesfully registered, otherwise <see langword="false"/>.</returns>
-        </member>
-        <member name="M:IdleOfTheAgesLib.UI.Parsing.IParserLibrary.RegisterUIModel``1(System.String)">
-            <summary>
-            Registers a UI model to the library.
-            </summary>
-            <typeparam name="T">The type of the UI model.</typeparam>
-            <param name="modelName">The name of the UI model.</param>
-            <returns><see langword="true"/> if the UI model was succesfully registered, otherwise <see langword="false"/>.</returns>
-        </member>
-        <member name="M:IdleOfTheAgesLib.UI.Parsing.IParserLibrary.RegisterUIModel(System.Type,System.String)">
-            <summary>
-            Registers a UI model to the library.
-            </summary>
-            <param name="modelType">The type of the UI model.</param>
-            <param name="modelName">The name of the UI model.</param>
-            <returns><see langword="true"/> if the UI model was succesfully registered, otherwise <see langword="false"/>.</returns>
-        </member>
-        <member name="T:IdleOfTheAgesLib.UI.Parsing.IParserService">
-            <summary>
-            A service that parses HTML files into trees that can be used to create the UI.
+            Keeps track of all the CSS rules that are available.
             </summary>
         </member>
-        <member name="M:IdleOfTheAgesLib.UI.Parsing.IParserService.GetUI(System.String)">
+        <member name="M:IdleOfTheAgesLib.UI.Services.ICssLibrary.GetStyleSheets(System.String)">
             <summary>
-            Gets the root <see cref="T:IdleOfTheAgesLib.UI.Parsing.Trees.HtmlNode"/> for building the UI for the provided ui element.
+            Gets all style sheets for a specific selector.
             </summary>
-            <param name="uiName">The name of the UI to get.</param>
-            <returns>The root <see cref="T:IdleOfTheAgesLib.UI.Parsing.Trees.HtmlNode"/> for the UI.</returns>
+            <param name="selector">The selector to get the style sheets for.</param>
+            <returns>The requested style sheets.</returns>
         </member>
-        <member name="T:IdleOfTheAgesLib.UI.Parsing.Models.ParseContext">
+        <member name="M:IdleOfTheAgesLib.UI.Services.ICssLibrary.RegisterCSS(System.String)">
             <summary>
-            Keeps track of data while parsing HTML.
+            Registers a CSS file to the library.
             </summary>
+            <param name="path">The path to the CSS file.</param>
+            <returns>A <see cref="T:IdleOfTheAgesLib.Result"/> object to see if the file was succesfully registered.</returns>
         </member>
-        <member name="M:IdleOfTheAgesLib.UI.Parsing.Models.ParseContext.AddData(System.String,System.Object,System.Boolean)">
+        <member name="T:IdleOfTheAgesLib.UI.Services.IElementBuilderLibrary">
             <summary>
-            Adds data to the parsing that can be used elsewhere.
-            </summary>
-            <param name="key">The key of the context.</param>
-            <param name="data">The data to keep.</param>
-            <param name="overwriteExisting">If <see langword="true"/>, if the <paramref name="key"/> already exists, the data is overwritten.</param>
-            <returns><see langword=""/> if the data was succesfully added.</returns>
-        </member>
-        <member name="M:IdleOfTheAgesLib.UI.Parsing.Models.ParseContext.GetData(System.String)">
-            <summary>
-            Gets data stored in the context.
-            </summary>
-            <param name="key">The key of the data to get.</param>
-            <returns>The requested data.</returns>
-        </member>
-        <member name="M:IdleOfTheAgesLib.UI.Parsing.Models.ParseContext.GetData``1(System.String)">
-            <summary>
-            Gets data stored in the context.
-            </summary>
-            <typeparam name="T">The type of the data stored.</typeparam>
-            <param name="key">The key of the data to get.</param>
-            <returns>The requested data.</returns>
-        </member>
-        <member name="T:IdleOfTheAgesLib.UI.Parsing.Trees.CssNode">
-            <summary>
-            Represents a node for a CSS element.
+            Holds all known element builders that are available.
             </summary>
         </member>
-        <member name="M:IdleOfTheAgesLib.UI.Parsing.Trees.CssNode.#ctor">
+        <member name="M:IdleOfTheAgesLib.UI.Services.IElementBuilderLibrary.RegisterElementBuilder``1(System.String)">
             <summary>
-            Initializes a new instance of the <see cref="T:IdleOfTheAgesLib.UI.Parsing.Trees.CssNode"/> class.
+            Registers an element builder to the library.
+            </summary>
+            <typeparam name="TBuilderType">The type of the element builder that is being added.</typeparam>
+            <param name="htmlTag">The html tag it can build.</param>
+            <returns><see langword="true"/> if the element was succesfully registered, and false if not.</returns>
+        </member>
+        <member name="M:IdleOfTheAgesLib.UI.Services.IElementBuilderLibrary.RegisterElementBuilder(System.String,System.Type)">
+            <summary>
+            Registers an element builder to the library.
+            </summary>
+            <param name="htmlTag">The html tag it can build.</param>
+            <param name="builderType">The type of the element builder that is being added.</param>
+            <returns><see langword="true"/> if the element was succesfully registered, and false if not.</returns>
+        </member>
+        <member name="M:IdleOfTheAgesLib.UI.Services.IElementBuilderLibrary.GetBuilder(System.String)">
+            <summary>
+            Gets an element builder for the specified tag.
+            </summary>
+            <param name="htmlTag">The tag to get the builder for.</param>
+            <returns>The requested builder.</returns>
+        </member>
+        <member name="T:IdleOfTheAgesLib.UI.Services.ITemplateLibrary">
+            <summary>
+            Keeps track of all the templates that are available.
             </summary>
         </member>
-        <member name="T:IdleOfTheAgesLib.UI.Parsing.Trees.HtmlNode">
+        <member name="M:IdleOfTheAgesLib.UI.Services.ITemplateLibrary.GetTemplate(System.String)">
             <summary>
-            Represents a node for a HTML element.
+            Gets a template.
+            </summary>
+            <param name="templateId">The template to obtain.</param>
+            <returns>The requested template.</returns>
+        </member>
+        <member name="T:IdleOfTheAgesLib.UI.Services.IUIBuilder">
+            <summary>
+            Creates UI elements based on templates.
             </summary>
         </member>
-        <member name="P:IdleOfTheAgesLib.UI.Parsing.Trees.HtmlNode.Metadata">
+        <member name="M:IdleOfTheAgesLib.UI.Services.IUIBuilder.BuildUI(System.String)">
             <summary>
-            Gets the metadata of this node.
+            Builds a piece of UI based on the provided template.
+            </summary>
+            <param name="templateID">The template to use.</param>
+            <returns>The created UI element.</returns>
+        </member>
+        <member name="T:IdleOfTheAgesLib.UI.Services.IUIManager">
+            <summary>
+            Manages the game's UI.
             </summary>
         </member>
-        <member name="M:IdleOfTheAgesLib.UI.Parsing.Trees.HtmlNode.#ctor">
+        <member name="P:IdleOfTheAgesLib.UI.Services.IUIManager.Root">
             <summary>
-            Initializes a new instance of the <see cref="T:IdleOfTheAgesLib.UI.Parsing.Trees.HtmlNode"/> class.
+            Gets the root UI element.
             </summary>
         </member>
-        <member name="M:IdleOfTheAgesLib.UI.Parsing.Trees.HtmlNode.AddMetadata(System.String,System.String)">
+        <member name="M:IdleOfTheAgesLib.UI.Services.IUIManager.AddUI(System.String,System.String)">
             <summary>
-            Add Metadata.
+            Adds a UI screen to the game.
             </summary>
-            <param name="key">key.</param>
-            <param name="value">value.</param>
+            <param name="parentID">The ID of the parent element to add the UI to.</param>
+            <param name="templateID">The ID of the template to add.</param>
+            <returns>The newly created UI element.</returns>
         </member>
-        <member name="T:IdleOfTheAgesLib.UI.Parsing.Trees.Node`1">
+        <member name="M:IdleOfTheAgesLib.UI.Services.IUIManager.GetUI(System.String)">
             <summary>
-            A node that contains information about a HTML tag for the UI.
+            Gets a UI element based on its ID.
             </summary>
-            <typeparam name="T">The type of the node.</typeparam>
+            <param name="id">The ID of the element to get.</param>
+            <returns>The requested UI element.</returns>
         </member>
-        <member name="P:IdleOfTheAgesLib.UI.Parsing.Trees.Node`1.Parent">
+        <member name="T:IdleOfTheAgesLib.UI.Templates.Template">
             <summary>
-            Gets the parent node of this node.
-            </summary>
-        </member>
-        <member name="P:IdleOfTheAgesLib.UI.Parsing.Trees.Node`1.ChildNodes">
-            <summary>
-            Gets the child nodes of this node.
+            Holds data for a given template.
             </summary>
         </member>
-        <member name="P:IdleOfTheAgesLib.UI.Parsing.Trees.Node`1.Identifier">
+        <member name="P:IdleOfTheAgesLib.UI.Templates.Template.HtmlDocument">
             <summary>
-            Gets the HTML tag that this node is for.
-            </summary>
-        </member>
-        <member name="M:IdleOfTheAgesLib.UI.Parsing.Trees.Node`1.#ctor">
-            <summary>
-            Initializes a new instance of the <see cref="T:IdleOfTheAgesLib.UI.Parsing.Trees.Node`1"/> class.
-            </summary>
-        </member>
-        <member name="M:IdleOfTheAgesLib.UI.Parsing.Trees.Node`1.AddChildNode(`0)">
-            <summary>
-            Adds a node as a child of this node.
-            </summary>
-            <param name="child">The child node of this node.</param>
-        </member>
-        <member name="T:IdleOfTheAgesLib.UI.Parsing.UIModelAttribute">
-            <summary>
-            An attribute used to indicate that a class is a model for UI.
+            Gets the HTML of the template.
             </summary>
         </member>
         <member name="T:IdleOfTheAgesLib.User.IPlayerService">
