@@ -654,6 +654,12 @@
             </summary>
             <param name="message">the string to cast.</param>
         </member>
+        <member name="M:IdleOfTheAgesLib.Models.Error.op_Implicit(IdleOfTheAgesLib.Models.Error)~System.String">
+            <summary>
+            Implicitly casts an <see cref="T:IdleOfTheAgesLib.Models.Error"/> to a <see cref="T:System.String"/>.
+            </summary>
+            <param name="error">The error to cast.</param>
+        </member>
         <member name="T:IdleOfTheAgesLib.Models.JsonConverters.ModDataConverter">
             <summary>
             A converter to deserialize <see cref="T:IdleOfTheAgesLib.Models.ModData"/> objects.

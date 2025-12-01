@@ -4,7 +4,7 @@ using System;
 
 namespace IdleOfTheAges.Scripts.Services;
 
-[Service<ILogger>(Key = "Godot Console")]
+[Service<ILogger>]
 public class ConsoleLogger : ILogger {
     public string Namespace { get; } = "Godot UI";
 

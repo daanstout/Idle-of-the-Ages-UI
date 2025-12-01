@@ -1,18 +1,19 @@
 [gd_scene load_steps=3 format=3 uid="uid://ct3bcaus0nfwr"]
 
-[ext_resource type="Script" path="res://Scripts/Application.cs" id="1_0min3"]
-[ext_resource type="Script" path="res://Scripts/UI/UIManagerNode.cs" id="2_8g3pr"]
+[ext_resource type="Script" uid="uid://bebagixokf5j4" path="res://Scripts/Application.cs" id="1_0min3"]
+[ext_resource type="Script" uid="uid://civxw3caqo2jv" path="res://Scripts/UI/UIManagerNode.cs" id="2_8g3pr"]
 
-[node name="Root" type="Control"]
+[node name="Root" type="Control" node_paths=PackedStringArray("uiRoot")]
+auto_translate_mode = 2
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-auto_translate = false
 localize_numeral_system = false
 script = ExtResource("1_0min3")
+uiRoot = NodePath("UI")
 
 [node name="UIManagerNode" type="Node" parent="." node_paths=PackedStringArray("headerPanel", "footerPanel", "tabListPanel", "mainUIPanel")]
 script = ExtResource("2_8g3pr")
@@ -22,6 +23,7 @@ tabListPanel = NodePath("../HSplitContainer/TabListPanel")
 mainUIPanel = NodePath("../HSplitContainer/MainUIPanel")
 
 [node name="Header" type="Panel" parent="."]
+visible = false
 layout_mode = 1
 anchors_preset = 10
 anchor_right = 1.0
@@ -29,6 +31,7 @@ offset_bottom = 50.0
 grow_horizontal = 2
 
 [node name="HSplitContainer" type="HSplitContainer" parent="."]
+visible = false
 layout_mode = 1
 anchors_preset = -1
 anchor_right = 1.0
@@ -40,12 +43,15 @@ grow_vertical = 2
 split_offset = 100
 
 [node name="TabListPanel" type="Panel" parent="HSplitContainer"]
+visible = false
 layout_mode = 2
 
 [node name="MainUIPanel" type="Panel" parent="HSplitContainer"]
+visible = false
 layout_mode = 2
 
 [node name="Footer" type="Panel" parent="."]
+visible = false
 layout_mode = 1
 anchors_preset = 12
 anchor_top = 1.0
@@ -54,3 +60,11 @@ anchor_bottom = 1.0
 offset_top = -50.0
 grow_horizontal = 2
 grow_vertical = 0
+
+[node name="UI" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2

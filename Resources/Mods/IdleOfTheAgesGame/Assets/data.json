@@ -1,5 +1,5 @@
 ﻿{
-    "$schema": "../Idle-of-the-Ages.wiki/JsonSchemas/ModData/data.json",
+    "$schema": "../../Idle-of-the-Ages-Lib.wiki/JsonSchemas/ModData/data.json",
     "skill_categories": [
         {
             "id": "generating",

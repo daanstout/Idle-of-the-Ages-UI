@@ -382,6 +382,15 @@
         <member name="M:IdleOfTheAgesRuntime.Translation.TranslationService.LoadLanguagePath(System.String,System.String)">
             <inheritdoc/>
         </member>
+        <member name="P:IdleOfTheAgesRuntime.UI.Models.UIElement.ID">
+            <inheritdoc/>
+        </member>
+        <member name="P:IdleOfTheAgesRuntime.UI.Models.UIElement.Classes">
+            <inheritdoc/>
+        </member>
+        <member name="P:IdleOfTheAgesRuntime.UI.Models.UIElement.Children">
+            <inheritdoc/>
+        </member>
         <member name="T:IdleOfTheAgesRuntime.UI.Services.CssLibrary">
             <summary>
             Holds all loaded css rules.
@@ -411,6 +420,26 @@
             <param name="fileLoader">The file loader to use.</param>
         </member>
         <member name="M:IdleOfTheAgesRuntime.UI.Services.TemplateLibrary.GetTemplate(System.String)">
+            <inheritdoc/>
+        </member>
+        <member name="T:IdleOfTheAgesRuntime.UI.Services.UIManager">
+            <summary>
+            Manages the game's UI.
+            </summary>
+        </member>
+        <member name="P:IdleOfTheAgesRuntime.UI.Services.UIManager.Root">
+            <inheritdoc/>
+        </member>
+        <member name="M:IdleOfTheAgesRuntime.UI.Services.UIManager.#ctor(IdleOfTheAgesLib.UI.Services.ITemplateLibrary)">
+            <summary>
+            Initializes a new instance of the <see cref="T:IdleOfTheAgesRuntime.UI.Services.UIManager"/> class.
+            </summary>
+            <param name="templateLibrary">The template library to get templates from.</param>
+        </member>
+        <member name="M:IdleOfTheAgesRuntime.UI.Services.UIManager.AddUI(System.String,System.String)">
+            <inheritdoc/>
+        </member>
+        <member name="M:IdleOfTheAgesRuntime.UI.Services.UIManager.GetUI(System.String)">
             <inheritdoc/>
         </member>
         <member name="T:IdleOfTheAgesRuntime.User.PlayerService">
