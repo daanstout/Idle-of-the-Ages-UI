@@ -620,6 +620,13 @@
             <param name="path">The path the file is at.</param>
             <returns>The contents of the file.</returns>
         </member>
+        <member name="M:IdleOfTheAgesLib.IO.IFileLoader.GetAllFilesInCategory(System.String)">
+            <summary>
+            Gets the file identifiers for all files in the given category.
+            </summary>
+            <param name="category">The category to get the files for.</param>
+            <returns>All the file ids within that category.</returns>
+        </member>
         <member name="T:IdleOfTheAgesLib.Models.Error">
             <summary>
             Represents an error that has occured.
@@ -1419,6 +1426,9 @@
             <exception cref="T:System.InvalidOperationException">Thrown if the <paramref name="result"/> object is <see langword="null"/>.</exception>
             <exception cref="T:System.Exception">Thrown if the <see cref="T:System.Exception"/> is not <see langword="null"/>.</exception>
         </member>
+        <member name="M:IdleOfTheAgesLib.Result`1.ToString">
+            <inheritdoc/>
+        </member>
         <member name="M:IdleOfTheAgesLib.Result`1.op_Implicit(`0)~IdleOfTheAgesLib.Result{`0}">
             <summary>
             Implicitly casts a <typeparamref name="T"/> value to a <see cref="T:IdleOfTheAgesLib.Result`1"/>.
@@ -1927,6 +1937,15 @@
             </summary>
             <param name="selector">The selector to get the style sheets for.</param>
             <returns>The requested style sheets.</returns>
+        </member>
+        <member name="M:IdleOfTheAgesLib.UI.Services.ICssLibrary.LoadCSS">
+            <summary>
+            Loads all CSS files registered to the application.
+            </summary>
+            <remarks>
+            Errors while loading specific files doesn't prevent the loading of other files.
+            </remarks>
+            <returns>Whether the style sheets were succesfully loaded.</returns>
         </member>
         <member name="M:IdleOfTheAgesLib.UI.Services.ICssLibrary.RegisterCSS(System.String)">
             <summary>

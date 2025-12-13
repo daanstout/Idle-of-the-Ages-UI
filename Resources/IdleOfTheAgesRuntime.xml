@@ -207,6 +207,9 @@
         <member name="M:IdleOfTheAgesRuntime.IO.FileLoader.GetFileContents(System.String,System.String,System.Boolean)">
             <inheritdoc/>
         </member>
+        <member name="M:IdleOfTheAgesRuntime.IO.FileLoader.GetAllFilesInCategory(System.String)">
+            <inheritdoc/>
+        </member>
         <member name="M:IdleOfTheAgesRuntime.IO.FileLoader.RegisterFile(System.String,System.String,System.String,System.Boolean)">
             <inheritdoc/>
         </member>
@@ -401,6 +404,9 @@
             Initializes a new instance of the <see cref="T:IdleOfTheAgesRuntime.UI.Services.CssLibrary"/> class.
             </summary>
             <param name="fileLoader">The file loader to use to load files.</param>
+        </member>
+        <member name="M:IdleOfTheAgesRuntime.UI.Services.CssLibrary.LoadCSS">
+            <inheritdoc/>
         </member>
         <member name="M:IdleOfTheAgesRuntime.UI.Services.CssLibrary.RegisterCSS(System.String)">
             <inheritdoc/>

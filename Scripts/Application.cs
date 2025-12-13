@@ -9,7 +9,6 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
 using System.Runtime.Loader;
-using System.Text;
 
 namespace IdleOfTheAges;
 
@@ -38,6 +37,8 @@ public partial class Application : Node {
             GD.Print("No errors while loading mods");
         }
 
+        app.ServiceLibrary.Get<ICssLibrary>().LoadCSS();
+
         app.GameLoaded();
 
         app.ServiceLibrary.Get<ITranslationService>().ChangeLanguage(Languages.EN_US);
@@ -52,12 +53,16 @@ public partial class Application : Node {
             return;
         }
         var root = rootResult.Value;
+        GD.Print(root.HtmlDocument.DocumentNode.OuterHtml);
         CreateUI(root, uiRoot);
     }
 
     private static void CreateUI(Template root, Panel uiRoot) {
         Queue<(HtmlNode htmlNode, Node uiNode)> nodes = [];
-        nodes.Enqueue((root.HtmlDocument.DocumentNode, uiRoot));
+
+        foreach(var child in root.HtmlDocument.DocumentNode.ChildNodes) {
+            nodes.Enqueue((child, uiRoot));
+        }
 
         do {
             var (htmlNode, uiNode) = nodes.Dequeue();
@@ -71,23 +76,31 @@ public partial class Application : Node {
     }
 
     private static Node ProcessHtmlNode(HtmlNode node, Node parent) {
-        PrintNode(node);
-        var newNode = CreateNode(node.Id);
+        var newNode = CreateNode(node);
         parent.AddChild(newNode);
         return newNode;
     }
 
-    private static Node CreateNode(string type) {
-        return new Panel();
+    private static Node CreateNode(HtmlNode node) {
+        return node.Name switch {
+            "div" => CreateDiv(node),
+            "#text" => CreateText(node),
+            _ => CreateDiv(node)
+        };
     }
 
-    private static void PrintNode(HtmlNode node) {
-        StringBuilder stringBuilder = new StringBuilder();
+    private static Panel CreateDiv(HtmlNode node) {
+        return new Panel {
+            Size = new Vector2 {
+                X = 10,
+                Y = 10
+            }
+        };
+    }
 
-        stringBuilder.AppendFormat("Node ID: {0}\n", node.Id);
-        stringBuilder.AppendFormat("Node attributes (count = {0}):", node.Attributes.Count);
-        foreach(var nodeAttribute in node.Attributes) {
-
-        }
+    private static Label CreateText(HtmlNode node) {
+        return new Label {
+            Text = node.InnerHtml
+        };
     }
 }
